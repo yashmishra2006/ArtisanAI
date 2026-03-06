@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>My Wishlist - ArtisanAI</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+tailwind.config = {
+    darkMode: "class",
+    theme: {
+        extend: {
+            colors: {
+                "primary": "#F5A623",
+                "background-light": "#F9F6F1"
+            },
+            fontFamily: {
+                "display": ["Manrope", "sans-serif"],
+                "serif": ["Newsreader", "serif"]
+            }
+        }
+    }
+}
+</script>
+<style>
+body { font-family: 'Manrope', sans-serif; }
+h1, h2, h3, .font-serif { font-family: 'Newsreader', serif; }
+</style>
+</head>
+<body class="bg-background-light dark:bg-slate-950 text-slate-900 dark:text-slate-100">
+<!-- TopNavBar -->
+<header class="sticky top-0 z-50 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 px-6 py-4 lg:px-12 flex items-center justify-between">
+<a class="flex items-center gap-3" href="{{ url_for('shop.index') }}">
+<span class="material-symbols-outlined text-primary text-3xl">spa</span>
+<span class="font-serif text-2xl font-bold">ArtisanAI</span>
+</a>
+<nav class="hidden lg:flex items-center gap-8">
+<a class="text-slate-600 dark:text-slate-400 text-sm font-medium hover:text-primary transition-colors" href="{{ url_for('shop.marketplace') }}">Shop</a>
+<a class="text-slate-600 dark:text-slate-400 text-sm font-medium hover:text-primary transition-colors" href="{{ url_for('shop.artisans') }}">Artisans</a>
+<a class="text-slate-600 dark:text-slate-400 text-sm font-medium hover:text-primary transition-colors" href="{{ url_for('shop.our_story') }}">Our Story</a>
+<a class="text-slate-600 dark:text-slate-400 text-sm font-medium hover:text-primary transition-colors" href="{{ url_for('shop.collections') }}">Collections</a>
+</nav>
+<div class="flex items-center gap-4">
+<a href="{{ url_for('shop.wishlist') }}" class="p-2 bg-primary/10 rounded-full relative">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1">favorite</span>
+<span class="absolute -top-1 -right-1 bg-primary text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">5</span>
+</a>
+<a href="{{ url_for('shop.cart') }}" class="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full">
+<span class="material-symbols-outlined">shopping_cart</span>
+</a>
+<a href="{{ url_for('shop.account') }}" class="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full">
+<span class="material-symbols-outlined">person</span>
+</a>
+</div>
+</header>
+
+<main class="max-w-7xl mx-auto px-6 lg:px-12 py-12">
+<div class="mb-8">
+<h1 class="text-4xl font-serif font-bold mb-2">My Wishlist</h1>
+<p class="text-slate-600 dark:text-slate-400">5 items saved for later</p>
+</div>
+
+<!-- Wishlist Grid -->
+<div class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+<!-- Product Card -->
+<div class="group bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 overflow-hidden relative">
+<button onclick="toggleFavorite(this)" class="absolute top-3 right-3 z-10 w-10 h-10 bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm rounded-full flex items-center justify-center hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-red-500" style="font-variation-settings: 'FILL' 1">favorite</span>
+</button>
+<a href="{{ url_for('shop.product_detail', product_id=1) }}" class="block">
+<div class="aspect-square bg-gradient-to-br from-amber-100 to-orange-200 dark:from-slate-800 dark:to-slate-700"></div>
+<div class="p-4">
+<h3 class="font-serif font-bold text-lg mb-1 group-hover:text-primary transition-colors">Handwoven Silk Scarf</h3>
+<p class="text-sm text-slate-600 dark:text-slate-400 mb-2">by Priya Sharma</p>
+<div class="flex items-baseline justify-between">
+<span class="text-xl font-bold text-primary">₹2,400</span>
+<button onclick="event.preventDefault(); addToCart(1)" class="text-sm text-primary hover:underline">Add to Cart</button>
+</div>
+</div>
+</a>
+</div>
+
+<!-- Product Card -->
+<div class="group bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 overflow-hidden relative">
+<button onclick="toggleFavorite(this)" class="absolute top-3 right-3 z-10 w-10 h-10 bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm rounded-full flex items-center justify-center hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-red-500" style="font-variation-settings: 'FILL' 1">favorite</span>
+</button>
+<a href="{{ url_for('shop.product_detail', product_id=2) }}" class="block">
+<div class="aspect-square bg-gradient-to-br from-blue-100 to-indigo-200 dark:from-slate-800 dark:to-slate-700"></div>
+<div class="p-4">
+<h3 class="font-serif font-bold text-lg mb-1 group-hover:text-primary transition-colors">Blue Pottery Vase</h3>
+<p class="text-sm text-slate-600 dark:text-slate-400 mb-2">by Rajesh Kumar</p>
+<div class="flex items-baseline justify-between">
+<span class="text-xl font-bold text-primary">₹3,200</span>
+<button onclick="event.preventDefault(); addToCart(2)" class="text-sm text-primary hover:underline">Add to Cart</button>
+</div>
+</div>
+</a>
+</div>
+
+<!-- Product Card -->
+<div class="group bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 overflow-hidden relative">
+<button onclick="toggleFavorite(this)" class="absolute top-3 right-3 z-10 w-10 h-10 bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm rounded-full flex items-center justify-center hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-red-500" style="font-variation-settings: 'FILL' 1">favorite</span>
+</button>
+<a href="{{ url_for('shop.product_detail', product_id=3) }}" class="block">
+<div class="aspect-square bg-gradient-to-br from-green-100 to-emerald-200 dark:from-slate-800 dark:to-slate-700"></div>
+<div class="p-4">
+<h3 class="font-serif font-bold text-lg mb-1 group-hover:text-primary transition-colors">Madhubani Painting</h3>
+<p class="text-sm text-slate-600 dark:text-slate-400 mb-2">by Meena Devi</p>
+<div class="flex items-baseline justify-between">
+<span class="text-xl font-bold text-primary">₹5,600</span>
+<button onclick="event.preventDefault(); addToCart(3)" class="text-sm text-primary hover:underline">Add to Cart</button>
+</div>
+</div>
+</a>
+</div>
+
+<!-- Product Card -->
+<div class="group bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 overflow-hidden relative">
+<button onclick="toggleFavorite(this)" class="absolute top-3 right-3 z-10 w-10 h-10 bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm rounded-full flex items-center justify-center hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-red-500" style="font-variation-settings: 'FILL' 1">favorite</span>
+</button>
+<a href="{{ url_for('shop.product_detail', product_id=4) }}" class="block">
+<div class="aspect-square bg-gradient-to-br from-purple-100 to-violet-200 dark:from-slate-800 dark:to-slate-700"></div>
+<div class="p-4">
+<h3 class="font-serif font-bold text-lg mb-1 group-hover:text-primary transition-colors">Brass Diya Set</h3>
+<p class="text-sm text-slate-600 dark:text-slate-400 mb-2">by Arjun Patel</p>
+<div class="flex items-baseline justify-between">
+<span class="text-xl font-bold text-primary">₹1,800</span>
+<button onclick="event.preventDefault(); addToCart(4)" class="text-sm text-primary hover:underline">Add to Cart</button>
+</div>
+</div>
+</a>
+</div>
+
+<!-- Product Card -->
+<div class="group bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 overflow-hidden relative">
+<button onclick="toggleFavorite(this)" class="absolute top-3 right-3 z-10 w-10 h-10 bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm rounded-full flex items-center justify-center hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-red-500" style="font-variation-settings: 'FILL' 1">favorite</span>
+</button>
+<a href="{{ url_for('shop.product_detail', product_id=5) }}" class="block">
+<div class="aspect-square bg-gradient-to-br from-rose-100 to-pink-200 dark:from-slate-800 dark:to-slate-700"></div>
+<div class="p-4">
+<h3 class="font-serif font-bold text-lg mb-1 group-hover:text-primary transition-colors">Temple Jewelry Set</h3>
+<p class="text-sm text-slate-600 dark:text-slate-400 mb-2">by Lakshmi Iyer</p>
+<div class="flex items-baseline justify-between">
+<span class="text-xl font-bold text-primary">₹8,500</span>
+<button onclick="event.preventDefault(); addToCart(5)" class="text-sm text-primary hover:underline">Add to Cart</button>
+</div>
+</div>
+</a>
+</div>
+</div>
+
+<!-- Empty Wishlist State (hidden by default) -->
+<div class="hidden text-center py-20">
+<span class="material-symbols-outlined text-6xl text-slate-300 dark:text-slate-700 mb-4 block">favorite_border</span>
+<h2 class="text-2xl font-serif font-bold mb-2">Your wishlist is empty</h2>
+<p class="text-slate-600 dark:text-slate-400 mb-6">Save your favorite items for later</p>
+<a href="{{ url_for('shop.marketplace') }}" class="inline-block bg-primary text-white px-6 py-3 rounded-full font-semibold hover:bg-primary/90 transition-colors">
+Explore Products
+</a>
+</div>
+</main>
+
+<script src="{{ url_for('static', filename='js/shop.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,155 @@
+/* Responsive Enhancements for ArtisanAI Website */
+
+/* Smooth scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Better touch targets for mobile */
+@media (max-width: 768px) {
+    button, a {
+        min-height: 44px;
+        min-width: 44px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+/* Improved mobile menu animation */
+#mobileMenu, #mobileSidebar {
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+#mobileMenu.hidden, #mobileSidebar.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* Mobile-friendly card spacing */
+@media (max-width: 640px) {
+    .grid {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+/* Responsive images */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Better focus states for accessibility */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+    outline: 2px solid #E28743;
+    outline-offset: 2px;
+}
+
+/* Smooth transitions */
+* {
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
+}
+
+/* Mobile navigation improvements */
+@media (max-width: 768px) {
+    nav {
+        font-size: 1.125rem;
+    }
+    
+    /* Larger tap targets for mobile */
+    nav a, nav button {
+        padding: 1rem;
+    }
+}
+
+/* Product card hover effects */
+.product-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-4px);
+}
+
+/* Loading states */
+.loading {
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+/* Toast notification styles */
+.toast {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background: #2C2825;
+    color: white;
+    padding: 1rem 1.5rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    z-index: 9999;
+    animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Mobile sidebar slide animation */
+@media (max-width: 768px) {
+    #mobileSidebar aside {
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+    }
+    
+    #mobileSidebar:not(.hidden) aside {
+        transform: translateX(0);
+    }
+}
+
+/* Responsive typography */
+@media (max-width: 640px) {
+    h1 {
+        font-size: 2rem;
+    }
+    
+    h2 {
+        font-size: 1.5rem;
+    }
+    
+    h3 {
+        font-size: 1.25rem;
+    }
+}
+
+/* Better form inputs on mobile */
+@media (max-width: 768px) {
+    input, textarea, select {
+        font-size: 16px; /* Prevents zoom on iOS */
+    }
+}
+
+/* Sticky header improvements */
+.sticky {
+    backdrop-filter: blur(8px);
+}
+
+/* Grid responsive improvements */
+@media (min-width: 640px) and (max-width: 1024px) {
+    .grid-cols-1.sm\:grid-cols-2.lg\:grid-cols-3 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}

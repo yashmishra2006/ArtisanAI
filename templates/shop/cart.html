@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Shopping Cart - ArtisanAI</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+tailwind.config = {
+    darkMode: "class",
+    theme: {
+        extend: {
+            colors: {
+                "primary": "#F5A623",
+                "background-light": "#F9F6F1",
+                "background-dark": "#221b10"
+            },
+            fontFamily: {
+                "display": ["Manrope", "sans-serif"],
+                "serif": ["Newsreader", "serif"]
+            }
+        }
+    }
+}
+</script>
+<style>
+body { font-family: 'Manrope', sans-serif; }
+h1, h2, h3, .font-serif { font-family: 'Newsreader', serif; }
+</style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100">
+<!-- TopNavBar -->
+<header class="sticky top-0 z-50 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 px-6 py-4 lg:px-12 flex items-center justify-between">
+<a class="flex items-center gap-3" href="{{ url_for('shop.index') }}">
+<span class="material-symbols-outlined text-primary text-3xl">spa</span>
+<span class="font-serif text-2xl font-bold">ArtisanAI</span>
+</a>
+<nav class="hidden lg:flex items-center gap-8">
+<a class="text-slate-600 dark:text-slate-400 text-sm font-medium hover:text-primary transition-colors" href="{{ url_for('shop.marketplace') }}">Shop</a>
+<a class="text-slate-600 dark:text-slate-400 text-sm font-medium hover:text-primary transition-colors" href="{{ url_for('shop.artisans') }}">Artisans</a>
+<a class="text-slate-600 dark:text-slate-400 text-sm font-medium hover:text-primary transition-colors" href="{{ url_for('shop.our_story') }}">Our Story</a>
+<a class="text-slate-600 dark:text-slate-400 text-sm font-medium hover:text-primary transition-colors" href="{{ url_for('shop.collections') }}">Collections</a>
+</nav>
+<div class="flex items-center gap-4">
+<a href="{{ url_for('shop.wishlist') }}" class="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full">
+<span class="material-symbols-outlined">favorite_border</span>
+</a>
+<a href="{{ url_for('shop.cart') }}" class="p-2 bg-primary/10 rounded-full relative">
+<span class="material-symbols-outlined text-primary">shopping_cart</span>
+<span class="absolute -top-1 -right-1 bg-primary text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">3</span>
+</a>
+<a href="{{ url_for('shop.account') }}" class="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full">
+<span class="material-symbols-outlined">person</span>
+</a>
+</div>
+</header>
+
+<main class="max-w-7xl mx-auto px-6 lg:px-12 py-12">
+<h1 class="text-4xl font-serif font-bold mb-8">Shopping Cart</h1>
+<div class="grid lg:grid-cols-3 gap-8">
+<!-- Cart Items -->
+<div class="lg:col-span-2 space-y-4">
+<!-- Cart Item -->
+<div class="bg-white dark:bg-slate-900 rounded-xl p-6 border border-slate-200 dark:border-slate-800 flex gap-6">
+<img src="https://images.unsplash.com/photo-1610701596007-11502861dcfa?w=200" alt="Product" class="w-32 h-32 object-cover rounded-lg"/>
+<div class="flex-1">
+<h3 class="font-serif font-bold text-lg mb-2">Handwoven Silk Scarf</h3>
+<p class="text-sm text-slate-600 dark:text-slate-400 mb-2">by Priya Sharma</p>
+<p class="font-bold text-xl text-primary mb-4">₹2,400</p>
+<div class="flex items-center gap-4">
+<div class="flex items-center border border-slate-300 dark:border-slate-700 rounded-lg overflow-hidden">
+<button class="px-3 py-1 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">-</button>
+<span class="px-4 py-1 border-x border-slate-300 dark:border-slate-700">1</span>
+<button class="px-3 py-1 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">+</button>
+</div>
+<button class="text-red-600 hover:text-red-700 text-sm font-medium flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+Remove
+</button>
+</div>
+</div>
+</div>
+<!-- Empty state message when cart is empty -->
+<div class="hidden text-center py-12">
+<span class="material-symbols-outlined text-6xl text-slate-300 dark:text-slate-700 mb-4 block">shopping_cart</span>
+<h3 class="text-xl font-bold mb-2">Your cart is empty</h3>
+<p class="text-slate-600 dark:text-slate-400 mb-6">Discover amazing handcrafted products</p>
+<a href="{{ url_for('shop.marketplace') }}" class="inline-block bg-primary text-white px-6 py-3 rounded-full font-semibold hover:bg-primary/90 transition-colors">
+Continue Shopping
+</a>
+</div>
+</div>
+
+<!-- Order Summary -->
+<div class="lg:col-span-1">
+<div class="bg-white dark:bg-slate-900 rounded-xl p-6 border border-slate-200 dark:border-slate-800 sticky top-24">
+<h2 class="text-xl font-serif font-bold mb-6">Order Summary</h2>
+<div class="space-y-3 mb-6">
+<div class="flex justify-between">
+<span class="text-slate-600 dark:text-slate-400">Subtotal</span>
+<span class="font-semibold">₹2,400</span>
+</div>
+<div class="flex justify-between">
+<span class="text-slate-600 dark:text-slate-400">Shipping</span>
+<span class="font-semibold text-green-600">Free</span>
+</div>
+<div class="border-t border-slate-200 dark:border-slate-700 pt-3 flex justify-between text-lg">
+<span class="font-bold">Total</span>
+<span class="font-bold text-primary">₹2,400</span>
+</div>
+</div>
+<button class="w-full bg-primary hover:bg-primary/90 text-white font-bold py-4 rounded-xl transition-colors mb-3">
+Proceed to Checkout
+</button>
+<a href="{{ url_for('shop.marketplace') }}" class="block text-center text-primary hover:underline text-sm">
+Continue Shopping
+</a>
+</div>
+</div>
+</div>
+</main>
+
+<script src="{{ url_for('static', filename='js/shop.js') }}"></script>
+</body>
+</html>

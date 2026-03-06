@@ -9,10 +9,10 @@
       <h1 class="text-4xl font-serif font-bold mb-2">My Collections</h1>
       <p class="text-text-muted text-lg">Manage your product catalog and listings.</p>
     </div>
-    <button class="bg-primary hover:bg-primary-dark text-white font-semibold py-3 px-6 rounded-lg transition-colors flex items-center gap-2">
+    <a href="{{ url_for('creator.product_upload') }}" class="bg-primary hover:bg-primary-dark text-white font-semibold py-3 px-6 rounded-lg transition-colors flex items-center gap-2">
       <span class="material-symbols-outlined">add</span>
       Add Product
-    </button>
+    </a>
   </div>
 
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Collections - ArtisanAI</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+tailwind.config = {
+    darkMode: "class",
+    theme: {
+        extend: {
+            colors: {
+                "primary": "#F5A623",
+                "background-light": "#F9F6F1"
+            },
+            fontFamily: {
+                "display": ["Manrope", "sans-serif"],
+                "serif": ["Newsreader", "serif"]
+            }
+        }
+    }
+}
+</script>
+<style>
+body { font-family: 'Manrope', sans-serif; }
+h1, h2, h3, .font-serif { font-family: 'Newsreader', serif; }
+</style>
+</head>
+<body class="bg-background-light dark:bg-slate-950 text-slate-900 dark:text-slate-100">
+<!-- TopNavBar -->
+<header class="sticky top-0 z-50 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 px-6 py-4 lg:px-12 flex items-center justify-between">
+<a class="flex items-center gap-3" href="{{ url_for('shop.index') }}">
+<span class="material-symbols-outlined text-primary text-3xl">spa</span>
+<span class="font-serif text-2xl font-bold">ArtisanAI</span>
+</a>
+<nav class="hidden lg:flex items-center gap-8">
+<a class="text-slate-600 dark:text-slate-400 text-sm font-medium hover:text-primary transition-colors" href="{{ url_for('shop.marketplace') }}">Shop</a>
+<a class="text-slate-600 dark:text-slate-400 text-sm font-medium hover:text-primary transition-colors" href="{{ url_for('shop.artisans') }}">Artisans</a>
+<a class="text-slate-600 dark:text-slate-400 text-sm font-medium hover:text-primary transition-colors" href="{{ url_for('shop.our_story') }}">Our Story</a>
+<a class="text-slate-800 dark:text-slate-200 text-sm font-semibold hover:text-primary transition-colors" href="{{ url_for('shop.collections') }}">Collections</a>
+</nav>
+<div class="flex items-center gap-4">
+<a href="{{ url_for('shop.wishlist') }}" class="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full">
+<span class="material-symbols-outlined">favorite_border</span>
+</a>
+<a href="{{ url_for('shop.cart') }}" class="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full">
+<span class="material-symbols-outlined">shopping_cart</span>
+</a>
+<a href="{{ url_for('shop.account') }}" class="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full">
+<span class="material-symbols-outlined">person</span>
+</a>
+</div>
+</header>
+
+<main class="max-w-7xl mx-auto px-6 lg:px-12 py-12">
+<h1 class="text-4xl lg:text-5xl font-serif font-bold mb-4 text-center">Curated Collections</h1>
+<p class="text-center text-slate-600 dark:text-slate-400 mb-12 max-w-2xl mx-auto">
+Explore our handpicked collections celebrating India's rich craftsmanship heritage
+</p>
+
+<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+<!-- Collection Card -->
+<a href="{{ url_for('shop.marketplace') }}" class="group block relative overflow-hidden rounded-2xl aspect-[4/5] bg-gradient-to-br from-amber-100 to-orange-200 dark:from-slate-800 dark:to-slate-900">
+<div class="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition-colors"></div>
+<div class="absolute bottom-0 left-0 right-0 p-6 text-white">
+<h3 class="text-2xl font-serif font-bold mb-2">Heritage Textiles</h3>
+<p class="text-sm opacity-90 mb-3">Handwoven fabrics from across India</p>
+<span class="text-sm flex items-center gap-1">
+<span>Explore</span>
+<span class="material-symbols-outlined text-[18px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</span>
+</div>
+</a>
+
+<!-- Collection Card -->
+<a href="{{ url_for('shop.marketplace') }}" class="group block relative overflow-hidden rounded-2xl aspect-[4/5] bg-gradient-to-br from-blue-100 to-indigo-200 dark:from-slate-800 dark:to-slate-900">
+<div class="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition-colors"></div>
+<div class="absolute bottom-0 left-0 right-0 p-6 text-white">
+<h3 class="text-2xl font-serif font-bold mb-2">Pottery & Ceramics</h3>
+<p class="text-sm opacity-90 mb-3">Traditional clay art & terracotta</p>
+<span class="text-sm flex items-center gap-1">
+<span>Explore</span>
+<span class="material-symbols-outlined text-[18px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</span>
+</div>
+</a>
+
+<!-- Collection Card -->
+<a href="{{ url_for('shop.marketplace') }}" class="group block relative overflow-hidden rounded-2xl aspect-[4/5] bg-gradient-to-br from-green-100 to-emerald-200 dark:from-slate-800 dark:to-slate-900">
+<div class="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition-colors"></div>
+<div class="absolute bottom-0 left-0 right-0 p-6 text-white">
+<h3 class="text-2xl font-serif font-bold mb-2">Metal Craft</h3>
+<p class="text-sm opacity-90 mb-3">Brass, copper & silver artworks</p>
+<span class="text-sm flex items-center gap-1">
+<span>Explore</span>
+<span class="material-symbols-outlined text-[18px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</span>
+</div>
+</a>
+
+<!-- Collection Card -->
+<a href="{{ url_for('shop.marketplace') }}" class="group block relative overflow-hidden rounded-2xl aspect-[4/5] bg-gradient-to-br from-rose-100 to-pink-200 dark:from-slate-800 dark:to-slate-900">
+<div class="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition-colors"></div>
+<div class="absolute bottom-0 left-0 right-0 p-6 text-white">
+<h3 class="text-2xl font-serif font-bold mb-2">Jewelry & Accessories</h3>
+<p class="text-sm opacity-90 mb-3">Handcrafted ornaments & adornments</p>
+<span class="text-sm flex items-center gap-1">
+<span>Explore</span>
+<span class="material-symbols-outlined text-[18px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</span>
+</div>
+</a>
+
+<!-- Collection Card -->
+<a href="{{ url_for('shop.marketplace') }}" class="group block relative overflow-hidden rounded-2xl aspect-[4/5] bg-gradient-to-br from-purple-100 to-violet-200 dark:from-slate-800 dark:to-slate-900">
+<div class="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition-colors"></div>
+<div class="absolute bottom-0 left-0 right-0 p-6 text-white">
+<h3 class="text-2xl font-serif font-bold mb-2">Home Decor</h3>
+<p class="text-sm opacity-90 mb-3">Artisan pieces for your living space</p>
+<span class="text-sm flex items-center gap-1">
+<span>Explore</span>
+<span class="material-symbols-outlined text-[18px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</span>
+</div>
+</a>
+
+<!-- Collection Card -->
+<a href="{{ url_for('shop.marketplace') }}" class="group block relative overflow-hidden rounded-2xl aspect-[4/5] bg-gradient-to-br from-yellow-100 to-amber-200 dark:from-slate-800 dark:to-slate-900">
+<div class="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition-colors"></div>
+<div class="absolute bottom-0 left-0 right-0 p-6 text-white">
+<h3 class="text-2xl font-serif font-bold mb-2">Paintings & Art</h3>
+<p class="text-sm opacity-90 mb-3">Traditional & contemporary artworks</p>
+<span class="text-sm flex items-center gap-1">
+<span>Explore</span>
+<span class="material-symbols-outlined text-[18px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</span>
+</div>
+</a>
+</div>
+</main>
+
+<script src="{{ url_for('static', filename='js/shop.js') }}"></script>
+</body>
+</html>

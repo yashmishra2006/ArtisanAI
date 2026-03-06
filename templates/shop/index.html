@@ -55,19 +55,48 @@
 </div>
 <nav class="hidden lg:flex items-center gap-8">
 <a class="text-text-primary-light dark:text-slate-200 hover:text-primary transition-colors text-sm font-medium" href="{{ url_for('shop.marketplace') }}">Shop</a>
-<a class="text-text-primary-light dark:text-slate-200 hover:text-primary transition-colors text-sm font-medium" href="{{ url_for('shop.marketplace') }}">Artisans</a>
-<a class="text-text-primary-light dark:text-slate-200 hover:text-primary transition-colors text-sm font-medium" href="#">Our Story</a>
+<a class="text-text-primary-light dark:text-slate-200 hover:text-primary transition-colors text-sm font-medium" href="{{ url_for('shop.artisans') }}">Artisans</a>
+<a class="text-text-primary-light dark:text-slate-200 hover:text-primary transition-colors text-sm font-medium" href="{{ url_for('shop.our_story') }}">Our Story</a>
+<a class="text-text-primary-light dark:text-slate-200 hover:text-primary transition-colors text-sm font-medium" href="{{ url_for('shop.collections') }}">Collections</a>
 <a class="text-sm font-semibold text-primary border border-primary rounded-full px-4 py-1 hover:bg-primary hover:text-white transition-colors" href="{{ url_for('shop.become_seller') }}">Sell on ArtisanAI</a>
 </nav>
 <div class="flex items-center gap-4">
-<button class="p-2 text-text-primary-light dark:text-slate-200 hover:bg-[#F2EDE6] dark:hover:bg-slate-800 rounded-full transition-colors">
+<a href="{{ url_for('shop.wishlist') }}" class="p-2 text-text-primary-light dark:text-slate-200 hover:bg-[#F2EDE6] dark:hover:bg-slate-800 rounded-full transition-colors" title="Wishlist">
+<span class="material-symbols-outlined">favorite_border</span>
+</a>
+<a href="{{ url_for('shop.cart') }}" class="p-2 text-text-primary-light dark:text-slate-200 hover:bg-[#F2EDE6] dark:hover:bg-slate-800 rounded-full transition-colors" title="Shopping Cart">
 <span class="material-symbols-outlined">shopping_cart</span>
-</button>
-<button class="p-2 text-text-primary-light dark:text-slate-200 hover:bg-[#F2EDE6] dark:hover:bg-slate-800 rounded-full transition-colors">
+</a>
+<a href="{{ url_for('shop.account') }}" class="p-2 text-text-primary-light dark:text-slate-200 hover:bg-[#F2EDE6] dark:hover:bg-slate-800 rounded-full transition-colors" title="Account">
 <span class="material-symbols-outlined">person</span>
+</a>
+<button id="mobileMenuBtn" class="lg:hidden p-2 text-text-primary-light dark:text-slate-200 hover:bg-[#F2EDE6] dark:hover:bg-slate-800 rounded-full transition-colors">
+<span class="material-symbols-outlined">menu</span>
 </button>
 </div>
 </header>
+
+<!-- Mobile Menu -->
+<div id="mobileMenu" class="hidden fixed inset-0 z-50 bg-black/50 backdrop-blur-sm lg:hidden">
+<div class="absolute right-0 top-0 h-full w-80 bg-surface-light dark:bg-surface-dark shadow-2xl transform transition-transform">
+<div class="p-6">
+<div class="flex items-center justify-between mb-8">
+<span class="font-serif text-2xl font-bold text-text-primary-light dark:text-slate-100">Menu</span>
+<button id="closeMobileMenu" class="p-2 hover:bg-[#F2EDE6] dark:hover:bg-slate-800 rounded-full transition-colors">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<nav class="flex flex-col gap-4">
+<a class="text-text-primary-light dark:text-slate-200 hover:text-primary transition-colors text-lg font-medium py-2" href="{{ url_for('shop.marketplace') }}">Shop</a>
+<a class="text-text-primary-light dark:text-slate-200 hover:text-primary transition-colors text-lg font-medium py-2" href="{{ url_for('shop.artisans') }}">Artisans</a>
+<a class="text-text-primary-light dark:text-slate-200 hover:text-primary transition-colors text-lg font-medium py-2" href="{{ url_for('shop.our_story') }}">Our Story</a>
+<a class="text-text-primary-light dark:text-slate-200 hover:text-primary transition-colors text-lg font-medium py-2" href="{{ url_for('shop.collections') }}">Collections</a>
+<hr class="border-border-light dark:border-slate-700 my-2"/>
+<a class="text-lg font-semibold text-primary border border-primary rounded-full px-6 py-3 hover:bg-primary hover:text-white transition-colors text-center" href="{{ url_for('shop.become_seller') }}">Sell on ArtisanAI</a>
+</nav>
+</div>
+</div>
+</div>
 <main>
 <!-- Hero Section -->
 <section class="relative px-6 py-20 lg:px-12 lg:py-32 overflow-hidden flex flex-col lg:flex-row items-center max-w-[1440px] mx-auto">
@@ -80,12 +109,12 @@
                     Discover the world's finest traditional crafts from authentic Indian artisans. Preserving heritage through quiet luxury and AI-empowered provenance.
                 </p>
 <div class="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
-<button class="bg-primary hover:bg-primary/90 text-white font-medium py-4 px-8 rounded-full shadow-lg shadow-primary/20 transition-all text-center w-full sm:w-auto">
+<a href="{{ url_for('shop.marketplace') }}" class="bg-primary hover:bg-primary/90 text-white font-medium py-4 px-8 rounded-full shadow-lg shadow-primary/20 transition-all text-center w-full sm:w-auto">
                         Explore Crafts
-                    </button>
-<button class="bg-transparent border border-border-light dark:border-slate-700 hover:border-primary text-text-primary-light dark:text-slate-200 font-medium py-4 px-8 rounded-full transition-all text-center w-full sm:w-auto">
+                    </a>
+<a href="{{ url_for('auth.login') }}" class="bg-transparent border border-border-light dark:border-slate-700 hover:border-primary text-text-primary-light dark:text-slate-200 font-medium py-4 px-8 rounded-full transition-all text-center w-full sm:w-auto">
                         Join as Artisan
-                    </button>
+                    </a>
 </div>
 </div>
 <div class="lg:w-1/2 relative h-[500px] w-full lg:h-[600px] flex justify-center items-center">

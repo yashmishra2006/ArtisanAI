@@ -1,0 +1,266 @@
+{% extends "creator/_base.html" %}
+{% set current_page = "profile" %}
+{% block title %}My Profile{% endblock %}
+
+{% block content %}
+<div class="p-6 lg:p-10 max-w-6xl mx-auto">
+  <!-- Profile Header -->
+  <div class="bg-surface-light dark:bg-surface-dark rounded-xl shadow-soft border border-border-color overflow-hidden mb-8 mt-6">
+    <!-- Cover Image -->
+    <div class="h-48 bg-gradient-to-r from-primary/20 via-primary/10 to-primary/5 relative">
+      <button class="absolute top-4 right-4 bg-surface-light dark:bg-surface-dark px-4 py-2 rounded-lg font-medium text-sm flex items-center gap-2 hover:bg-background-light transition-colors">
+        <span class="material-symbols-outlined text-[18px]">photo_camera</span>
+        Change Cover
+      </button>
+    </div>
+
+    <!-- Profile Info -->
+    <div class="px-8 pb-8">
+      <div class="flex flex-col md:flex-row gap-6 -mt-16 relative">
+        <!-- Avatar -->
+        <div class="relative">
+          <div class="size-32 rounded-full border-4 border-surface-light dark:border-surface-dark bg-cover bg-center shadow-lg" style='background-image:url("https://lh3.googleusercontent.com/aida-public/AB6AXuBc3NJdimugGxUjfWvsNdHNfsLTb6GVSvJ7P5CT527GSomstfZXdqXA-YzCNZV-f18WZ0jaTJRGYY5xzjRUqYQKAGDyRIBTlUBN1sfBnd5a7scrjeGNvFG_CSXWKuy8H--ZVTkZFk1cjmwTf8ktXYn-w-8zgd8BCFiFoOyGRxBSvrsvZSnhigAqV-m89mIsg7XPDJe2UB-90FmlVOEjLpqUqfkBqV_tlL3dGRpJYMKJ_2q2aUYK5-uMr0p7FF_kKUNpkptP4sbQ_A")'>
+          </div>
+          <button class="absolute bottom-0 right-0 bg-primary text-white p-2 rounded-full hover:bg-primary-dark transition-colors">
+            <span class="material-symbols-outlined text-[18px]">edit</span>
+          </button>
+        </div>
+
+        <!-- Info -->
+        <div class="flex-1 mt-16 md:mt-0">
+          <div class="flex flex-col md:flex-row md:items-start justify-between gap-4 mb-4">
+            <div>
+              <h1 class="text-3xl font-serif font-bold mb-2">Priya Sharma</h1>
+              <p class="text-text-muted mb-2">Master Artisan • Banarasi Weaving</p>
+              <div class="flex items-center gap-4 text-sm">
+                <span class="flex items-center gap-1">
+                  <span class="material-symbols-outlined text-[18px]">location_on</span>
+                  Varanasi, India
+                </span>
+                <span class="flex items-center gap-1">
+                  <span class="material-symbols-outlined text-[18px]">calendar_today</span>
+                  Joined March 2023
+                </span>
+              </div>
+            </div>
+            <a href="{{ url_for('creator.settings') }}" class="px-6 py-2 border border-border-color rounded-lg hover:border-primary transition-colors font-medium">
+              Edit Profile
+            </a>
+          </div>
+
+          <p class="text-text-muted mb-4">
+            Fourth generation weaver specializing in traditional Banarasi silk sarees and textiles. 
+            Passionate about preserving our heritage craft while embracing modern design sensibilities.
+          </p>
+
+          <!-- Stats -->
+          <div class="flex gap-6 text-sm">
+            <div>
+              <span class="font-bold text-lg">247</span>
+              <span class="text-text-muted ml-1">Products</span>
+            </div>
+            <div>
+              <span class="font-bold text-lg">1.2k</span>
+              <span class="text-text-muted ml-1">Followers</span>
+            </div>
+            <div>
+              <span class="font-bold text-lg">4.8</span>
+              <span class="text-text-muted ml-1">Rating</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tabs -->
+  <div class="mb-8">
+    <div class="border-b border-border-color dark:border-slate-700">
+      <nav class="flex gap-8" id="profileTabs">
+        <button class="tab-btn pb-4 border-b-2 border-primary text-primary font-semibold" data-tab="products">
+          Products
+        </button>
+        <button class="tab-btn pb-4 border-b-2 border-transparent text-text-muted hover:text-text-main transition-colors" data-tab="about">
+          About
+        </button>
+        <button class="tab-btn pb-4 border-b-2 border-transparent text-text-muted hover:text-text-main transition-colors" data-tab="reviews">
+          Reviews
+        </button>
+        <button class="tab-btn pb-4 border-b-2 border-transparent text-text-muted hover:text-text-main transition-colors" data-tab="story">
+          My Story
+        </button>
+      </nav>
+    </div>
+  </div>
+
+  <!-- Tab Content -->
+  <div id="tabContent">
+    <!-- Products Tab -->
+    <div class="tab-content" data-tab="products">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {% for i in range(6) %}
+        <div class="bg-surface-light dark:bg-surface-dark rounded-xl overflow-hidden shadow-soft border border-border-color hover:shadow-lg transition-shadow group">
+          <div class="h-64 bg-slate-200 relative overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1610701596007-11502861dcfa?w=400" alt="Product" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"/>
+          </div>
+          <div class="p-5">
+            <h3 class="font-serif font-bold text-lg mb-2">Handwoven Silk Scarf</h3>
+            <div class="flex items-center justify-between">
+              <span class="text-xl font-bold text-primary">₹2,400</span>
+              <div class="flex items-center gap-1 text-sm">
+                <span class="material-symbols-outlined text-yellow-500 text-[18px]">star</span>
+                <span>4.9</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+
+    <!-- About Tab -->
+    <div class="tab-content hidden" data-tab="about">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div class="bg-surface-light dark:bg-surface-dark rounded-xl p-6 shadow-soft border border-border-color">
+          <h3 class="text-xl font-serif font-bold mb-4">Craft Tradition</h3>
+          <p class="text-text-muted mb-4">
+            Banarasi weaving is a centuries-old tradition passed down through generations in my family. 
+            Our workshop in Varanasi has been creating exquisite silk textiles for over 150 years.
+          </p>
+          <div class="space-y-2">
+            <div class="flex items-center gap-2">
+              <span class="material-symbols-outlined text-primary text-[20px]">check_circle</span>
+              <span class="text-sm">Traditional handloom techniques</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="material-symbols-outlined text-primary text-[20px]">check_circle</span>
+              <span class="text-sm">Pure silk and natural dyes</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="material-symbols-outlined text-primary text-[20px]">check_circle</span>
+              <span class="text-sm">Certified authentic by GI Registry</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-surface-light dark:bg-surface-dark rounded-xl p-6 shadow-soft border border-border-color">
+          <h3 class="text-xl font-serif font-bold mb-4">Skills & Expertise</h3>
+          <div class="space-y-4">
+            <div>
+              <div class="flex justify-between mb-2">
+                <span class="text-sm font-medium">Silk Weaving</span>
+                <span class="text-sm text-text-muted">Expert</span>
+              </div>
+              <div class="w-full bg-background-light dark:bg-slate-800 rounded-full h-2">
+                <div class="bg-primary h-2 rounded-full" style="width: 95%"></div>
+              </div>
+            </div>
+            <div>
+              <div class="flex justify-between mb-2">
+                <span class="text-sm font-medium">Traditional Dyeing</span>
+                <span class="text-sm text-text-muted">Expert</span>
+              </div>
+              <div class="w-full bg-background-light dark:bg-slate-800 rounded-full h-2">
+                <div class="bg-primary h-2 rounded-full" style="width: 90%"></div>
+              </div>
+            </div>
+            <div>
+              <div class="flex justify-between mb-2">
+                <span class="text-sm font-medium">Pattern Design</span>
+                <span class="text-sm text-text-muted">Advanced</span>
+              </div>
+              <div class="w-full bg-background-light dark:bg-slate-800 rounded-full h-2">
+                <div class="bg-primary h-2 rounded-full" style="width: 85%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Reviews Tab -->
+    <div class="tab-content hidden" data-tab="reviews">
+      <div class="space-y-4">
+        {% for i in range(5) %}
+        <div class="bg-surface-light dark:bg-surface-dark rounded-xl p-6 shadow-soft border border-border-color">
+          <div class="flex items-start gap-4">
+            <div class="size-12 rounded-full bg-slate-300"></div>
+            <div class="flex-1">
+              <div class="flex items-center justify-between mb-2">
+                <div>
+                  <p class="font-semibold">Sarah Johnson</p>
+                  <div class="flex items-center gap-1 text-sm text-text-muted">
+                    <span class="material-symbols-outlined text-yellow-500 text-[18px]">star</span>
+                    <span>5.0</span>
+                    <span class="mx-1">•</span>
+                    <span>2 weeks ago</span>
+                  </div>
+                </div>
+              </div>
+              <p class="text-text-muted">
+                Absolutely stunning craftsmanship! The silk quality is exceptional and the intricate patterns 
+                are even more beautiful in person. Priya was very communicative throughout the process.
+              </p>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+
+    <!-- Story Tab -->
+    <div class="tab-content hidden" data-tab="story">
+      <div class="bg-surface-light dark:bg-surface-dark rounded-xl p-8 shadow-soft border border-border-color">
+        <h3 class="text-2xl font-serif font-bold mb-6">My Artisan Journey</h3>
+        <div class="prose prose-slate dark:prose-invert max-w-none">
+          <p class="text-text-muted mb-4">
+            I grew up in the narrow lanes of Varanasi, where the rhythmic sound of handlooms has echoed 
+            for centuries. My great-grandfather started our workshop in 1870, and since then, four generations 
+            of weavers have kept the tradition alive.
+          </p>
+          <p class="text-text-muted mb-4">
+            Learning to weave Banarasi silk is not just about mastering technique—it's about understanding 
+            the soul of the craft. I spent years as an apprentice under my father, learning to read patterns, 
+            mix natural dyes, and feel the quality of silk with my fingertips.
+          </p>
+          <p class="text-text-muted mb-4">
+            Today, I'm proud to continue this heritage while also adapting to modern tastes. ArtisanAI has 
+            helped me reach customers worldwide who appreciate authentic handmade craftsmanship. Every piece 
+            I create carries the legacy of my ancestors and the promise of keeping our tradition alive for 
+            future generations.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// Tab switching functionality
+const tabButtons = document.querySelectorAll('.tab-btn');
+const tabContents = document.querySelectorAll('.tab-content');
+
+tabButtons.forEach(btn => {
+  btn.addEventListener('click', () => {
+    const tabName = btn.dataset.tab;
+    
+    // Update buttons
+    tabButtons.forEach(b => {
+      b.classList.remove('border-primary', 'text-primary', 'font-semibold');
+      b.classList.add('border-transparent', 'text-text-muted');
+    });
+    btn.classList.add('border-primary', 'text-primary', 'font-semibold');
+    btn.classList.remove('border-transparent', 'text-text-muted');
+    
+    // Update content
+    tabContents.forEach(content => {
+      if (content.dataset.tab === tabName) {
+        content.classList.remove('hidden');
+      } else {
+        content.classList.add('hidden');
+      }
+    });
+  });
+});
+</script>
+{% endblock %}

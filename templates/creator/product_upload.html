@@ -1,0 +1,360 @@
+{% extends "creator/_base.html" %}
+{% set current_page = "collections" %}
+{% block title %}Upload Product{% endblock %}
+
+{% block head %}
+<style>
+  .drop-zone {
+    border: 2px dashed #E5E1DA;
+    transition: all 0.3s ease;
+  }
+  .drop-zone.dragover {
+    border-color: #E28743;
+    background-color: rgba(226, 135, 67, 0.05);
+  }
+  .preview-image {
+    position: relative;
+    overflow: hidden;
+  }
+  .preview-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .remove-image {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    background: rgba(0,0,0,0.6);
+    color: white;
+    border-radius: 50%;
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+  .preview-image:hover .remove-image {
+    opacity: 1;
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="p-6 lg:p-10 max-w-5xl mx-auto">
+  <div class="mb-8 mt-6">
+    <div class="flex items-center gap-4 mb-4">
+      <a href="{{ url_for('creator.collections') }}" class="p-2 rounded-lg hover:bg-background-light dark:hover:bg-slate-800 transition-colors">
+        <span class="material-symbols-outlined">arrow_back</span>
+      </a>
+      <div>
+        <h1 class="text-4xl font-serif font-bold">Upload New Product</h1>
+        <p class="text-text-muted mt-1">Share your craft with the world</p>
+      </div>
+    </div>
+  </div>
+
+  <form id="productUploadForm" class="space-y-6">
+    <!-- Product Images -->
+    <div class="bg-surface-light dark:bg-surface-dark rounded-xl p-6 shadow-soft border border-border-color">
+      <h2 class="text-xl font-serif font-bold mb-4">Product Images</h2>
+      <p class="text-sm text-text-muted mb-4">Upload high-quality images of your product (up to 5 images)</p>
+      
+      <div class="grid grid-cols-2 md:grid-cols-5 gap-4 mb-4" id="imagePreviewContainer">
+        <!-- Image previews will be added here -->
+      </div>
+
+      <div class="drop-zone border-2 border-dashed border-border-color rounded-xl p-8 text-center cursor-pointer hover:border-primary transition-colors" id="dropZone">
+        <input type="file" id="imageInput" accept="image/*" multiple class="hidden" />
+        <span class="material-symbols-outlined text-4xl text-text-muted mb-2 block">add_photo_alternate</span>
+        <p class="text-sm font-medium mb-1">Click to upload or drag and drop</p>
+        <p class="text-xs text-text-muted">PNG, JPG, WEBP up to 10MB each</p>
+      </div>
+    </div>
+
+    <!-- Audio Description (Future Feature) -->
+    <div class="bg-surface-light dark:bg-surface-dark rounded-xl p-6 shadow-soft border border-border-color">
+      <div class="flex items-center justify-between mb-4">
+        <div>
+          <h2 class="text-xl font-serif font-bold">Voice Description (Beta)</h2>
+          <p class="text-sm text-text-muted">Describe your product in your own voice - AI will convert it to text</p>
+        </div>
+        <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-semibold">Coming Soon</span>
+      </div>
+      
+      <div class="flex items-center gap-4 p-4 bg-background-light dark:bg-slate-800 rounded-lg opacity-50 cursor-not-allowed">
+        <button type="button" disabled class="p-4 rounded-full bg-primary/20 text-primary">
+          <span class="material-symbols-outlined text-2xl">mic</span>
+        </button>
+        <div class="flex-1">
+          <p class="text-sm font-medium">Record your product story</p>
+          <p class="text-xs text-text-muted">Click to start recording (up to 2 minutes)</p>
+        </div>
+        <button type="button" disabled class="px-4 py-2 bg-slate-300 text-slate-500 rounded-lg text-sm font-medium cursor-not-allowed">
+          Record
+        </button>
+      </div>
+    </div>
+
+    <!-- Basic Information -->
+    <div class="bg-surface-light dark:bg-surface-dark rounded-xl p-6 shadow-soft border border-border-color">
+      <h2 class="text-xl font-serif font-bold mb-4">Basic Information</h2>
+      
+      <div class="space-y-4">
+        <div>
+          <label class="text-sm font-semibold mb-2 block">Product Name <span class="text-red-500">*</span></label>
+          <input type="text" name="productName" required class="w-full rounded-lg border border-border-color bg-transparent px-4 py-3 text-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none" placeholder="e.g., Handwoven Silk Scarf" />
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label class="text-sm font-semibold mb-2 block">Category <span class="text-red-500">*</span></label>
+            <select name="category" required class="w-full rounded-lg border border-border-color bg-surface-light dark:bg-surface-dark px-4 py-3 text-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none">
+              <option value="">Select a category</option>
+              <option value="textiles">Textiles & Fabrics</option>
+              <option value="pottery">Pottery & Ceramics</option>
+              <option value="jewelry">Jewelry & Accessories</option>
+              <option value="woodwork">Woodwork & Carving</option>
+              <option value="metalwork">Metalwork</option>
+              <option value="painting">Paintings & Art</option>
+              <option value="home-decor">Home Decor</option>
+              <option value="other">Other Crafts</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="text-sm font-semibold mb-2 block">Craft Tradition</label>
+            <input type="text" name="craftTradition" class="w-full rounded-lg border border-border-color bg-transparent px-4 py-3 text-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none" placeholder="e.g., Banarasi, Madhubani" />
+          </div>
+        </div>
+
+        <div>
+          <label class="text-sm font-semibold mb-2 block">Description <span class="text-red-500">*</span></label>
+          <textarea name="description" required rows="5" class="w-full rounded-lg border border-border-color bg-transparent px-4 py-3 text-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none resize-none" placeholder="Tell the story of your craft, the materials used, and what makes it special..."></textarea>
+          <div class="flex justify-between mt-2">
+            <span class="text-xs text-text-muted">Minimum 100 characters</span>
+            <button type="button" class="text-xs text-primary hover:underline flex items-center gap-1" id="aiGenerateBtn">
+              <span class="material-symbols-outlined text-sm">auto_awesome</span>
+              Generate with AI
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pricing & Inventory -->
+    <div class="bg-surface-light dark:bg-surface-dark rounded-xl p-6 shadow-soft border border-border-color">
+      <h2 class="text-xl font-serif font-bold mb-4">Pricing & Inventory</h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div>
+          <label class="text-sm font-semibold mb-2 block">Price (₹) <span class="text-red-500">*</span></label>
+          <input type="number" name="price" required min="0" step="0.01" class="w-full rounded-lg border border-border-color bg-transparent px-4 py-3 text-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none" placeholder="2400" />
+        </div>
+
+        <div>
+          <label class="text-sm font-semibold mb-2 block">Stock Quantity <span class="text-red-500">*</span></label>
+          <input type="number" name="stock" required min="0" class="w-full rounded-lg border border-border-color bg-transparent px-4 py-3 text-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none" placeholder="10" />
+        </div>
+
+        <div>
+          <label class="text-sm font-semibold mb-2 block">Production Time (days)</label>
+          <input type="number" name="productionTime" min="0" class="w-full rounded-lg border border-border-color bg-transparent px-4 py-3 text-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none" placeholder="7" />
+        </div>
+      </div>
+    </div>
+
+    <!-- Specifications -->
+    <div class="bg-surface-light dark:bg-surface-dark rounded-xl p-6 shadow-soft border border-border-color">
+      <h2 class="text-xl font-serif font-bold mb-4">Product Specifications</h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <label class="text-sm font-semibold mb-2 block">Dimensions</label>
+          <input type="text" name="dimensions" class="w-full rounded-lg border border-border-color bg-transparent px-4 py-3 text-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none" placeholder="e.g., 180cm x 70cm" />
+        </div>
+
+        <div>
+          <label class="text-sm font-semibold mb-2 block">Weight</label>
+          <input type="text" name="weight" class="w-full rounded-lg border border-border-color bg-transparent px-4 py-3 text-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none" placeholder="e.g., 250g" />
+        </div>
+
+        <div>
+          <label class="text-sm font-semibold mb-2 block">Materials Used</label>
+          <input type="text" name="materials" class="w-full rounded-lg border border-border-color bg-transparent px-4 py-3 text-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none" placeholder="e.g., Pure silk, natural dyes" />
+        </div>
+
+        <div>
+          <label class="text-sm font-semibold mb-2 block">Colors Available</label>
+          <input type="text" name="colors" class="w-full rounded-lg border border-border-color bg-transparent px-4 py-3 text-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none" placeholder="e.g., Red, Blue, Gold" />
+        </div>
+      </div>
+    </div>
+
+    <!-- Tags -->
+    <div class="bg-surface-light dark:bg-surface-dark rounded-xl p-6 shadow-soft border border-border-color">
+      <h2 class="text-xl font-serif font-bold mb-4">Search Tags</h2>
+      <p class="text-sm text-text-muted mb-4">Add tags to help customers find your product</p>
+      
+      <div class="flex flex-wrap gap-2 mb-3" id="tagsContainer">
+        <!-- Tags will be added here -->
+      </div>
+      
+      <div class="flex gap-2">
+        <input type="text" id="tagInput" class="flex-1 rounded-lg border border-border-color bg-transparent px-4 py-2 text-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none" placeholder="Add a tag and press Enter" />
+        <button type="button" id="addTagBtn" class="px-4 py-2 bg-primary/10 text-primary rounded-lg hover:bg-primary hover:text-white transition-colors font-medium text-sm">
+          Add Tag
+        </button>
+      </div>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="flex justify-end gap-4 pb-8">
+      <a href="{{ url_for('creator.collections') }}" class="px-6 py-3 border border-border-color rounded-lg hover:border-primary transition-colors font-semibold">
+        Cancel
+      </a>
+      <button type="button" class="px-6 py-3 border border-primary text-primary rounded-lg hover:bg-primary/10 transition-colors font-semibold">
+        Save as Draft
+      </button>
+      <button type="submit" class="px-6 py-3 bg-primary hover:bg-primary-dark text-white rounded-lg font-semibold transition-colors flex items-center gap-2">
+        <span class="material-symbols-outlined">cloud_upload</span>
+        Publish Product
+      </button>
+    </div>
+  </form>
+</div>
+
+<script>
+// Image Upload Handling
+const dropZone = document.getElementById('dropZone');
+const imageInput = document.getElementById('imageInput');
+const imagePreviewContainer = document.getElementById('imagePreviewContainer');
+let uploadedImages = [];
+
+dropZone.addEventListener('click', () => imageInput.click());
+
+dropZone.addEventListener('dragover', (e) => {
+  e.preventDefault();
+  dropZone.classList.add('dragover');
+});
+
+dropZone.addEventListener('dragleave', () => {
+  dropZone.classList.remove('dragover');
+});
+
+dropZone.addEventListener('drop', (e) => {
+  e.preventDefault();
+  dropZone.classList.remove('dragover');
+  handleFiles(e.dataTransfer.files);
+});
+
+imageInput.addEventListener('change', (e) => {
+  handleFiles(e.target.files);
+});
+
+function handleFiles(files) {
+  const maxFiles = 5;
+  const remainingSlots = maxFiles - uploadedImages.length;
+  
+  if (remainingSlots <= 0) {
+    alert('Maximum 5 images allowed');
+    return;
+  }
+
+  const filesToProcess = Array.from(files).slice(0, remainingSlots);
+  
+  filesToProcess.forEach((file) => {
+    if (file.type.startsWith('image/')) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        uploadedImages.push({ file, url: e.target.result });
+        renderImagePreviews();
+      };
+      reader.readAsDataURL(file);
+    }
+  });
+}
+
+function renderImagePreviews() {
+  imagePreviewContainer.innerHTML = uploadedImages.map((img, index) => `
+    <div class="preview-image aspect-square rounded-lg overflow-hidden border border-border-color relative group">
+      <img src="${img.url}" alt="Preview ${index + 1}">
+      <div class="remove-image" onclick="removeImage(${index})">
+        <span class="material-symbols-outlined text-sm">close</span>
+      </div>
+    </div>
+  `).join('');
+}
+
+function removeImage(index) {
+  uploadedImages.splice(index, 1);
+  renderImagePreviews();
+}
+
+// Tags Handling
+const tagInput = document.getElementById('tagInput');
+const addTagBtn = document.getElementById('addTagBtn');
+const tagsContainer = document.getElementById('tagsContainer');
+let tags = [];
+
+addTagBtn.addEventListener('click', addTag);
+tagInput.addEventListener('keypress', (e) => {
+  if (e.key === 'Enter') {
+    e.preventDefault();
+    addTag();
+  }
+});
+
+function addTag() {
+  const tagValue = tagInput.value.trim();
+  if (tagValue && !tags.includes(tagValue)) {
+    tags.push(tagValue);
+    renderTags();
+    tagInput.value = '';
+  }
+}
+
+function renderTags() {
+  tagsContainer.innerHTML = tags.map((tag, index) => `
+    <span class="inline-flex items-center gap-2 bg-primary/10 text-primary px-3 py-1 rounded-full text-sm">
+      ${tag}
+      <button type="button" onclick="removeTag(${index})" class="hover:text-primary-dark">
+        <span class="material-symbols-outlined text-sm">close</span>
+      </button>
+    </span>
+  `).join('');
+}
+
+function removeTag(index) {
+  tags.splice(index, 1);
+  renderTags();
+}
+
+// AI Generate Description (Placeholder)
+document.getElementById('aiGenerateBtn').addEventListener('click', () => {
+  alert('AI description generation coming soon! This feature will analyze your images and create a compelling product description.');
+});
+
+// Form Submission
+document.getElementById('productUploadForm').addEventListener('submit', (e) => {
+  e.preventDefault();
+  
+  if (uploadedImages.length === 0) {
+    alert('Please upload at least one product image');
+    return;
+  }
+
+  // Here you would normally send the data to your backend
+  const formData = new FormData(e.target);
+  formData.append('tags', JSON.stringify(tags));
+  formData.append('images', JSON.stringify(uploadedImages.map(img => img.url)));
+  
+  // Simulated success
+  alert('Product uploaded successfully! Redirecting to collections...');
+  window.location.href = "{{ url_for('creator.collections') }}";
+});
+</script>
+{% endblock %}

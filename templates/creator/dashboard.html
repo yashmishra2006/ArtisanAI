@@ -145,25 +145,25 @@
     <div class="bg-white dark:bg-slate-900 rounded-xl p-6 shadow-[0_1px_8px_rgba(0,0,0,0.06)]">
       <h3 class="text-lg font-bold mb-6">Quick Actions</h3>
       <div class="grid grid-cols-2 gap-4">
-        <button class="flex flex-col items-center justify-center gap-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-primary hover:bg-primary/5 transition-all group">
+        <a href="{{ url_for('creator.product_upload') }}" class="flex flex-col items-center justify-center gap-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-primary hover:bg-primary/5 transition-all group">
           <div class="h-12 w-12 rounded-full bg-slate-50 dark:bg-slate-800 group-hover:bg-primary/20 flex items-center justify-center transition-colors">
             <span class="material-symbols-outlined text-slate-600 dark:text-slate-300 group-hover:text-primary transition-colors">add_circle</span>
           </div>
           <span class="text-sm font-medium text-center">Add New Product</span>
-        </button>
-        <button class="flex flex-col items-center justify-center gap-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-primary hover:bg-primary/5 transition-all group">
+        </a>
+        <button onclick="openStoryGenerator()" class="flex flex-col items-center justify-center gap-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-primary hover:bg-primary/5 transition-all group">
           <div class="h-12 w-12 rounded-full bg-slate-50 dark:bg-slate-800 group-hover:bg-primary/20 flex items-center justify-center transition-colors">
             <span class="material-symbols-outlined text-slate-600 dark:text-slate-300 group-hover:text-primary transition-colors">edit_document</span>
           </div>
           <span class="text-sm font-medium text-center">Generate Story</span>
         </button>
-        <button class="flex flex-col items-center justify-center gap-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-primary hover:bg-primary/5 transition-all group">
+        <button onclick="openAnalytics()" class="flex flex-col items-center justify-center gap-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-primary hover:bg-primary/5 transition-all group">
           <div class="h-12 w-12 rounded-full bg-slate-50 dark:bg-slate-800 group-hover:bg-primary/20 flex items-center justify-center transition-colors">
             <span class="material-symbols-outlined text-slate-600 dark:text-slate-300 group-hover:text-primary transition-colors">insights</span>
           </div>
           <span class="text-sm font-medium text-center">View Analytics</span>
         </button>
-        <button class="flex flex-col items-center justify-center gap-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-primary hover:bg-primary/5 transition-all group">
+        <button onclick="shareProfile()" class="flex flex-col items-center justify-center gap-3 p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-primary hover:bg-primary/5 transition-all group">
           <div class="h-12 w-12 rounded-full bg-slate-50 dark:bg-slate-800 group-hover:bg-primary/20 flex items-center justify-center transition-colors">
             <span class="material-symbols-outlined text-slate-600 dark:text-slate-300 group-hover:text-primary transition-colors">share</span>
           </div>
@@ -173,4 +173,107 @@
     </div>
   </div>
 </div>
+
+<!-- Story Generator Modal -->
+<div id="storyModal" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+  <div class="bg-surface-light dark:bg-surface-dark rounded-xl max-w-2xl w-full p-6 shadow-2xl">
+    <div class="flex items-center justify-between mb-6">
+      <h3 class="text-2xl font-serif font-bold">AI Story Generator</h3>
+      <button onclick="closeStoryGenerator()" class="p-2 hover:bg-background-light rounded-lg transition-colors">
+        <span class="material-symbols-outlined">close</span>
+      </button>
+    </div>
+    <div class="space-y-4">
+      <div>
+        <label class="text-sm font-semibold mb-2 block">Product Name</label>
+        <input type="text" class="w-full rounded-lg border border-border-color bg-transparent px-4 py-3 text-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none" placeholder="e.g., Handwoven Silk Scarf" />
+      </div>
+      <div>
+        <label class="text-sm font-semibold mb-2 block">Key Features (optional)</label>
+        <textarea rows="3" class="w-full rounded-lg border border-border-color bg-transparent px-4 py-3 text-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none resize-none" placeholder="List key features, materials, or traditions..."></textarea>
+      </div>
+      <div class="flex gap-3 justify-end">
+        <button onclick="closeStoryGenerator()" class="px-4 py-2 border border-border-color rounded-lg hover:border-primary transition-colors">Cancel</button>
+        <button onclick="generateStory()" class="px-4 py-2 bg-primary hover:bg-primary-dark text-white rounded-lg transition-colors flex items-center gap-2">
+          <span class="material-symbols-outlined text-sm">auto_awesome</span>
+          Generate Story
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Share Profile Modal -->
+<div id="shareModal" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+  <div class="bg-surface-light dark:bg-surface-dark rounded-xl max-w-md w-full p-6 shadow-2xl">
+    <div class="flex items-center justify-between mb-6">
+      <h3 class="text-2xl font-serif font-bold">Share Profile</h3>
+      <button onclick="closeShareProfile()" class="p-2 hover:bg-background-light rounded-lg transition-colors">
+        <span class="material-symbols-outlined">close</span>
+      </button>
+    </div>
+    <div class="space-y-4">
+      <div>
+        <label class="text-sm font-semibold mb-2 block">Profile Link</label>
+        <div class="flex gap-2">
+          <input type="text" id="profileLink" readonly value="https://artisanai.com/artisan/priya-sharma" class="flex-1 rounded-lg border border-border-color bg-background-light dark:bg-slate-800 px-4 py-3 text-sm" />
+          <button onclick="copyProfileLink()" class="px-4 py-2 bg-primary hover:bg-primary-dark text-white rounded-lg transition-colors">
+            Copy
+          </button>
+        </div>
+      </div>
+      <div>
+        <p class="text-sm font-semibold mb-3">Share on Social Media</p>
+        <div class="grid grid-cols-4 gap-3">
+          <button class="p-4 rounded-lg border border-border-color hover:border-primary hover:bg-primary/5 transition-colors">
+            <span class="material-symbols-outlined">share</span>
+          </button>
+          <button class="p-4 rounded-lg border border-border-color hover:border-primary hover:bg-primary/5 transition-colors">
+            <span class="material-symbols-outlined">mail</span>
+          </button>
+          <button class="p-4 rounded-lg border border-border-color hover:border-primary hover:bg-primary/5 transition-colors">
+            <span class="material-symbols-outlined">chat</span>
+          </button>
+          <button class="p-4 rounded-lg border border-border-color hover:border-primary hover:bg-primary/5 transition-colors">
+            <span class="material-symbols-outlined">link</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+function openStoryGenerator() {
+  document.getElementById('storyModal').classList.remove('hidden');
+}
+
+function closeStoryGenerator() {
+  document.getElementById('storyModal').classList.add('hidden');
+}
+
+function generateStory() {
+  alert('Generating AI story... This feature will create compelling narratives based on your product details!');
+  closeStoryGenerator();
+}
+
+function openAnalytics() {
+  alert('Analytics dashboard coming soon! This will show detailed insights about your sales, traffic, and customer behavior.');
+}
+
+function shareProfile() {
+  document.getElementById('shareModal').classList.remove('hidden');
+}
+
+function closeShareProfile() {
+  document.getElementById('shareModal').classList.add('hidden');
+}
+
+function copyProfileLink() {
+  const linkInput = document.getElementById('profileLink');
+  linkInput.select();
+  document.execCommand('copy');
+  alert('Profile link copied to clipboard!');
+}
+</script>
 {% endblock %}

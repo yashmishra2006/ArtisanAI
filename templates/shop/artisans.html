@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Meet Our Artisans - ArtisanAI</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+tailwind.config = {
+    darkMode: "class",
+    theme: {
+        extend: {
+            colors: {
+                "primary": "#F5A623",
+                "background-light": "#F9F6F1"
+            },
+            fontFamily: {
+                "display": ["Manrope", "sans-serif"],
+                "serif": ["Newsreader", "serif"]
+            }
+        }
+    }
+}
+</script>
+<style>
+body { font-family: 'Manrope', sans-serif; }
+h1, h2, h3, .font-serif { font-family: 'Newsreader', serif; }
+</style>
+</head>
+<body class="bg-background-light dark:bg-slate-950 text-slate-900 dark:text-slate-100">
+<!-- TopNavBar -->
+<header class="sticky top-0 z-50 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 px-6 py-4 lg:px-12 flex items-center justify-between">
+<a class="flex items-center gap-3" href="{{ url_for('shop.index') }}">
+<span class="material-symbols-outlined text-primary text-3xl">spa</span>
+<span class="font-serif text-2xl font-bold">ArtisanAI</span>
+</a>
+<nav class="hidden lg:flex items-center gap-8">
+<a class="text-slate-600 dark:text-slate-400 text-sm font-medium hover:text-primary transition-colors" href="{{ url_for('shop.marketplace') }}">Shop</a>
+<a class="text-slate-800 dark:text-slate-200 text-sm font-semibold hover:text-primary transition-colors" href="{{ url_for('shop.artisans') }}">Artisans</a>
+<a class="text-slate-600 dark:text-slate-400 text-sm font-medium hover:text-primary transition-colors" href="{{ url_for('shop.our_story') }}">Our Story</a>
+<a class="text-slate-600 dark:text-slate-400 text-sm font-medium hover:text-primary transition-colors" href="{{ url_for('shop.collections') }}">Collections</a>
+</nav>
+<div class="flex items-center gap-4">
+<a href="{{ url_for('shop.wishlist') }}" class="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full">
+<span class="material-symbols-outlined">favorite_border</span>
+</a>
+<a href="{{ url_for('shop.cart') }}" class="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full">
+<span class="material-symbols-outlined">shopping_cart</span>
+</a>
+<a href="{{ url_for('shop.account') }}" class="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full">
+<span class="material-symbols-outlined">person</span>
+</a>
+</div>
+</header>
+
+<main class="max-w-7xl mx-auto px-6 lg:px-12 py-12">
+<div class="text-center mb-12">
+<h1 class="text-4xl lg:text-5xl font-serif font-bold mb-4">Meet Our Artisans</h1>
+<p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
+Connect directly with master craftspeople preserving India's rich artistic heritage
+</p>
+</div>
+
+<!-- Search & Filters -->
+<div class="mb-8 flex flex-col sm:flex-row gap-4">
+<div class="flex-1 relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-400">search</span>
+<input type="text" placeholder="Search artisans..." class="w-full pl-12 pr-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 focus:outline-none focus:ring-2 focus:ring-primary"/>
+</div>
+<select class="px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 focus:outline-none focus:ring-2 focus:ring-primary">
+<option>All Crafts</option>
+<option>Textiles</option>
+<option>Pottery</option>
+<option>Metalwork</option>
+<option>Jewelry</option>
+<option>Painting</option>
+</select>
+</div>
+
+<!-- Artisan Grid -->
+<div class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+<!-- Artisan Card -->
+<a href="{{ url_for('creator.profile') }}" class="group bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 overflow-hidden hover:shadow-lg transition-shadow">
+<div class="aspect-square bg-gradient-to-br from-amber-100 to-orange-200 dark:from-slate-800 dark:to-slate-700"></div>
+<div class="p-5">
+<h3 class="font-serif font-bold text-lg mb-1 group-hover:text-primary transition-colors">Priya Sharma</h3>
+<p class="text-sm text-slate-600 dark:text-slate-400 mb-3">Silk Weaving • Gujarat</p>
+<div class="flex items-center gap-3 text-sm text-slate-600 dark:text-slate-400">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">star</span>
+4.9
+</span>
+<span>124 products</span>
+</div>
+</div>
+</a>
+
+<!-- Artisan Card -->
+<a href="{{ url_for('creator.profile') }}" class="group bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 overflow-hidden hover:shadow-lg transition-shadow">
+<div class="aspect-square bg-gradient-to-br from-blue-100 to-indigo-200 dark:from-slate-800 dark:to-slate-700"></div>
+<div class="p-5">
+<h3 class="font-serif font-bold text-lg mb-1 group-hover:text-primary transition-colors">Rajesh Kumar</h3>
+<p class="text-sm text-slate-600 dark:text-slate-400 mb-3">Blue Pottery • Rajasthan</p>
+<div class="flex items-center gap-3 text-sm text-slate-600 dark:text-slate-400">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">star</span>
+4.8
+</span>
+<span>89 products</span>
+</div>
+</div>
+</a>
+
+<!-- Artisan Card -->
+<a href="{{ url_for('creator.profile') }}" class="group bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 overflow-hidden hover:shadow-lg transition-shadow">
+<div class="aspect-square bg-gradient-to-br from-green-100 to-emerald-200 dark:from-slate-800 dark:to-slate-700"></div>
+<div class="p-5">
+<h3 class="font-serif font-bold text-lg mb-1 group-hover:text-primary transition-colors">Meena Devi</h3>
+<p class="text-sm text-slate-600 dark:text-slate-400 mb-3">Madhubani Art • Bihar</p>
+<div class="flex items-center gap-3 text-sm text-slate-600 dark:text-slate-400">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">star</span>
+5.0
+</span>
+<span>67 products</span>
+</div>
+</div>
+</a>
+
+<!-- Artisan Card -->
+<a href="{{ url_for('creator.profile') }}" class="group bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 overflow-hidden hover:shadow-lg transition-shadow">
+<div class="aspect-square bg-gradient-to-br from-purple-100 to-violet-200 dark:from-slate-800 dark:to-slate-700"></div>
+<div class="p-5">
+<h3 class="font-serif font-bold text-lg mb-1 group-hover:text-primary transition-colors">Arjun Patel</h3>
+<p class="text-sm text-slate-600 dark:text-slate-400 mb-3">Brass Craft • Uttar Pradesh</p>
+<div class="flex items-center gap-3 text-sm text-slate-600 dark:text-slate-400">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">star</span>
+4.7
+</span>
+<span>102 products</span>
+</div>
+</div>
+</a>
+
+<!-- Artisan Card -->
+<a href="{{ url_for('creator.profile') }}" class="group bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 overflow-hidden hover:shadow-lg transition-shadow">
+<div class="aspect-square bg-gradient-to-br from-rose-100 to-pink-200 dark:from-slate-800 dark:to-slate-700"></div>
+<div class="p-5">
+<h3 class="font-serif font-bold text-lg mb-1 group-hover:text-primary transition-colors">Lakshmi Iyer</h3>
+<p class="text-sm text-slate-600 dark:text-slate-400 mb-3">Temple Jewelry • Tamil Nadu</p>
+<div class="flex items-center gap-3 text-sm text-slate-600 dark:text-slate-400">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">star</span>
+4.9
+</span>
+<span>156 products</span>
+</div>
+</div>
+</a>
+
+<!-- Artisan Card -->
+<a href="{{ url_for('creator.profile') }}" class="group bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 overflow-hidden hover:shadow-lg transition-shadow">
+<div class="aspect-square bg-gradient-to-br from-yellow-100 to-amber-200 dark:from-slate-800 dark:to-slate-700"></div>
+<div class="p-5">
+<h3 class="font-serif font-bold text-lg mb-1 group-hover:text-primary transition-colors">Vikram Singh</h3>
+<p class="text-sm text-slate-600 dark:text-slate-400 mb-3">Phulkari Embroidery • Punjab</p>
+<div class="flex items-center gap-3 text-sm text-slate-600 dark:text-slate-400">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">star</span>
+4.8
+</span>
+<span>94 products</span>
+</div>
+</div>
+</a>
+
+<!-- Artisan Card -->
+<a href="{{ url_for('creator.profile') }}" class="group bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 overflow-hidden hover:shadow-lg transition-shadow">
+<div class="aspect-square bg-gradient-to-br from-cyan-100 to-blue-200 dark:from-slate-800 dark:to-slate-700"></div>
+<div class="p-5">
+<h3 class="font-serif font-bold text-lg mb-1 group-hover:text-primary transition-colors">Ananya Das</h3>
+<p class="text-sm text-slate-600 dark:text-slate-400 mb-3">Dokra Art • West Bengal</p>
+<div class="flex items-center gap-3 text-sm text-slate-600 dark:text-slate-400">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">star</span>
+5.0
+</span>
+<span>71 products</span>
+</div>
+</div>
+</a>
+
+<!-- Artisan Card -->
+<a href="{{ url_for('creator.profile') }}" class="group bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 overflow-hidden hover:shadow-lg transition-shadow">
+<div class="aspect-square bg-gradient-to-br from-orange-100 to-red-200 dark:from-slate-800 dark:to-slate-700"></div>
+<div class="p-5">
+<h3 class="font-serif font-bold text-lg mb-1 group-hover:text-primary transition-colors">Suresh Reddy</h3>
+<p class="text-sm text-slate-600 dark:text-slate-400 mb-3">Bidriware • Karnataka</p>
+<div class="flex items-center gap-3 text-sm text-slate-600 dark:text-slate-400">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">star</span>
+4.9
+</span>
+<span>112 products</span>
+</div>
+</div>
+</a>
+</div>
+
+<!-- CTA Banner -->
+<div class="mt-16 bg-gradient-to-r from-primary/20 to-orange-200/50 dark:from-slate-900 dark:to-slate-800 rounded-2xl p-12 text-center">
+<h2 class="text-3xl font-serif font-bold mb-4">Are You an Artisan?</h2>
+<p class="text-slate-600 dark:text-slate-300 mb-6 max-w-2xl mx-auto">
+Join our growing community and showcase your craftsmanship to the world
+</p>
+<a href="{{ url_for('shop.become_seller') }}" class="inline-block bg-primary hover:bg-primary/90 text-white font-semibold px-8 py-3 rounded-full transition-colors">
+Start Selling Today
+</a>
+</div>
+</main>
+
+<script src="{{ url_for('static', filename='js/shop.js') }}"></script>
+</body>
+</html>

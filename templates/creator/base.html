@@ -59,7 +59,7 @@
     </a>
 
     <!-- Profile -->
-    <div class="px-6 py-5 border-b border-border-color dark:border-slate-800">
+    <a href="{{ url_for('creator.profile') }}" class="px-6 py-5 border-b border-border-color dark:border-slate-800 hover:bg-background-light dark:hover:bg-slate-800 transition-colors">
       <div class="flex items-center gap-3">
         <div class="size-12 rounded-full bg-cover bg-center border-2 border-primary/20 shrink-0"
              style='background-image:url("https://lh3.googleusercontent.com/aida-public/AB6AXuBc3NJdimugGxUjfWvsNdHNfsLTb6GVSvJ7P5CT527GSomstfZXdqXA-YzCNZV-f18WZ0jaTJRGYY5xzjRUqYQKAGDyRIBTlUBN1sfBnd5a7scrjeGNvFG_CSXWKuy8H--ZVTkZFk1cjmwTf8ktXYn-w-8zgd8BCFiFoOyGRxBSvrsvZSnhigAqV-m89mIsg7XPDJe2UB-90FmlVOEjLpqUqfkBqV_tlL3dGRpJYMKJ_2q2aUYK5-uMr0p7FF_kKUNpkptP4sbQ_A")'>
@@ -69,7 +69,7 @@
           <p class="text-xs text-text-muted uppercase tracking-wider font-medium">Master Artisan</p>
         </div>
       </div>
-    </div>
+    </a>
 
     <!-- Nav -->
     <nav class="flex-1 px-4 py-4 flex flex-col gap-1">
@@ -111,6 +111,11 @@
 
     <!-- Top Navbar -->
     <header class="sticky top-0 z-30 flex items-center justify-between px-8 py-4 bg-surface-light dark:bg-surface-dark border-b border-border-color dark:border-slate-800 shadow-sm">
+      <!-- Mobile menu button -->
+      <button id="mobileMenuBtn" class="md:hidden p-2 rounded-full text-text-muted hover:bg-background-light dark:hover:bg-slate-800 transition-colors">
+        <span class="material-symbols-outlined">menu</span>
+      </button>
+      
       <!-- Mobile logo -->
       <a href="{{ url_for('shop.index') }}" class="flex md:hidden items-center gap-2 text-text-main dark:text-slate-100">
         <span class="material-symbols-outlined text-primary text-2xl">spa</span>
@@ -131,11 +136,76 @@
           <span class="material-symbols-outlined">notifications</span>
           <span class="absolute top-1.5 right-1.5 size-2 bg-primary rounded-full"></span>
         </button>
-        <div class="size-9 rounded-full bg-cover bg-center border-2 border-primary/20 cursor-pointer"
+        <a href="{{ url_for('creator.profile') }}" class="size-9 rounded-full bg-cover bg-center border-2 border-primary/20 cursor-pointer"
              style='background-image:url("https://lh3.googleusercontent.com/aida-public/AB6AXuBc3NJdimugGxUjfWvsNdHNfsLTb6GVSvJ7P5CT527GSomstfZXdqXA-YzCNZV-f18WZ0jaTJRGYY5xzjRUqYQKAGDyRIBTlUBN1sfBnd5a7scrjeGNvFG_CSXWKuy8H--ZVTkZFk1cjmwTf8ktXYn-w-8zgd8BCFiFoOyGRxBSvrsvZSnhigAqV-m89mIsg7XPDJe2UB-90FmlVOEjLpqUqfkBqV_tlL3dGRpJYMKJ_2q2aUYK5-uMr0p7FF_kKUNpkptP4sbQ_A")'>
-        </div>
+        </a>
       </div>
     </header>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobileSidebar" class="md:hidden fixed inset-0 z-50 hidden">
+      <div class="absolute inset-0 bg-black/50 backdrop-blur-sm" id="mobileMenuOverlay"></div>
+      <aside class="absolute left-0 top-0 h-full w-80 bg-surface-light dark:bg-surface-dark shadow-2xl overflow-y-auto transform transition-transform">
+        
+        <!-- Logo -->
+        <div class="flex items-center justify-between px-6 py-5 border-b border-border-color dark:border-slate-800">
+          <a href="{{ url_for('shop.index') }}" class="flex items-center gap-3">
+            <span class="material-symbols-outlined text-primary text-3xl">spa</span>
+            <span class="font-serif text-2xl font-bold text-text-main dark:text-slate-100">ArtisanAI</span>
+          </a>
+          <button id="closeMobileMenu" class="p-2 rounded-lg hover:bg-background-light dark:hover:bg-slate-800 transition-colors">
+            <span class="material-symbols-outlined">close</span>
+          </button>
+        </div>
+
+        <!-- Profile -->
+        <a href="{{ url_for('creator.profile') }}" class="px-6 py-5 border-b border-border-color dark:border-slate-800 hover:bg-background-light dark:hover:bg-slate-800 transition-colors block">
+          <div class="flex items-center gap-3">
+            <div class="size-12 rounded-full bg-cover bg-center border-2 border-primary/20 shrink-0"
+                 style='background-image:url("https://lh3.googleusercontent.com/aida-public/AB6AXuBc3NJdimugGxUjfWvsNdHNfsLTb6GVSvJ7P5CT527GSomstfZXdqXA-YzCNZV-f18WZ0jaTJRGYY5xzjRUqYQKAGDyRIBTlUBN1sfBnd5a7scrjeGNvFG_CSXWKuy8H--ZVTkZFk1cjmwTf8ktXYn-w-8zgd8BCFiFoOyGRxBSvrsvZSnhigAqV-m89mIsg7XPDJe2UB-90FmlVOEjLpqUqfkBqV_tlL3dGRpJYMKJ_2q2aUYK5-uMr0p7FF_kKUNpkptP4sbQ_A")'>
+            </div>
+            <div>
+              <p class="font-semibold text-sm text-text-main dark:text-slate-100">Priya Sharma</p>
+              <p class="text-xs text-text-muted uppercase tracking-wider font-medium">Master Artisan</p>
+            </div>
+          </div>
+        </a>
+
+        <!-- Nav -->
+        <nav class="flex-1 px-4 py-4 flex flex-col gap-1">
+          {% set nav = [
+            ("dashboard",          "home",                   "Dashboard",          url_for("creator.dashboard")),
+            ("collections",        "category",               "Collections",        url_for("creator.collections")),
+            ("ai_photo_studio",    "camera_enhance",         "AI Photo Studio",    url_for("creator.ai_photo_studio")),
+            ("digital_provenance", "verified_user",          "Digital Provenance", url_for("creator.digital_provenance")),
+            ("finance_hub",        "account_balance_wallet", "Finance Hub",        url_for("creator.finance_hub")),
+            ("training",           "school",                 "Training Hub",       url_for("creator.training")),
+            ("community",          "groups",                 "Community",          url_for("creator.community")),
+            ("settings",           "settings",               "Settings",           url_for("creator.settings")),
+          ] %}
+          {% for page_id, icon, label, link in nav %}
+            {% if current_page == page_id %}
+              <div class="nav-active flex items-center gap-3 px-4 py-3 rounded-lg bg-primary/10 dark:bg-primary/20 border-l-4 border-primary text-primary font-semibold">
+                <span class="material-symbols-outlined text-[20px] shrink-0">{{ icon }}</span>
+                <span class="text-sm">{{ label }}</span>
+              </div>
+            {% else %}
+              <a href="{{ link }}" class="flex items-center gap-3 px-4 py-3 rounded-lg text-text-muted dark:text-slate-400 hover:bg-background-light dark:hover:bg-slate-800 hover:text-text-main dark:hover:text-slate-200 transition-colors">
+                <span class="material-symbols-outlined text-[20px] shrink-0">{{ icon }}</span>
+                <span class="text-sm font-medium">{{ label }}</span>
+              </a>
+            {% endif %}
+          {% endfor %}
+
+          <div class="mt-auto pt-4 border-t border-border-color dark:border-slate-700 mt-4">
+            <a href="{{ url_for('shop.marketplace') }}" class="flex items-center gap-3 px-4 py-3 rounded-lg text-text-muted hover:bg-background-light dark:hover:bg-slate-800 hover:text-primary transition-colors">
+              <span class="material-symbols-outlined text-[20px] shrink-0">storefront</span>
+              <span class="text-sm font-medium">View Marketplace</span>
+            </a>
+          </div>
+        </nav>
+      </aside>
+    </div>
 
     <!-- Page Content -->
     <main class="flex-1 overflow-y-auto">
@@ -144,5 +214,29 @@
 
   </div>
 </div>
+
+<script>
+// Mobile menu functionality
+document.addEventListener('DOMContentLoaded', () => {
+  const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+  const mobileSidebar = document.getElementById('mobileSidebar');
+  const closeMobileMenu = document.getElementById('closeMobileMenu');
+  const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+
+  if (mobileMenuBtn && mobileSidebar && closeMobileMenu && mobileMenuOverlay) {
+    mobileMenuBtn.addEventListener('click', () => {
+      mobileSidebar.classList.remove('hidden');
+    });
+
+    closeMobileMenu.addEventListener('click', () => {
+      mobileSidebar.classList.add('hidden');
+    });
+
+    mobileMenuOverlay.addEventListener('click', () => {
+      mobileSidebar.classList.add('hidden');
+    });
+  }
+});
+</script>
 </body>
 </html>

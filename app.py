@@ -55,6 +55,42 @@ def become_seller():
     return redirect(url_for("auth.login"))
 
 
+@shop.route("/our-story", endpoint="our_story")
+def our_story():
+    """About us / Our Story page."""
+    return render_template("shop/our_story.html")
+
+
+@shop.route("/collections", endpoint="collections")
+def collections():
+    """Browse curated collections."""
+    return render_template("shop/collections.html")
+
+
+@shop.route("/artisans", endpoint="artisans")
+def artisans():
+    """Browse artisan profiles."""
+    return render_template("shop/artisans.html")
+
+
+@shop.route("/cart", endpoint="cart")
+def cart():
+    """Shopping cart page."""
+    return render_template("shop/cart.html")
+
+
+@shop.route("/wishlist", endpoint="wishlist")
+def wishlist():
+    """Wishlist / Favorites page."""
+    return render_template("shop/wishlist.html")
+
+
+@shop.route("/account", endpoint="account")
+def account():
+    """User account page."""
+    return render_template("shop/account.html")
+
+
 # ════════════════════════════════════════════════
 #   CREATOR  (Artisan / Seller) Blueprint
 # ════════════════════════════════════════════════
@@ -71,6 +107,18 @@ def dashboard():
 def collections():
     """Product collections / listings management."""
     return render_template("creator/collections.html")
+
+
+@creator.route("/product/upload", endpoint="product_upload")
+def product_upload():
+    """Upload new product page."""
+    return render_template("creator/product_upload.html")
+
+
+@creator.route("/profile", endpoint="profile")
+def profile():
+    """Creator public profile page."""
+    return render_template("creator/profile.html")
 
 
 @creator.route("/ai-photo-studio", endpoint="ai_photo_studio")
