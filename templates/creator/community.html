@@ -1,0 +1,105 @@
+{% extends "creator/_base.html" %}
+{% set current_page = "community" %}
+{% block title %}Community{% endblock %}
+
+{% block content %}
+<div class="p-6 lg:p-10 max-w-7xl mx-auto space-y-8">
+  <div class="mt-6">
+    <h1 class="text-4xl font-serif font-bold mb-2">Community</h1>
+    <p class="text-text-muted text-lg">Connect with fellow artisans, share stories, and collaborate.</p>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+    <div class="lg:col-span-2 space-y-6">
+      <div class="bg-surface-light dark:bg-surface-dark rounded-xl p-6 shadow-soft border border-border-color">
+        <div class="flex items-center gap-3 mb-6">
+          <div class="size-12 rounded-full bg-slate-200"></div>
+          <input type="text" placeholder="Share your craft story..." class="flex-1 bg-background-light border border-border-color rounded-full px-4 py-3 text-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none"/>
+        </div>
+        <div class="flex gap-4 text-sm text-text-muted">
+          <button class="flex items-center gap-2 hover:text-primary transition-colors">
+            <span class="material-symbols-outlined text-[20px]">image</span>
+            Photo
+          </button>
+          <button class="flex items-center gap-2 hover:text-primary transition-colors">
+            <span class="material-symbols-outlined text-[20px]">videocam</span>
+            Video
+          </button>
+          <button class="flex items-center gap-2 hover:text-primary transition-colors">
+            <span class="material-symbols-outlined text-[20px]">celebration</span>
+            Event
+          </button>
+        </div>
+      </div>
+
+      {% for i in range(3) %}
+      <div class="bg-surface-light dark:bg-surface-dark rounded-xl p-6 shadow-soft border border-border-color">
+        <div class="flex items-start gap-3 mb-4">
+          <div class="size-12 rounded-full bg-slate-200 shrink-0"></div>
+          <div class="flex-1">
+            <h4 class="font-bold">Rajesh Kumar</h4>
+            <p class="text-xs text-text-muted">Block Printing • 2 hours ago</p>
+          </div>
+          <button class="text-text-muted hover:text-primary"><span class="material-symbols-outlined">more_horiz</span></button>
+        </div>
+        <p class="text-text-main mb-4">Just finished a new collection inspired by Mughal gardens. The intricate floral patterns took weeks to carve! 🌸</p>
+        <div class="h-64 bg-slate-200 rounded-lg mb-4"></div>
+        <div class="flex items-center justify-between pt-4 border-t border-border-color">
+          <div class="flex gap-4">
+            <button class="flex items-center gap-2 text-sm text-text-muted hover:text-primary transition-colors">
+              <span class="material-symbols-outlined text-[20px]">favorite</span>
+              <span>24</span>
+            </button>
+            <button class="flex items-center gap-2 text-sm text-text-muted hover:text-primary transition-colors">
+              <span class="material-symbols-outlined text-[20px]">chat_bubble</span>
+              <span>8</span>
+            </button>
+            <button class="flex items-center gap-2 text-sm text-text-muted hover:text-primary transition-colors">
+              <span class="material-symbols-outlined text-[20px]">share</span>
+            </button>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+    <div class="space-y-6">
+      <div class="bg-surface-light dark:bg-surface-dark rounded-xl p-6 shadow-soft border border-border-color">
+        <h3 class="font-bold mb-4">Suggested Artisans</h3>
+        <div class="space-y-4">
+          {% for i in range(3) %}
+          <div class="flex items-center gap-3">
+            <div class="size-12 rounded-full bg-slate-200 shrink-0"></div>
+            <div class="flex-1 min-w-0">
+              <p class="font-semibold text-sm truncate">Maya Patel</p>
+              <p class="text-xs text-text-muted">Textile Weaving</p>
+            </div>
+            <button class="bg-primary hover:bg-primary-dark text-white text-xs font-semibold px-3 py-1.5 rounded-full transition-colors">Follow</button>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+
+      <div class="bg-surface-light dark:bg-surface-dark rounded-xl p-6 shadow-soft border border-border-color">
+        <h3 class="font-bold mb-4">Upcoming Events</h3>
+        <div class="space-y-4">
+          {% for i in range(2) %}
+          <div class="border border-border-color rounded-lg p-4 hover:border-primary transition-colors cursor-pointer">
+            <div class="flex items-start gap-3">
+              <div class="bg-primary/10 rounded-lg p-2 text-center shrink-0">
+                <p class="text-xs font-bold text-primary">MAR</p>
+                <p class="text-xl font-bold text-primary">15</p>
+              </div>
+              <div>
+                <h4 class="font-bold text-sm mb-1">Craft Fair Delhi</h4>
+                <p class="text-xs text-text-muted">Virtual • 10:00 AM</p>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

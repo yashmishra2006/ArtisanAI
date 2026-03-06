@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ArtisanAI - Digital Provenance</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#E28743", // Saffron
+                        "primary-light": "#F2A65A",
+                        "primary-dark": "#C96D2E",
+                        "background-light": "#F9F6F1", // Warm Cream
+                        "background-dark": "#1A1714",
+                        "surface-light": "#FFFFFF",
+                        "surface-dark": "#2C2825",
+                        "text-main": "#2C2825",
+                        "text-muted": "#7A736A",
+                        "border-color": "#E5E1DA"
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"],
+                        "serif": ["Newsreader", "serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.5rem", "lg": "0.75rem", "xl": "1rem", "full": "9999px"},
+                    boxShadow: {
+                        "soft": "0 4px 20px -2px rgba(0, 0, 0, 0.05)",
+                        "certificate": "0 10px 40px -5px rgba(0, 0, 0, 0.08)"
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Manrope', sans-serif;
+            background-color: #F9F6F1;
+        }
+        h1, h2, h3, h4, h5, h6, .font-serif {
+            font-family: 'Newsreader', serif;
+        }
+        .shimmer {
+            background: linear-gradient(90deg, #E28743 0%, #F2A65A 50%, #E28743 100%);
+            background-size: 200% auto;
+            animation: shimmer 2s linear infinite;
+        }
+        @keyframes shimmer {
+            to {
+                background-position: 200% center;
+            }
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-text-main dark:text-slate-200">
+<div class="relative flex min-h-screen w-full flex-col group/design-root overflow-x-hidden font-display">
+<!-- Top Navbar -->
+<header class="sticky top-0 z-50 flex items-center justify-between whitespace-nowrap border-b border-border-color bg-surface-light dark:bg-surface-dark px-10 py-4 shadow-sm">
+<div class="flex items-center gap-4 text-text-main dark:text-slate-100">
+<div class="size-8 text-primary">
+<span class="material-symbols-outlined text-[32px]">spa</span>
+</div>
+<h2 class="text-text-main dark:text-slate-100 text-2xl font-serif font-bold leading-tight tracking-tight">ArtisanAI</h2>
+</div>
+<div class="flex flex-1 justify-end gap-8 items-center">
+<div class="flex items-center gap-6">
+<button class="text-text-muted hover:text-primary transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="text-text-muted hover:text-primary transition-colors">
+<span class="material-symbols-outlined">search</span>
+</button>
+</div>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 border-2 border-primary/20" data-alt="Profile picture of artisan" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAjlyn8xsUnw_ZvxFqHZoMeK8l6aMRVIUra1PF7UztJIk6sNPUc-2wwbjkcsxYjD_TyWOYls7Xltk1Atwc3TkJ_RLvQvcbRYlYpFVbIgPG97HIp9oEU4rQpSpWFDPp2u3NreAcHli87gAwW-skT3FpmvLpfVI7fa2fbFfAV5wjyzJqGjydhQgAKjSNmBzOvE6U87MxfVqo_lsP7pVNWbz-Q_2pEUte5w3oSxwxAnsL6aJ_5FmdKJFg49fSrGYu3vZjCFl_zasN-BA");'></div>
+</div>
+</header>
+<div class="flex flex-1 layout-container h-full grow">
+<!-- Sidebar -->
+<aside class="w-64 border-r border-border-color bg-surface-light dark:bg-surface-dark hidden md:flex flex-col h-[calc(100vh-73px)] sticky top-[73px] overflow-y-auto">
+<div class="p-6">
+<div class="flex gap-4 items-center mb-8">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-12 shadow-sm" data-alt="Profile picture of artisan" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBc3NJdimugGxUjfWvsNdHNfsLTb6GVSvJ7P5CT527GSomstfZXdqXA-YzCNZV-f18WZ0jaTJRGYY5xzjRUqYQKAGDyRIBTlUBN1sfBnd5a7scrjeGNvFG_CSXWKuy8H--ZVTkZFk1cjmwTf8ktXYn-w-8zgd8BCFiFoOyGRxBSvrsvZSnhigAqV-m89mIsg7XPDJe2UB-90FmlVOEjLpqUqfkBqV_tlL3dGRpJYMKJ_2q2aUYK5-uMr0p7FF_kKUNpkptP4sbQ_A");'></div>
+<div class="flex flex-col">
+<h1 class="text-text-main dark:text-slate-100 text-lg font-serif font-medium leading-normal">Priya Sharma</h1>
+<p class="text-text-muted text-xs font-medium uppercase tracking-wider">Master Artisan</p>
+</div>
+</div>
+<nav class="flex flex-col gap-2">
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-text-muted hover:bg-background-light dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="text-sm font-medium">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-text-muted hover:bg-background-light dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined">category</span>
+<span class="text-sm font-medium">Collections</span>
+</a>
+<div class="flex items-center gap-3 px-4 py-3 rounded-lg bg-primary/10 border-l-4 border-primary text-primary">
+<span class="material-symbols-outlined">verified_user</span>
+<span class="text-sm font-medium">Digital Provenance</span>
+</div>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-text-muted hover:bg-background-light dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined">groups</span>
+<span class="text-sm font-medium">Community</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-text-muted hover:bg-background-light dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-sm font-medium">Settings</span>
+</a>
+</nav>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 px-8 py-8 md:px-12 max-w-7xl mx-auto w-full">
+<!-- Breadcrumbs & Header -->
+<div class="mb-8">
+<div class="flex flex-wrap gap-2 text-sm mb-4">
+<a class="text-text-muted hover:text-primary transition-colors font-medium" href="#">Dashboard</a>
+<span class="text-text-muted">/</span>
+<span class="text-text-main dark:text-slate-300 font-medium">Digital Provenance</span>
+</div>
+<div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-4">
+<div class="flex flex-col gap-2">
+<h1 class="text-text-main dark:text-white text-4xl md:text-5xl font-serif font-bold tracking-tight">Digital Provenance</h1>
+<p class="text-text-muted text-lg font-normal max-w-2xl">Secure your legacy and authenticate your craft with immutable digital certificates.</p>
+</div>
+<button class="flex items-center gap-2 bg-surface-light dark:bg-surface-dark border border-border-color px-4 py-2 rounded-lg text-text-main hover:border-primary transition-colors shadow-sm">
+<span class="material-symbols-outlined text-[20px]">help_outline</span>
+<span class="text-sm font-medium">How it works</span>
+</button>
+</div>
+</div>
+<!-- Split Layout: Minting Form & Preview -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-12">
+<!-- Left Panel: Minting Form -->
+<div class="lg:col-span-5 flex flex-col gap-6">
+<div class="bg-surface-light dark:bg-surface-dark rounded-xl shadow-soft border border-border-color overflow-hidden relative">
+<!-- Saffron top border -->
+<div class="absolute top-0 left-0 w-full h-1 bg-primary"></div>
+<div class="p-6 md:p-8">
+<h2 class="text-text-main dark:text-white text-2xl font-serif font-bold mb-6">Mint Certificate</h2>
+<form class="flex flex-col gap-5">
+<!-- Image Upload -->
+<div class="flex flex-col gap-2">
+<label class="text-sm font-semibold text-text-main dark:text-slate-200">Item Image</label>
+<div class="border-2 border-dashed border-border-color rounded-lg p-2 text-center hover:border-primary transition-colors bg-background-light dark:bg-slate-800 relative group cursor-pointer h-48 flex items-center justify-center overflow-hidden">
+<div class="absolute inset-0 bg-cover bg-center z-0 opacity-80" data-alt="Terracotta handcrafted vase" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuALaOeE_xL1bIMmMrOdrdcoxrYY4P8dzmAHhy1Hd6w1Q56TynVVqCW_UmXQ0MUwTvduq6fheXnSX8Q1FLqtU-iRyz6CbQMgpxO59w73L8RM1ODSkACUxn99g9pDuopXy7NZvfnwfF1JhyxR4iSIwUfdI29EJs-JrEAf_TGN-OHPisRut0oih5mqSmHnEttPLiJcvxNrFMXgeiHlKxdIgvJ4zJH11beWbi54-7ZbMSMLsOAKMxyFp3XK8MDoSjF1XFipDuxdvV8SaA');"></div>
+<div class="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors z-10"></div>
+<div class="relative z-20 flex flex-col items-center gap-2 text-white opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-[32px]">edit</span>
+<span class="text-sm font-medium">Change Image</span>
+</div>
+</div>
+</div>
+<!-- Item Name -->
+<div class="flex flex-col gap-2">
+<label class="text-sm font-semibold text-text-main dark:text-slate-200">Item Name</label>
+<div class="relative">
+<input class="w-full rounded-lg border border-border-color bg-transparent px-4 py-3 text-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none text-text-main dark:text-white" type="text" value="Terracotta Amphora Vase"/>
+<button class="absolute right-3 top-1/2 -translate-y-1/2 text-text-muted hover:text-primary" type="button">
+<span class="material-symbols-outlined text-[20px]">mic</span>
+</button>
+</div>
+</div>
+<!-- Craft Tradition -->
+<div class="flex flex-col gap-2">
+<label class="text-sm font-semibold text-text-main dark:text-slate-200">Craft Tradition</label>
+<div class="relative">
+<select class="w-full rounded-lg border border-border-color bg-transparent px-4 py-3 text-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none text-text-main dark:text-white appearance-none">
+<option>Khurja Pottery</option>
+<option>Blue Pottery</option>
+<option>Terracotta</option>
+</select>
+<div class="absolute right-3 top-1/2 -translate-y-1/2 text-text-muted pointer-events-none">
+<span class="material-symbols-outlined text-[20px]">expand_more</span>
+</div>
+</div>
+</div>
+<!-- AI Description -->
+<div class="flex flex-col gap-2">
+<div class="flex justify-between items-center">
+<label class="text-sm font-semibold text-text-main dark:text-slate-200">Description</label>
+<button class="flex items-center gap-1 text-xs text-primary font-medium hover:text-primary-dark" type="button">
+<span class="material-symbols-outlined text-[14px]">auto_awesome</span>
+                                                AI Enhance
+                                            </button>
+</div>
+<textarea class="w-full rounded-lg border border-border-color bg-transparent px-4 py-3 text-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none text-text-main dark:text-white resize-none" rows="4">A handcrafted terracotta amphora vase, turned on a traditional kick-wheel. Features intricate slip-trailed motifs inspired by ancient regional folklore, finished with a natural earth glaze.</textarea>
+</div>
+<!-- Submit Button -->
+<button class="mt-4 w-full rounded-lg shimmer text-white font-bold py-4 px-6 text-center shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2" type="button">
+<span class="material-symbols-outlined animate-spin">sync</span>
+                                        Minting Certificate...
+                                    </button>
+</form>
+</div>
+</div>
+</div>
+<!-- Right Panel: Certificate Preview -->
+<div class="lg:col-span-7 flex flex-col">
+<div class="bg-surface-light dark:bg-surface-dark rounded-xl shadow-certificate border border-border-color p-8 md:p-12 relative overflow-hidden flex-1 flex flex-col justify-center items-center bg-[#FFFCF8] dark:bg-[#1E1C19]">
+<!-- Gold ornamental frame -->
+<div class="absolute inset-4 border-[1px] border-[#D4AF37]/40 pointer-events-none"></div>
+<div class="absolute inset-5 border-[2px] border-[#D4AF37]/20 pointer-events-none"></div>
+<!-- Corner Ornaments -->
+<div class="absolute top-4 left-4 size-8 border-t-2 border-l-2 border-[#D4AF37]"></div>
+<div class="absolute top-4 right-4 size-8 border-t-2 border-r-2 border-[#D4AF37]"></div>
+<div class="absolute bottom-4 left-4 size-8 border-b-2 border-l-2 border-[#D4AF37]"></div>
+<div class="absolute bottom-4 right-4 size-8 border-b-2 border-r-2 border-[#D4AF37]"></div>
+<!-- Watermark -->
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none opacity-5">
+<span class="material-symbols-outlined text-[300px] text-primary">verified</span>
+</div>
+<div class="relative z-10 w-full max-w-lg mx-auto flex flex-col items-center text-center">
+<div class="size-16 text-[#D4AF37] mb-6">
+<span class="material-symbols-outlined text-[64px]">workspace_premium</span>
+</div>
+<h3 class="text-text-main dark:text-white text-3xl font-serif font-bold tracking-widest uppercase mb-2">Certificate of Authenticity</h3>
+<p class="text-text-muted text-sm tracking-widest uppercase mb-8">Digital Provenance Record</p>
+<div class="w-24 h-[1px] bg-[#D4AF37]/50 mb-8"></div>
+<p class="text-text-main dark:text-slate-300 text-lg mb-6 leading-relaxed font-serif italic">This document certifies that the item described below is an authentic, original creation handcrafted by</p>
+<h4 class="text-2xl font-serif font-bold text-text-main dark:text-white mb-2">Priya Sharma</h4>
+<p class="text-primary font-medium text-sm tracking-wider uppercase mb-8">Master Artisan • Khurja, India</p>
+<div class="w-full bg-white dark:bg-surface-dark border border-border-color rounded p-6 text-left mb-8 shadow-sm">
+<div class="grid grid-cols-2 gap-y-4 gap-x-6">
+<div>
+<p class="text-[10px] text-text-muted uppercase tracking-wider mb-1">Item Name</p>
+<p class="font-medium text-sm text-text-main dark:text-white">Terracotta Amphora Vase</p>
+</div>
+<div>
+<p class="text-[10px] text-text-muted uppercase tracking-wider mb-1">Tradition</p>
+<p class="font-medium text-sm text-text-main dark:text-white">Khurja Pottery</p>
+</div>
+<div>
+<p class="text-[10px] text-text-muted uppercase tracking-wider mb-1">Date of Creation</p>
+<p class="font-medium text-sm text-text-main dark:text-white">October 24, 2023</p>
+</div>
+<div>
+<p class="text-[10px] text-text-muted uppercase tracking-wider mb-1">Materials</p>
+<p class="font-medium text-sm text-text-main dark:text-white">Local Clay, Natural Slips</p>
+</div>
+</div>
+</div>
+<div class="flex justify-between items-end w-full mt-4">
+<div class="text-left">
+<p class="text-[10px] text-text-muted uppercase tracking-wider mb-1">Unique Identifier</p>
+<p class="font-mono text-xs text-text-main dark:text-slate-300 bg-background-light dark:bg-slate-800 px-2 py-1 rounded border border-border-color">ART-PS-2023-0894</p>
+</div>
+<div class="size-16 bg-white border border-border-color p-1 rounded-sm shadow-sm flex items-center justify-center" data-alt="QR Code for verification">
+<span class="material-symbols-outlined text-[48px] text-text-main">qr_code_2</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Bottom Section: Previous Certificates -->
+<div class="mb-12">
+<div class="flex justify-between items-center mb-6">
+<h2 class="text-text-main dark:text-white text-2xl font-serif font-bold">My Certificates <span class="text-text-muted text-lg font-normal">(3)</span></h2>
+<a class="text-primary hover:text-primary-dark font-medium text-sm flex items-center gap-1" href="#">
+                            View All <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- Card 1 -->
+<div class="bg-surface-light dark:bg-surface-dark border border-border-color rounded-xl p-4 flex gap-4 items-center shadow-soft hover:shadow-md transition-shadow group">
+<div class="size-20 rounded-lg bg-cover bg-center shrink-0" data-alt="Blue pottery plate" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAK7zhLTbUqSiM4oeKVqH7ok8-DRBrw-mlBISy1lVmCI2efoVxHK3pjViODKZMKUbGx0ICiJf87QtfHDLTsCSuDzvWDqNuuZc8bR7zIlRYEe0V1g_EJyqG1Jpgcu-SjutbCPV6pCOnYEqM1NQyy43uabSfT2EKeH5xrRkSXDNkHyQw5ZJ8EYw1tgxqhMFY3VFCzwr0gjejHcVLyZuPuY8I869SdgcReXmOiXdpTBSGIKWref9cws53Tscm8GF4A1RSgGuTYJuDLjw');"></div>
+<div class="flex flex-col flex-1 min-w-0">
+<div class="flex justify-between items-start mb-1">
+<h4 class="font-serif font-bold text-text-main dark:text-white truncate">Azure Lotus Plate</h4>
+<span class="bg-primary/10 text-primary text-[10px] font-bold px-2 py-0.5 rounded-full tracking-wider uppercase">Certified</span>
+</div>
+<p class="text-xs text-text-muted mb-2">Oct 12, 2023 • Blue Pottery</p>
+<div class="flex gap-2 mt-auto">
+<button class="text-text-muted hover:text-primary p-1 rounded hover:bg-background-light dark:hover:bg-slate-800 transition-colors" title="Download">
+<span class="material-symbols-outlined text-[18px]">download</span>
+</button>
+<button class="text-text-muted hover:text-primary p-1 rounded hover:bg-background-light dark:hover:bg-slate-800 transition-colors" title="Share">
+<span class="material-symbols-outlined text-[18px]">share</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface-light dark:bg-surface-dark border border-border-color rounded-xl p-4 flex gap-4 items-center shadow-soft hover:shadow-md transition-shadow group">
+<div class="size-20 rounded-lg bg-cover bg-center shrink-0" data-alt="Handwoven silk scarf" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDho6-IMGS0FK4XNponcuouLvzqLIQjOXQhshaYMvfZvnWarIybk4lydILGjEEPT3yGfNLmNGQuuvxM9LgUv9kkEJMW9JHLT8acfCyjupbUu5kDV0yURuCWn7tMyuPxnLVFjMb6DKGU5rna6jSP3Zj0rO9wzMJt5mlhyGTHI9ohSPPrnppKsZb-Do_ihBl-HWkFBU3dcqkek1PT81u2ZkynBmwZSBwpQ15bhvgUaUevt9BTjvOH-tuWAgT0cgsJ73-4BmRuQJ8XsA');"></div>
+<div class="flex flex-col flex-1 min-w-0">
+<div class="flex justify-between items-start mb-1">
+<h4 class="font-serif font-bold text-text-main dark:text-white truncate">Crimson Silk Scarf</h4>
+<span class="bg-primary/10 text-primary text-[10px] font-bold px-2 py-0.5 rounded-full tracking-wider uppercase">Certified</span>
+</div>
+<p class="text-xs text-text-muted mb-2">Sep 28, 2023 • Handloom</p>
+<div class="flex gap-2 mt-auto">
+<button class="text-text-muted hover:text-primary p-1 rounded hover:bg-background-light dark:hover:bg-slate-800 transition-colors" title="Download">
+<span class="material-symbols-outlined text-[18px]">download</span>
+</button>
+<button class="text-text-muted hover:text-primary p-1 rounded hover:bg-background-light dark:hover:bg-slate-800 transition-colors" title="Share">
+<span class="material-symbols-outlined text-[18px]">share</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="bg-surface-light dark:bg-surface-dark border border-border-color rounded-xl p-4 flex gap-4 items-center shadow-soft hover:shadow-md transition-shadow group">
+<div class="size-20 rounded-lg bg-cover bg-center shrink-0" data-alt="Carved wooden box" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAkqkCs0TjDLE5Hah62A1h4-KwTndS4dc569566XRAi3-zU0yyye38o57C0bTGzCCxZm598wAn590W0xLtlsMh9AOoswgTW8R2mP-ZPmMKeBaBWioQm0J5zb6jNXXnHxvbIA2XSnXw_I7O6htSFg80djXJPWj99Gl9FCW7e8v1dzKbKdRkbQiPxt_OjpnBkUN6nlInlX0tWzDSagxy6EZspAk1O89y5VSwozqo6YvJrT1XLXfun3ywMuZATugYFDFH4MdVZK_GZDA');"></div>
+<div class="flex flex-col flex-1 min-w-0">
+<div class="flex justify-between items-start mb-1">
+<h4 class="font-serif font-bold text-text-main dark:text-white truncate">Sandalwood Jewel Box</h4>
+<span class="bg-primary/10 text-primary text-[10px] font-bold px-2 py-0.5 rounded-full tracking-wider uppercase">Certified</span>
+</div>
+<p class="text-xs text-text-muted mb-2">Aug 15, 2023 • Wood Carving</p>
+<div class="flex gap-2 mt-auto">
+<button class="text-text-muted hover:text-primary p-1 rounded hover:bg-background-light dark:hover:bg-slate-800 transition-colors" title="Download">
+<span class="material-symbols-outlined text-[18px]">download</span>
+</button>
+<button class="text-text-muted hover:text-primary p-1 rounded hover:bg-background-light dark:hover:bg-slate-800 transition-colors" title="Share">
+<span class="material-symbols-outlined text-[18px]">share</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</div>
+</body></html>

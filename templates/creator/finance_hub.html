@@ -1,0 +1,183 @@
+{%extends "creator/_base.html" %}
+{%set current_page = "finance_hub" %}
+{%block title %}Finance Hub{%endblock %}
+
+{%block content %}
+<div class="p-8 lg:px-12 max-w-6xl mx-auto space-y-8">
+<!-- Page Header -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mt-6">
+<div class="max-w-2xl">
+<h1 class="text-4xl md:text-5xl font-serif font-bold text-slate-900 dark:text-white mb-2">Finance Hub</h1>
+<p class="text-slate-600 dark:text-slate-400 text-lg">Empower your craft through community-backed funding and manage your earnings.</p>
+</div>
+<button class="bg-primary hover:bg-primary/90 text-slate-900 font-semibold py-2.5 px-6 rounded-full transition-colors whitespace-nowrap shadow-sm">
+                            Create a Campaign +
+                        </button>
+</div>
+<!-- Top Stats Bar -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+<div class="bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700">
+<p class="text-sm text-slate-500 dark:text-slate-400 font-medium mb-1">Total Raised</p>
+<p class="text-3xl font-bold text-slate-900 dark:text-white font-serif tracking-tight">₹42,30,000</p>
+</div>
+<div class="bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700">
+<p class="text-sm text-slate-500 dark:text-slate-400 font-medium mb-1">Active Campaigns</p>
+<p class="text-3xl font-bold text-slate-900 dark:text-white font-serif tracking-tight">87</p>
+</div>
+<div class="bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700">
+<p class="text-sm text-slate-500 dark:text-slate-400 font-medium mb-1">Backers</p>
+<p class="text-3xl font-bold text-slate-900 dark:text-white font-serif tracking-tight">14,200</p>
+</div>
+</div>
+<!-- Featured Campaigns -->
+<div>
+<h2 class="text-2xl font-serif font-bold text-slate-900 dark:text-white mb-6">Featured Campaigns</h2>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+<!-- Card 1 -->
+<div class="bg-white dark:bg-slate-800 rounded-2xl overflow-hidden shadow-sm border border-slate-100 dark:border-slate-700 flex flex-col group hover:shadow-md transition-shadow">
+<div class="h-64 bg-slate-200 relative overflow-hidden">
+<img alt="Potter working on a wheel" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Potter working on a wheel" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAt1Kus-n1x8yhbCcizoD1XIKVkobLZ3lF8yHGrYO_5FIp-iSJHMxAz9B0huA3BcJJ6T-g5CJCN1VZYfKCJDW76FoNHi7ZVH-6dsG6g7QHqkPLEMW-6TQLKbsvJZv0WSgQTMOyUzlXoVZ4JBRWu8b4nTtzsz0MlTuFNF_ppVPXpfPW3k9IFwjiIa4SLFBGRL1JqwIabk5lMEzvJ_akMNL5Fj2hDoaBHb94Nzd4nbSR8IkHdIhl7Vi8QkyGcg41EIY-yh4bTchDaBQ"/>
+<div class="absolute top-4 left-4 bg-white/90 dark:bg-slate-900/90 backdrop-blur px-3 py-1 rounded-full text-xs font-semibold text-slate-900 dark:text-white">
+                                        Pottery
+                                    </div>
+</div>
+<div class="p-6 flex-1 flex flex-col">
+<h3 class="text-xl font-serif font-bold text-slate-900 dark:text-white mb-2">New Kiln for Pottery Collective</h3>
+<p class="text-slate-600 dark:text-slate-400 text-sm mb-6 flex-1 line-clamp-2">Help our village collective upgrade to a modern, energy-efficient kiln to increase production safely.</p>
+<div class="space-y-3 mb-6">
+<div class="flex justify-between text-sm font-medium">
+<span class="text-slate-900 dark:text-white">₹3,15,000 raised</span>
+<span class="text-primary">63%</span>
+</div>
+<div class="w-full bg-slate-100 dark:bg-slate-700 rounded-full h-2 overflow-hidden">
+<div class="bg-primary h-2 rounded-full" style="width: 63%"></div>
+</div>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex -space-x-2">
+<img alt="Backer" class="w-8 h-8 rounded-full border-2 border-white dark:border-slate-800 object-cover" data-alt="Portrait of a backer" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCMoL5r6d4D7zJU8hFSRIzKBS6nn_O5ydoBPuEw0OQwGNO8Q9eLkG1gCz04nHldS-mgW4sXdArXev60_eocaumjHUPUuKCeRZaYiuNcTHgjdvEXuDG71iRJlWM2xCxU_agvvV_5T8qIBrwdJgHmq2ROJ7Jawew-4MFtez2bWluuF6sBHiate1KFBtwcVjp_bJLyE5d4tlZ_eCLzLJSylxbfd8Z4YWY2BvllFXdGk_noCnaq5_KbkBNsUxNT26_jYyKkNEkLxBNeWw"/>
+<img alt="Backer" class="w-8 h-8 rounded-full border-2 border-white dark:border-slate-800 object-cover" data-alt="Portrait of a backer" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBXovzhaOAku36Xq2pdOHlSqguSyppLDAGJrVQwIjuBVCF-qBERu9fSgezznhYGUPWf5eMn6NQvzzD1H6RIcI0f0S3Nw6l5hXGr9RBodebc9dn_-84w4Pas9TAHpClQI5xbPkGJeMggqgNyjo5Uas_btulOpy3niqeia-D5I4DizzOGhs0TOsMuX2gCoUz2jXsn-o7yWN4XAWUGPSORRx9RxV6E1XN0WjGV26bGKWp8TUppIX4cmEBqQo9ENXEU3vIJDXW3245DEQ"/>
+<img alt="Backer" class="w-8 h-8 rounded-full border-2 border-white dark:border-slate-800 object-cover" data-alt="Portrait of a backer" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCTlrGj15wwea25kh7FGfVZqA3xrEDNq4tiPnWlfYoTX-psPM5c52BOyPinRrMMSjox7SsDHYD4ArHRAxraxNUkIoBAWHL7vlHf7PLZAZdhQIwAzwJado1mLuifYOWANKv1Wcqr8Dk75COa65DeHnTFBDlfXv-CCq9er0GOHuG1GTIx4QHAmYcry0RHo-oIeXWZVb1R13mprU8G2uKo8l2mxxF7BUjUL1MvZOhEkdnYaC9tvX4ffCiv5GoZtA0mzEQePhIo0IIr_g"/>
+<div class="w-8 h-8 rounded-full border-2 border-white dark:border-slate-800 bg-slate-100 dark:bg-slate-700 flex items-center justify-center text-xs font-medium text-slate-600 dark:text-slate-300">
+                                                +42
+                                            </div>
+</div>
+<button class="bg-primary hover:bg-primary/90 text-slate-900 text-sm font-semibold py-2 px-5 rounded-full transition-colors">
+                                            Back This Project
+                                        </button>
+</div>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-white dark:bg-slate-800 rounded-2xl overflow-hidden shadow-sm border border-slate-100 dark:border-slate-700 flex flex-col group hover:shadow-md transition-shadow">
+<div class="h-64 bg-slate-200 relative overflow-hidden">
+<img alt="Weaver working on a loom" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Weaver working on a loom" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBc_QXym3eOtEh8-zDT6gA_TaPH5j9U3IPbfTSScIQJYLiBcfTdx36xMAoL3tjRnpW_sqJ9O4UEs4nC54bXx2kxrbOppkMOTPLKhz3-4kMNKMJtvMFWDYCNpcdQZALPgr47tZRj1vSFFw8bsrpWV0588U8ICtGXHYcDmZQqb0L1M1M_dlhRlvgEkDTfSz2GvDWCUDTcbjihLAe8c8EM3Hxeugo759uc1S3mOUbejS0rIbmNokz30o5AEIpgPkQTKuaJeQ2eIdQMyw"/>
+<div class="absolute top-4 left-4 bg-white/90 dark:bg-slate-900/90 backdrop-blur px-3 py-1 rounded-full text-xs font-semibold text-slate-900 dark:text-white">
+                                        Textiles
+                                    </div>
+<div class="absolute top-4 right-4 bg-orange-100 text-orange-800 dark:bg-orange-900/30 dark:text-orange-400 px-3 py-1 rounded-full text-xs font-semibold backdrop-blur">
+                                        7 days left
+                                    </div>
+</div>
+<div class="p-6 flex-1 flex flex-col">
+<h3 class="text-xl font-serif font-bold text-slate-900 dark:text-white mb-2">Sustainable Dyes for Weavers</h3>
+<p class="text-slate-600 dark:text-slate-400 text-sm mb-6 flex-1 line-clamp-2">Transitioning our traditional handloom textiles to 100% natural, locally sourced sustainable dyes.</p>
+<div class="space-y-3 mb-6">
+<div class="flex justify-between text-sm font-medium">
+<span class="text-slate-900 dark:text-white">₹1,50,000 raised</span>
+<span class="text-primary">75%</span>
+</div>
+<div class="w-full bg-slate-100 dark:bg-slate-700 rounded-full h-2 overflow-hidden">
+<div class="bg-primary h-2 rounded-full" style="width: 75%"></div>
+</div>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex -space-x-2">
+<img alt="Backer" class="w-8 h-8 rounded-full border-2 border-white dark:border-slate-800 object-cover" data-alt="Portrait of a backer" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDmvleTAMTym5Z63UBUIO8kCjp7F6tasoXmIsaEoF3Yz7DKTDM0cn96K8s-dgWQboZewBX2lAGvROlNviercZulMlygxk2-7AFYvaP9V7A5gqeGPVj8PutIm0dzos4fbJm9hemfH_NTeKW1gFU0bS_eZa_8uRTgJHrP5QgOPyLnwbfRzNVnExFGnQdnuhgN98ENEhM7uWBri7mnDAU3nsZBaOxARhOstWK-SORkVHlzDxlrY7zXTtjXcH2fK3pmihg7j0lztgsUMw"/>
+<img alt="Backer" class="w-8 h-8 rounded-full border-2 border-white dark:border-slate-800 object-cover" data-alt="Portrait of a backer" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAzJsa4NMBbCbC6P7_S6sQ6IVv-PcKYTyYYPrtC3SmlxdGqb3atIjP2KsQref02g0woPt29qFusY9pOcYKZYimhc4DX8RF4UogYxiSvE-LBjnH9tmCPxer-hQGqWUatV6GUqRMqP3csdZk-7xSrgSu41C6bQ4lJ4y7m88Fs1fJqjIObrcQoc58GozwnK-Wz2UIORBydX7ZbkvQ1SpoXSCqyPbcjhLT2zfirRtrN5PJsWkYn2p9vrD5uA4992X_rYaaQbY9Gd2a6Qw"/>
+<div class="w-8 h-8 rounded-full border-2 border-white dark:border-slate-800 bg-slate-100 dark:bg-slate-700 flex items-center justify-center text-xs font-medium text-slate-600 dark:text-slate-300">
+                                                +18
+                                            </div>
+</div>
+<button class="bg-slate-100 hover:bg-slate-200 dark:bg-slate-700 dark:hover:bg-slate-600 text-slate-900 dark:text-white text-sm font-semibold py-2 px-5 rounded-full transition-colors">
+                                            View Details
+                                        </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- More Campaigns Grid -->
+<div>
+<h2 class="text-xl font-serif font-bold text-slate-900 dark:text-white mb-4">More Campaigns</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- Small Card 1 -->
+<div class="bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-sm border border-slate-100 dark:border-slate-700 group hover:shadow-md transition-shadow">
+<div class="h-40 bg-slate-200 overflow-hidden relative">
+<img alt="Camera equipment" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Camera equipment on table" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAFIi6rLUPH8LUkcKtKm0kzx5wopJIluxNY9524paP6sDV0PpLa5kh-ixRTabmn5e0H1A0_CTQk76femOe2cEaLIK4i31V4cRwnqYje7bIIQjROxUPRJszRGK2mDO-DXTDwdAF1KxjGnR67abo3qYh76UPbkUHxj0lDh8dug14TUWGfpKjYe9A9Ljyi-GxSlrNNlu0MkTQj9Jj7_bVNLVqaqGSFRtmdzuRVg7EiK2UAOWVgAH0HcSIc8-UGQ9WLZSOWI9RBhg6v0g"/>
+</div>
+<div class="p-4">
+<h4 class="font-bold text-slate-900 dark:text-white mb-1 line-clamp-1">Digital Photography Kit</h4>
+<p class="text-xs text-slate-500 dark:text-slate-400 mb-3">By Kerala Woodworkers</p>
+<div class="space-y-2">
+<div class="w-full bg-slate-100 dark:bg-slate-700 rounded-full h-1.5 overflow-hidden">
+<div class="bg-primary h-1.5 rounded-full" style="width: 45%"></div>
+</div>
+<div class="flex justify-between text-xs text-slate-600 dark:text-slate-400">
+<span>45% funded</span>
+<span>21 days left</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Small Card 2 -->
+<div class="bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-sm border border-slate-100 dark:border-slate-700 group hover:shadow-md transition-shadow">
+<div class="h-40 bg-slate-200 overflow-hidden relative">
+<img alt="Women studying" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Women looking at documents" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAMZHvH6s8XyXgrk-IlznOQdm7mMcXhW3giW6dQ0WBhy9H36LvC44vHaKVPSkfUhQvAYmn5ZGfQqFb-6jzivVmv3glwLVeUZJ0baerwdBifJHU00mI7kXO165WFHOHzTYvMqh4K-lhSgVguRvh1nJf5n6EmO2p1JMLd-WN24pJYX1CC7O4rtSZwoDkO2uI3n7PtZQZema-sbu6lzKQjsaHNEex5C_SXil23thNzl0SoGBtRwaBmRfz3APtkqVglGi9V5k4-AbNXeA"/>
+</div>
+<div class="p-4">
+<h4 class="font-bold text-slate-900 dark:text-white mb-1 line-clamp-1">Women Weavers Education Fund</h4>
+<p class="text-xs text-slate-500 dark:text-slate-400 mb-3">By Assam Silks</p>
+<div class="space-y-2">
+<div class="w-full bg-slate-100 dark:bg-slate-700 rounded-full h-1.5 overflow-hidden">
+<div class="bg-primary h-1.5 rounded-full" style="width: 88%"></div>
+</div>
+<div class="flex justify-between text-xs text-slate-600 dark:text-slate-400">
+<span>88% funded</span>
+<span>3 days left</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Small Card 3 -->
+<div class="bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-sm border border-slate-100 dark:border-slate-700 group hover:shadow-md transition-shadow">
+<div class="h-40 bg-slate-200 overflow-hidden relative">
+<img alt="Handcrafted jewelry" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Close up of handcrafted jewelry" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAe6xvUDmumhXY_O7ltIebzT_GW3MNM6pVekSjMZuzHaB9LlpYXR-iJwHvtbv9lN7sM0Imq3MZjGoHcsnx7MIxR3MBuzxNqgfuAzSqltwgkZihoiXBQq-h36vaJIIKazNGbrqVeBhujVXcbtu8CQEasBuhJhDkzYQ9eBJerj2OwZTMaUBLaQIU_bYTcscS4SfYK6Jg2IqsjVwO96pqyzpoTAaVbCUB_48Zagy2n8jxjmNo47cxSQpuICcTTMBrhM1JDkTmEtuIlug"/>
+</div>
+<div class="p-4">
+<h4 class="font-bold text-slate-900 dark:text-white mb-1 line-clamp-1">Workspace Expansion</h4>
+<p class="text-xs text-slate-500 dark:text-slate-400 mb-3">By Jaipur Gems</p>
+<div class="space-y-2">
+<div class="w-full bg-slate-100 dark:bg-slate-700 rounded-full h-1.5 overflow-hidden">
+<div class="bg-primary h-1.5 rounded-full" style="width: 12%"></div>
+</div>
+<div class="flex justify-between text-xs text-slate-600 dark:text-slate-400">
+<span>12% funded</span>
+<span>45 days left</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Bottom Banner -->
+<div class="bg-primary/10 dark:bg-primary/5 border border-primary/20 rounded-3xl p-8 text-center mt-12 mb-8">
+<h2 class="text-2xl md:text-3xl font-serif font-bold text-slate-900 dark:text-white mb-3">Ready to grow your craft?</h2>
+<p class="text-slate-600 dark:text-slate-400 max-w-lg mx-auto mb-6">Launch a campaign to fund new equipment, materials, or community initiatives.</p>
+<button class="bg-transparent border-2 border-slate-800 dark:border-slate-200 text-slate-800 dark:text-slate-200 hover:bg-slate-800 hover:text-white dark:hover:bg-slate-200 dark:hover:text-slate-900 font-semibold py-2.5 px-8 rounded-full transition-colors">
+                            Start Fundraising
+                        </button>
+</div>
+</div>
+</div>
+{%endblock %}

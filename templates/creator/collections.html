@@ -1,0 +1,44 @@
+{% extends "creator/_base.html" %}
+{% set current_page = "collections" %}
+{% block title %}My Collections{% endblock %}
+
+{% block content %}
+<div class="p-6 lg:p-10 max-w-7xl mx-auto space-y-8">
+  <div class="flex justify-between items-start mt-6">
+    <div>
+      <h1 class="text-4xl font-serif font-bold mb-2">My Collections</h1>
+      <p class="text-text-muted text-lg">Manage your product catalog and listings.</p>
+    </div>
+    <button class="bg-primary hover:bg-primary-dark text-white font-semibold py-3 px-6 rounded-lg transition-colors flex items-center gap-2">
+      <span class="material-symbols-outlined">add</span>
+      Add Product
+    </button>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    {% for i in range(6) %}
+    <div class="bg-surface-light dark:bg-surface-dark rounded-xl overflow-hidden shadow-soft border border-border-color hover:shadow-lg transition-shadow group">
+      <div class="h-64 bg-slate-200 relative overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1610701596007-11502861dcfa?w=400" alt="Product" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"/>
+        <div class="absolute top-3 right-3 bg-white/90 backdrop-blur px-2 py-1 rounded text-xs font-bold text-green-600">Active</div>
+      </div>
+      <div class="p-5">
+        <h3 class="font-serif font-bold text-lg mb-2">Handwoven Silk Scarf</h3>
+        <p class="text-text-muted text-sm mb-4">Traditional Banarasi weave with gold thread details.</p>
+        <div class="flex items-center justify-between">
+          <span class="text-xl font-bold text-primary">₹2,400</span>
+          <div class="flex gap-2">
+            <button class="p-2 rounded hover:bg-background-light transition-colors" title="Edit">
+              <span class="material-symbols-outlined text-[20px]">edit</span>
+            </button>
+            <button class="p-2 rounded hover:bg-background-light transition-colors" title="Delete">
+              <span class="material-symbols-outlined text-[20px]">delete</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

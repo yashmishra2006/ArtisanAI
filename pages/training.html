@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ArtisanAI - Skill Development Hub</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700&amp;family=Newsreader:opsz,wght@6..72,400;6..72,600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#F59E0B", /* Saffron */
+                        "background-light": "#F9F6F1",
+                        "background-dark": "#221e10",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope"],
+                        "serif": ["Newsreader", "serif"]
+                    },
+                    borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Manrope', sans-serif; }
+        h1, h2, h3, .font-serif { font-family: 'Newsreader', serif; }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen font-display">
+<div class="flex flex-col h-screen">
+<!-- TopNavBar -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-10 py-4 shadow-sm z-10 sticky top-0">
+<div class="flex items-center gap-4 text-slate-900 dark:text-slate-100">
+<div class="size-6 text-primary flex items-center justify-center">
+<span class="material-symbols-outlined" style="font-size: 28px;">filter_vintage</span>
+</div>
+<h2 class="text-xl font-bold leading-tight tracking-[-0.015em] font-serif">ArtisanAI</h2>
+</div>
+<div class="flex flex-1 justify-end gap-8">
+<div class="flex items-center gap-6">
+<button class="text-slate-500 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="text-slate-500 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">language</span>
+</button>
+</div>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 ring-2 ring-primary/20" data-alt="Portrait of an Indian artisan smiling" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA4fAJosFDomVnfvLVsRj1VqsA3T65T044mcBnfGlXvWIJIHCVQDN8yo09my9eOizlg-ZFFsFrJEWuvbafcQ5yDxXXA5_zMtGRSpwyel837X2DJGhq4GeAXggTgOU7JWKyRn5XlaMliNVmB3m1FPUxm0AatOyunnHxs1DtmvbyQd9TC7zMOoUNgRNhko4j6wAl4du_b158l4MOf2lahGMIkJjwrfxJXF_VNFunRGVArxfuyOK8d5xf3Tudwdr_eRsQKey6SYnVzpA");'></div>
+</div>
+</header>
+<div class="flex flex-1 overflow-hidden">
+<!-- Sidebar -->
+<aside class="w-64 flex flex-col justify-between bg-white dark:bg-slate-900 p-6 border-r border-slate-200 dark:border-slate-800 hidden md:flex">
+<div class="flex flex-col gap-2">
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-600 hover:bg-background-light dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined">home</span>
+<p class="text-sm font-medium leading-normal">Home</p>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-600 hover:bg-background-light dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined">group</span>
+<p class="text-sm font-medium leading-normal">Community</p>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg bg-primary/10 text-primary border-r-4 border-primary" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">menu_book</span>
+<p class="text-sm font-medium leading-normal">Training</p>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-600 hover:bg-background-light dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+<p class="text-sm font-medium leading-normal">Earnings</p>
+</a>
+</div>
+<div class="flex flex-col gap-2">
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-600 hover:bg-background-light dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<p class="text-sm font-medium leading-normal">Settings</p>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-600 hover:bg-background-light dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined">help</span>
+<p class="text-sm font-medium leading-normal">Help Center</p>
+</a>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 overflow-y-auto bg-background-light dark:bg-background-dark p-8 lg:p-12">
+<div class="max-w-5xl mx-auto space-y-12">
+<!-- Header & Search -->
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+<div class="flex flex-col gap-2">
+<h1 class="text-4xl md:text-5xl font-serif text-slate-900 dark:text-slate-100">Skill Development Hub</h1>
+<p class="text-slate-600 dark:text-slate-400 text-lg">Master new skills to grow your artisan business with confidence.</p>
+</div>
+<div class="w-full md:w-80">
+<div class="relative flex items-center w-full h-12 rounded-full bg-white dark:bg-slate-800 shadow-sm border border-slate-200 dark:border-slate-700 overflow-hidden focus-within:ring-2 focus-within:ring-primary/50">
+<span class="material-symbols-outlined text-slate-400 ml-4">search</span>
+<input class="w-full h-full bg-transparent border-none focus:ring-0 text-slate-900 dark:text-slate-100 placeholder-slate-400 px-3 text-sm" placeholder="Search courses, topics..." type="text"/>
+</div>
+</div>
+</div>
+<!-- Featured Course -->
+<section>
+<div class="flex flex-col-reverse md:flex-row bg-white dark:bg-slate-900 rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.03)] overflow-hidden border border-slate-100 dark:border-slate-800">
+<div class="flex-1 p-8 md:p-10 flex flex-col justify-center gap-6">
+<div>
+<span class="inline-flex items-center px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-bold uppercase tracking-wider mb-4">Most Popular</span>
+<h2 class="text-3xl font-serif text-slate-900 dark:text-slate-100 mb-3">Digital Marketing 101</h2>
+<p class="text-slate-600 dark:text-slate-400 leading-relaxed text-lg mb-2">Learn how to showcase your craft and build your brand online.</p>
+<div class="flex items-center gap-4 text-sm text-slate-500">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-base">schedule</span> 4 Hours</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-base">translate</span> Hindi, English</span>
+</div>
+</div>
+<div>
+<button class="bg-primary hover:bg-primary/90 text-white font-medium py-3 px-8 rounded-full transition-colors shadow-sm inline-flex items-center gap-2">
+                                        Enroll Free
+                                        <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+<div class="flex-1 min-h-[300px] bg-cover bg-center" data-alt="Artisan using tablet in workshop" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA9oKZhMgsVIntsP3WrJ7dzN9qOZ0FAkZ_FAidohZI4mYKDDBME8el6Nqr7CuVAf32-TWo32jgVw9NXZzmeq70Ichktzi-ocM5_7q3u_DDU7r8mdvu5gRHv8VPxiI05cKBxnOPBm-64F9t9E1iQQi3ipH_glkllaGjn4IdU2TzPi8OsvyjRohuYuw4JMnkx91dGvry-bvqiFqDj7dHYQ092YqnIigPxzWpuClXwZzfsMHj6PNFoJEGEEFJZufDQhzhEcMK_AlPPhw');"></div>
+</div>
+</section>
+<!-- Category Filters -->
+<section class="flex overflow-x-auto pb-2 gap-3 hide-scrollbar">
+<button class="px-5 py-2 rounded-full bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 text-sm font-medium whitespace-nowrap">All Courses</button>
+<button class="px-5 py-2 rounded-full bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:border-primary/50 text-sm font-medium whitespace-nowrap transition-colors">Marketing</button>
+<button class="px-5 py-2 rounded-full bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:border-primary/50 text-sm font-medium whitespace-nowrap transition-colors">Photography</button>
+<button class="px-5 py-2 rounded-full bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:border-primary/50 text-sm font-medium whitespace-nowrap transition-colors">Business Setup</button>
+<button class="px-5 py-2 rounded-full bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:border-primary/50 text-sm font-medium whitespace-nowrap transition-colors flex items-center gap-2"><span class="material-symbols-outlined text-sm text-primary">play_circle</span> Hindi Videos</button>
+</section>
+<!-- Course Grid -->
+<section>
+<h3 class="text-2xl font-serif text-slate-900 dark:text-slate-100 mb-6">Recommended for You</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- Card 1 -->
+<div class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-100 dark:border-slate-800 overflow-hidden hover:shadow-lg transition-shadow group flex flex-col h-full">
+<div class="h-48 bg-cover bg-center overflow-hidden relative" data-alt="Product photography setup with pottery" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDjCCF0CjDaMJeaNphCz3JDBhIPg_Sr6a5QC9H28eNRf41IqP5_5U74j6JZUb0S5V-kMo6o8FeZSLMD-2ex9CZdPzuDhIZP6NJCYYXKhR0APIfuLLx8PzrPJIl9p_lRDxSTJoX0drcEwiwxC3LoWiifOPjrK-g7I1CEj4ObZWwfmaADkaUlAaB_b-dVpr28_ZoBIXY25j7frtGi8I8GydvGQN5AMiSCXhl64tMQK0i-h4BBsjYvzNcbqJIPt-z2xHBUo4Bzvv_Jjg');">
+<div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors"></div>
+<div class="absolute top-4 left-4">
+<span class="px-2 py-1 bg-indigo-100 text-indigo-700 text-xs font-bold rounded shadow-sm">Photography</span>
+</div>
+</div>
+<div class="p-6 flex flex-col flex-grow">
+<h4 class="font-bold text-lg text-slate-900 dark:text-slate-100 mb-2 font-serif group-hover:text-primary transition-colors">Smartphone Product Photography</h4>
+<p class="text-slate-600 dark:text-slate-400 text-sm mb-4 flex-grow">Capture stunning images of your crafts using just your mobile phone and natural light.</p>
+<div class="flex items-center justify-between mt-auto pt-4 border-t border-slate-100 dark:border-slate-800">
+<span class="text-sm text-slate-500 flex items-center gap-1"><span class="material-symbols-outlined text-sm">schedule</span> 2.5 hrs</span>
+<a class="text-primary font-medium text-sm hover:underline inline-flex items-center gap-1" href="#">Start Learning <span class="material-symbols-outlined text-sm">chevron_right</span></a>
+</div>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-100 dark:border-slate-800 overflow-hidden hover:shadow-lg transition-shadow group flex flex-col h-full">
+<div class="h-48 bg-cover bg-center overflow-hidden relative" data-alt="Hands writing in a ledger book" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDtxU7h-t3w2tQ_3zS0UCSx4mdvtjdEr363IiOGCwSpf__JUJn8XnwB9G2iDvW9wW0ZS5JtBrT5Pa_7vw5sDiE5Lm4hX4cSVcDus8KjEYjpcAlLD_ZxGCuDKbVdZPlGGHI1mAZBpuyW4Vl5PLrKeFjbJ1Z5uHcnfgbA-5avrqalUOLH_NNbGsBprNaOAJRzwIW1ltJ6rTIKWq901jUH_eCfSAv8x1mL3h0HSw0tPkfDOKtqPLyBlki7YwLqFb50nDda9PTkkwNbUQ');">
+<div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors"></div>
+<div class="absolute top-4 left-4">
+<span class="px-2 py-1 bg-green-100 text-green-700 text-xs font-bold rounded shadow-sm">Business</span>
+</div>
+</div>
+<div class="p-6 flex flex-col flex-grow">
+<h4 class="font-bold text-lg text-slate-900 dark:text-slate-100 mb-2 font-serif group-hover:text-primary transition-colors">Pricing Your Crafts Profitably</h4>
+<p class="text-slate-600 dark:text-slate-400 text-sm mb-4 flex-grow">Learn the formula to price your handmade goods to cover costs and ensure a fair profit.</p>
+<div class="flex items-center justify-between mt-auto pt-4 border-t border-slate-100 dark:border-slate-800">
+<span class="text-sm text-slate-500 flex items-center gap-1"><span class="material-symbols-outlined text-sm">schedule</span> 1.5 hrs</span>
+<a class="text-primary font-medium text-sm hover:underline inline-flex items-center gap-1" href="#">Start Learning <span class="material-symbols-outlined text-sm">chevron_right</span></a>
+</div>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-100 dark:border-slate-800 overflow-hidden hover:shadow-lg transition-shadow group flex flex-col h-full">
+<div class="h-48 bg-cover bg-center overflow-hidden relative" data-alt="Social media icons on smartphone" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBI_C9-_16kh6-hO_XbCsEupfO4zkn4739W6tCRFy3Oxq-kcoOWCNydGqWxzinLxQO5bfD21etgsCuzrg30m332uGxtlHA-ihlKGVGvUk0FfNOCmqdjcKdGdw9B9In39tK_zJFuuvLOteNifz7JZCnuPADHiCD_7hrWDTqIaisERModiYiwamFS-fcYv3OXnMtRb6Tm9K_GJPMyjmvglWfn6uEdf13XWdXPEhOPhw7uhaw4fFzRZpzE9Rgd9gFvQOQn4G2TdERbZQ');">
+<div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors"></div>
+<div class="absolute top-4 left-4">
+<span class="px-2 py-1 bg-orange-100 text-orange-700 text-xs font-bold rounded shadow-sm">Marketing</span>
+</div>
+</div>
+<div class="p-6 flex flex-col flex-grow">
+<h4 class="font-bold text-lg text-slate-900 dark:text-slate-100 mb-2 font-serif group-hover:text-primary transition-colors">Instagram for Artisans</h4>
+<p class="text-slate-600 dark:text-slate-400 text-sm mb-4 flex-grow">Build an engaged audience and sell directly through social media stories and posts.</p>
+<div class="flex items-center justify-between mt-auto pt-4 border-t border-slate-100 dark:border-slate-800">
+<span class="text-sm text-slate-500 flex items-center gap-1"><span class="material-symbols-outlined text-sm">schedule</span> 3 hrs</span>
+<a class="text-primary font-medium text-sm hover:underline inline-flex items-center gap-1" href="#">Start Learning <span class="material-symbols-outlined text-sm">chevron_right</span></a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Learning Path -->
+<section class="bg-[#F0EBE1] dark:bg-slate-800/50 rounded-2xl p-8 md:p-10 border border-[#E5DECD] dark:border-slate-700">
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
+<div>
+<h3 class="text-2xl font-serif text-slate-900 dark:text-slate-100">Your E-commerce Journey</h3>
+<p class="text-slate-600 dark:text-slate-400 mt-1">Follow this path to successfully launch your online artisan store.</p>
+</div>
+<span class="text-sm font-medium text-slate-500 bg-white dark:bg-slate-700 px-3 py-1 rounded-full">2/4 Completed</span>
+</div>
+<div class="relative mt-4">
+<!-- Connecting Line -->
+<div class="absolute top-6 left-6 right-6 h-0.5 bg-slate-300 dark:bg-slate-600 z-0 hidden md:block"></div>
+<div class="absolute top-6 left-6 w-1/2 h-0.5 bg-primary z-0 hidden md:block"></div>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-6 relative z-10">
+<!-- Step 1 -->
+<div class="flex flex-row md:flex-col items-center md:items-start gap-4">
+<div class="w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center shrink-0 shadow-md">
+<span class="material-symbols-outlined">check</span>
+</div>
+<div>
+<h5 class="font-bold text-slate-900 dark:text-slate-100 mb-1">Set Up Profile</h5>
+<p class="text-xs text-slate-500 md:pr-4">Create your artisan identity and tell your unique story.</p>
+</div>
+</div>
+<!-- Step 2 -->
+<div class="flex flex-row md:flex-col items-center md:items-start gap-4">
+<div class="w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center shrink-0 shadow-md">
+<span class="material-symbols-outlined">check</span>
+</div>
+<div>
+<h5 class="font-bold text-slate-900 dark:text-slate-100 mb-1">Product Catalog</h5>
+<p class="text-xs text-slate-500 md:pr-4">Photograph and list your first 5 products.</p>
+</div>
+</div>
+<!-- Step 3 -->
+<div class="flex flex-row md:flex-col items-center md:items-start gap-4">
+<div class="w-12 h-12 rounded-full bg-white dark:bg-slate-700 border-2 border-primary text-primary flex items-center justify-center shrink-0 shadow-sm">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+</div>
+<div>
+<h5 class="font-bold text-primary mb-1">Pricing Strategy</h5>
+<p class="text-xs text-slate-500 md:pr-4">Current module: Learn to price for profit and sustainability.</p>
+</div>
+</div>
+<!-- Step 4 -->
+<div class="flex flex-row md:flex-col items-center md:items-start gap-4">
+<div class="w-12 h-12 rounded-full bg-white dark:bg-slate-700 border-2 border-slate-300 dark:border-slate-600 text-slate-400 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined">rocket_launch</span>
+</div>
+<div>
+<h5 class="font-bold text-slate-500 dark:text-slate-400 mb-1">Launch Campaign</h5>
+<p class="text-xs text-slate-400 md:pr-4">Announce your store to the world.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+</div>
+</div>
+</body></html>

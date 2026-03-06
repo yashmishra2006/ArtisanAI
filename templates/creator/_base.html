@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>{% block title %}Creator Portal{% endblock %} — ArtisanAI</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        colors: {
+          "primary":          "#E28743",
+          "primary-light":    "#F2A65A",
+          "primary-dark":     "#C96D2E",
+          "background-light": "#F9F6F1",
+          "background-dark":  "#1A1714",
+          "surface-light":    "#FFFFFF",
+          "surface-dark":     "#2C2825",
+          "text-main":        "#2C2825",
+          "text-muted":       "#7A736A",
+          "border-color":     "#E5E1DA"
+        },
+        fontFamily: {
+          "display": ["Manrope", "sans-serif"],
+          "serif":   ["Newsreader", "serif"]
+        },
+        borderRadius: { "DEFAULT": "0.5rem", "lg": "0.75rem", "xl": "1rem", "full": "9999px" },
+        boxShadow:    { "soft": "0 4px 20px -2px rgba(0,0,0,.05)" }
+      }
+    }
+  }
+</script>
+<style>
+  body { font-family: 'Manrope', sans-serif; background-color: #F9F6F1; }
+  h1,h2,h3,h4,h5,h6,.font-serif { font-family: 'Newsreader', serif; }
+  .material-symbols-outlined { font-variation-settings: 'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24; }
+  {% block extra_style %}{% endblock %}
+</style>
+{% block extra_head %}{% endblock %}
+</head>
+<body class="bg-background-light dark:bg-background-dark text-text-main dark:text-slate-200 font-display">
+<div class="flex flex-col min-h-screen">
+
+  <!-- ── TOP NAVBAR ─────────────────────────────────────────── -->
+  <header class="sticky top-0 z-50 flex items-center justify-between border-b border-border-color bg-surface-light dark:bg-surface-dark px-6 lg:px-10 py-4 shadow-sm">
+    <!-- Brand -->
+    <a href="{{ url_for('shop.index') }}" class="flex items-center gap-3 no-underline shrink-0">
+      <span class="material-symbols-outlined text-primary text-3xl">spa</span>
+      <span class="text-text-main dark:text-slate-100 text-xl font-serif font-bold tracking-tight">ArtisanAI</span>
+      <span class="ml-2 text-xs font-semibold text-primary bg-primary/10 border border-primary/20 rounded-full px-2 py-0.5 uppercase tracking-wider">Creator</span>
+    </a>
+
+    <!-- Right actions -->
+    <div class="flex items-center gap-3">
+      <button class="p-2 text-text-muted hover:text-primary rounded-full hover:bg-background-light transition-colors" title="Search">
+        <span class="material-symbols-outlined">search</span>
+      </button>
+      <button class="p-2 text-text-muted hover:text-primary rounded-full hover:bg-background-light transition-colors" title="Notifications">
+        <span class="material-symbols-outlined">notifications</span>
+      </button>
+      <div class="bg-center bg-no-repeat bg-cover rounded-full size-9 border-2 border-primary/30 cursor-pointer"
+           style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBc3NJdimugGxUjfWvsNdHNfsLTb6GVSvJ7P5CT527GSomstfZXdqXA-YzCNZV-f18WZ0jaTJRGYY5xzjRUqYQKAGDyRIBTlUBN1sfBnd5a7scrjeGNvFG_CSXWKuy8H--ZVTkZFk1cjmwTf8ktXYn-w-8zgd8BCFiFoOyGRxBSvrsvZSnhigAqV-m89mIsg7XPDJe2UB-90FmlVOEjLpqUqfkBqV_tlL3dGRpJYMKJ_2q2aUYK5-uMr0p7FF_kKUNpkptP4sbQ_A");'
+           title="Profile"></div>
+    </div>
+  </header>
+
+  <!-- ── BODY: SIDEBAR + MAIN ───────────────────────────────── -->
+  <div class="flex flex-1">
+
+    <!-- SIDEBAR -->
+    <aside class="w-64 shrink-0 border-r border-border-color bg-surface-light dark:bg-surface-dark hidden md:flex flex-col sticky top-[73px] h-[calc(100vh-73px)] overflow-y-auto">
+      <div class="p-6 flex flex-col h-full">
+
+        <!-- Artisan profile chip -->
+        <div class="flex items-center gap-3 mb-8">
+          <div class="bg-center bg-no-repeat bg-cover rounded-full size-12 shadow shadow-primary/10 border border-primary/20 shrink-0"
+               style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBc3NJdimugGxUjfWvsNdHNfsLTb6GVSvJ7P5CT527GSomstfZXdqXA-YzCNZV-f18WZ0jaTJRGYY5xzjRUqYQKAGDyRIBTlUBN1sfBnd5a7scrjeGNvFG_CSXWKuy8H--ZVTkZFk1cjmwTf8ktXYn-w-8zgd8BCFiFoOyGRxBSvrsvZSnhigAqV-m89mIsg7XPDJe2UB-90FmlVOEjLpqUqfkBqV_tlL3dGRpJYMKJ_2q2aUYK5-uMr0p7FF_kKUNpkptP4sbQ_A");'></div>
+          <div>
+            <p class="text-text-main dark:text-slate-100 text-sm font-serif font-semibold leading-tight">Priya Sharma</p>
+            <p class="text-text-muted text-xs font-medium uppercase tracking-wider">Master Artisan</p>
+          </div>
+        </div>
+
+        <!-- Primary nav -->
+        <nav class="flex flex-col gap-1 flex-1">
+
+          {% set nav = [
+            ('creator.dashboard',         'home',                   'Dashboard',         'dashboard'),
+            ('creator.collections',       'category',               'Collections',       'collections'),
+            ('creator.ai_photo_studio',   'camera_enhance',         'AI Photo Studio',   'ai_photo_studio'),
+            ('creator.digital_provenance','verified_user',          'Digital Provenance','digital_provenance'),
+            ('creator.finance_hub',       'account_balance_wallet', 'Finance Hub',       'finance_hub'),
+            ('creator.training',          'menu_book',              'Training Hub',      'training'),
+            ('creator.community',         'groups',                 'Community',         'community'),
+          ] %}
+
+          {% for route, icon, label, key in nav %}
+            {% if current_page == key %}
+              <div class="flex items-center gap-3 px-4 py-2.5 rounded-lg bg-primary/10 border-l-4 border-primary text-primary">
+                <span class="material-symbols-outlined text-[20px]">{{ icon }}</span>
+                <span class="text-sm font-semibold">{{ label }}</span>
+              </div>
+            {% else %}
+              <a href="{{ url_for(route) }}"
+                 class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-text-muted hover:bg-background-light dark:hover:bg-slate-800 transition-colors">
+                <span class="material-symbols-outlined text-[20px]">{{ icon }}</span>
+                <span class="text-sm font-medium">{{ label }}</span>
+              </a>
+            {% endif %}
+          {% endfor %}
+
+          <!-- Separator + Settings -->
+          <div class="my-2 border-t border-border-color"></div>
+
+          {% if current_page == 'settings' %}
+            <div class="flex items-center gap-3 px-4 py-2.5 rounded-lg bg-primary/10 border-l-4 border-primary text-primary">
+              <span class="material-symbols-outlined text-[20px]">settings</span>
+              <span class="text-sm font-semibold">Settings</span>
+            </div>
+          {% else %}
+            <a href="{{ url_for('creator.settings') }}"
+               class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-text-muted hover:bg-background-light dark:hover:bg-slate-800 transition-colors">
+              <span class="material-symbols-outlined text-[20px]">settings</span>
+              <span class="text-sm font-medium">Settings</span>
+            </a>
+          {% endif %}
+        </nav>
+
+        <!-- Bottom: View Marketplace -->
+        <div class="mt-4 pt-4 border-t border-border-color">
+          <a href="{{ url_for('shop.marketplace') }}"
+             class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-text-muted hover:bg-background-light dark:hover:bg-slate-800 transition-colors text-sm">
+            <span class="material-symbols-outlined text-[20px]">storefront</span>
+            <span class="font-medium">View Marketplace</span>
+          </a>
+        </div>
+
+      </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="flex-1 overflow-y-auto min-w-0">
+      {% block content %}{% endblock %}
+    </main>
+
+  </div><!-- end flex body -->
+</div>
+</body>
+</html>

@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ArtisanAI - Shop Handmade India</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#efa32a",
+                        "background-light": "#f8f7f6",
+                        "background-dark": "#221b10",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"],
+                        "serif": ["Newsreader", "serif"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            font-family: 'Manrope', sans-serif;
+        }
+        h1, h2, h3, .font-serif {
+            font-family: 'Newsreader', serif;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display min-h-screen">
+<!-- TopNavBar -->
+<div class="relative flex h-auto w-full flex-col bg-white dark:bg-slate-900 group/design-root overflow-x-hidden border-b border-slate-200 dark:border-slate-800">
+<div class="layout-container flex h-full grow flex-col">
+<div class="px-8 md:px-16 lg:px-40 flex flex-1 justify-center py-5">
+<div class="layout-content-container flex flex-col max-w-[1200px] flex-1">
+<header class="flex items-center justify-between whitespace-nowrap px-4 py-3">
+<div class="flex items-center gap-8">
+<a class="flex items-center gap-3 text-slate-900 dark:text-white no-underline" href="{{ url_for('shop.index') }}">
+<div class="text-primary material-symbols-outlined text-3xl">local_florist</div>
+<h2 class="text-slate-900 dark:text-white text-xl font-serif font-bold leading-tight tracking-tight">ArtisanAI</h2>
+</a>
+<label class="hidden md:flex flex-col min-w-40 !h-10 max-w-64">
+<div class="flex w-full flex-1 items-stretch rounded-full h-full border border-slate-200 dark:border-slate-700 bg-background-light dark:bg-slate-800 overflow-hidden">
+<div class="text-slate-500 flex items-center justify-center pl-4 material-symbols-outlined text-xl">search</div>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-r-full text-slate-900 dark:text-white focus:outline-0 focus:ring-0 border-none bg-transparent h-full placeholder:text-slate-400 px-4 pl-2 text-sm font-medium leading-normal" placeholder="Search crafts..." value=""/>
+</div>
+</label>
+</div>
+<div class="flex flex-1 justify-end gap-8">
+<nav class="hidden lg:flex items-center gap-8">
+<a class="text-slate-800 dark:text-slate-200 text-sm font-semibold leading-normal hover:text-primary transition-colors" href="{{ url_for('shop.marketplace') }}">Shop</a>
+<a class="text-slate-600 dark:text-slate-400 text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">Artisans</a>
+<a class="text-slate-600 dark:text-slate-400 text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">Our Story</a>
+<a class="text-slate-600 dark:text-slate-400 text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">Collections</a>
+<a class="text-sm font-semibold text-primary border border-primary rounded-full px-4 py-1 hover:bg-primary hover:text-white transition-colors" href="{{ url_for('shop.become_seller') }}">Sell on ArtisanAI</a>
+</nav>
+<div class="flex gap-2">
+<button class="flex items-center justify-center rounded-full h-10 w-10 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+<span class="material-symbols-outlined text-[22px]">favorite</span>
+</button>
+<button class="flex items-center justify-center rounded-full h-10 w-10 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+<span class="material-symbols-outlined text-[22px]">shopping_cart</span>
+</button>
+<button class="flex items-center justify-center rounded-full h-10 w-10 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+<span class="material-symbols-outlined text-[22px]">account_circle</span>
+</button>
+</div>
+</div>
+</header>
+</div>
+</div>
+</div>
+</div>
+<!-- Main Content -->
+<main class="max-w-[1200px] mx-auto px-4 md:px-8 lg:px-16 py-8">
+<!-- Breadcrumbs & Header -->
+<div class="mb-8">
+<div class="flex flex-wrap gap-2 text-sm mb-4">
+<a class="text-slate-500 hover:text-primary transition-colors" href="{{ url_for('shop.index') }}">Home</a>
+<span class="text-slate-400">/</span>
+<a class="text-slate-500 hover:text-primary transition-colors" href="{{ url_for('shop.marketplace') }}">Marketplace</a>
+<span class="text-slate-400">/</span>
+<span class="text-slate-900 dark:text-white font-medium">Shop Handmade India</span>
+</div>
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+<div class="max-w-2xl">
+<h1 class="text-4xl md:text-5xl font-serif font-bold text-slate-900 dark:text-white mb-3">Shop Handmade India</h1>
+<p class="text-lg text-slate-600 dark:text-slate-400 italic font-serif">Discover authentic, handcrafted luxury from master artisans across India.</p>
+</div>
+</div>
+</div>
+<!-- Filter Bar -->
+<div class="flex flex-wrap items-center justify-between gap-4 bg-white dark:bg-slate-900 p-4 rounded-xl shadow-sm border border-slate-100 dark:border-slate-800 mb-8">
+<div class="flex flex-wrap gap-2">
+<button class="px-4 py-2 rounded-full bg-primary text-white text-sm font-semibold shadow-sm">All Crafts</button>
+<button class="px-4 py-2 rounded-full bg-background-light dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 text-sm font-medium transition-colors">Textiles</button>
+<button class="px-4 py-2 rounded-full bg-background-light dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 text-sm font-medium transition-colors">Ceramics</button>
+<button class="px-4 py-2 rounded-full bg-background-light dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 text-sm font-medium transition-colors">Metalwork</button>
+<button class="px-4 py-2 rounded-full bg-background-light dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 text-sm font-medium transition-colors hidden sm:block">Jewelry</button>
+</div>
+<div class="flex items-center gap-3">
+<span class="text-sm font-medium text-slate-600 dark:text-slate-400">Sort By:</span>
+<select class="form-select rounded-lg border-slate-200 dark:border-slate-700 bg-background-light dark:bg-slate-800 text-slate-900 dark:text-white text-sm focus:ring-primary focus:border-primary py-2 pl-3 pr-10">
+<option>AI Recommended</option>
+<option>Newest Arrivals</option>
+<option>Price: Low to High</option>
+<option>Price: High to Low</option>
+<option>Highest Rated</option>
+</select>
+</div>
+</div>
+<div class="flex flex-col lg:flex-row gap-8">
+<!-- Sidebar -->
+<aside class="w-full lg:w-64 flex-shrink-0">
+<div class="bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-slate-100 dark:border-slate-800 p-6 sticky top-6">
+<h3 class="text-lg font-serif font-bold text-slate-900 dark:text-white mb-6 border-b border-slate-100 dark:border-slate-800 pb-3">Filters</h3>
+<!-- Category -->
+<div class="mb-6">
+<h4 class="text-sm font-bold text-slate-900 dark:text-white mb-3 uppercase tracking-wider">Category</h4>
+<div class="space-y-2">
+<label class="flex items-center gap-3 cursor-pointer group">
+<input checked="" class="rounded text-primary focus:ring-primary border-slate-300" type="checkbox"/>
+<span class="text-sm text-slate-600 dark:text-slate-400 group-hover:text-slate-900 dark:group-hover:text-white">Clothing &amp; Apparel (42)</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="rounded text-primary focus:ring-primary border-slate-300" type="checkbox"/>
+<span class="text-sm text-slate-600 dark:text-slate-400 group-hover:text-slate-900 dark:group-hover:text-white">Home Decor (28)</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="rounded text-primary focus:ring-primary border-slate-300" type="checkbox"/>
+<span class="text-sm text-slate-600 dark:text-slate-400 group-hover:text-slate-900 dark:group-hover:text-white">Accessories (15)</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="rounded text-primary focus:ring-primary border-slate-300" type="checkbox"/>
+<span class="text-sm text-slate-600 dark:text-slate-400 group-hover:text-slate-900 dark:group-hover:text-white">Art &amp; Collectibles (19)</span>
+</label>
+</div>
+</div>
+<!-- Region -->
+<div class="mb-6">
+<h4 class="text-sm font-bold text-slate-900 dark:text-white mb-3 uppercase tracking-wider">Region</h4>
+<div class="space-y-2">
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="rounded text-primary focus:ring-primary border-slate-300" type="checkbox"/>
+<span class="text-sm text-slate-600 dark:text-slate-400 group-hover:text-slate-900 dark:group-hover:text-white">Rajasthan</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="rounded text-primary focus:ring-primary border-slate-300" type="checkbox"/>
+<span class="text-sm text-slate-600 dark:text-slate-400 group-hover:text-slate-900 dark:group-hover:text-white">Gujarat</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="rounded text-primary focus:ring-primary border-slate-300" type="checkbox"/>
+<span class="text-sm text-slate-600 dark:text-slate-400 group-hover:text-slate-900 dark:group-hover:text-white">West Bengal</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="rounded text-primary focus:ring-primary border-slate-300" type="checkbox"/>
+<span class="text-sm text-slate-600 dark:text-slate-400 group-hover:text-slate-900 dark:group-hover:text-white">Bihar</span>
+</label>
+</div>
+</div>
+<!-- Price -->
+<div class="mb-6">
+<h4 class="text-sm font-bold text-slate-900 dark:text-white mb-3 uppercase tracking-wider">Price Range</h4>
+<div class="px-2">
+<input class="w-full h-1 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-primary" max="1000" min="0" type="range" value="500"/>
+<div class="flex justify-between text-xs text-slate-500 mt-2">
+<span>$0</span>
+<span>$1000+</span>
+</div>
+</div>
+</div>
+<!-- Rating -->
+<div class="mb-6">
+<h4 class="text-sm font-bold text-slate-900 dark:text-white mb-3 uppercase tracking-wider">Rating</h4>
+<div class="space-y-2">
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="text-primary focus:ring-primary border-slate-300" name="rating" type="radio"/>
+<div class="flex items-center text-primary text-sm">
+<span class="material-symbols-outlined text-[16px] fill-current">star</span>
+<span class="material-symbols-outlined text-[16px] fill-current">star</span>
+<span class="material-symbols-outlined text-[16px] fill-current">star</span>
+<span class="material-symbols-outlined text-[16px] fill-current">star</span>
+<span class="material-symbols-outlined text-[16px] fill-current">star</span>
+</div>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="text-primary focus:ring-primary border-slate-300" name="rating" type="radio"/>
+<div class="flex items-center text-primary text-sm">
+<span class="material-symbols-outlined text-[16px] fill-current">star</span>
+<span class="material-symbols-outlined text-[16px] fill-current">star</span>
+<span class="material-symbols-outlined text-[16px] fill-current">star</span>
+<span class="material-symbols-outlined text-[16px] fill-current">star</span>
+<span class="material-symbols-outlined text-[16px] text-slate-300">star</span>
+<span class="text-slate-500 ml-1 text-xs">&amp; Up</span>
+</div>
+</label>
+</div>
+</div>
+<button class="w-full bg-primary hover:bg-amber-600 text-white font-bold py-3 px-4 rounded-lg transition-colors">
+                        Apply Filters
+                    </button>
+</div>
+</aside>
+<!-- Product Area -->
+<div class="flex-1 flex flex-col gap-8">
+<!-- Artisan Spotlight -->
+<div class="bg-[#fdfbf7] dark:bg-slate-800 rounded-xl p-6 border border-[#f0eadd] dark:border-slate-700 flex flex-col md:flex-row items-center gap-6 shadow-sm">
+<div class="w-24 h-24 md:w-32 md:h-32 rounded-full overflow-hidden flex-shrink-0 border-4 border-white shadow-md">
+<img alt="Portrait of Indian artisan woman" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAYOo17pITSlh8ssLZ78buPg5K7X4tKUwO47oyzQFFmWxyhPuHbCTL32dubrl6ku28e5XekgCxBaG5ZHGaC6JrRy0KE7j6gCTigLsCMRefQeOmF9xEHLgik3VXZuWC4aw7dAfdVbJ79JW0NdwFQ_st8XRrk1GMh__9wn_UCkt84PZfS5FpKODYD1zUDZF9ym6nUzNbl3SLKGUL3TNVlpaZYo2sxtJCmiKjunxa-ePkm_WyWGck-P_ih3_RwybVhQUDnh9KI561naQ"/>
+</div>
+<div class="flex-1 text-center md:text-left">
+<div class="text-xs font-bold text-primary tracking-widest uppercase mb-1">Artisan Spotlight</div>
+<h3 class="text-2xl font-serif font-bold text-slate-900 dark:text-white mb-2">Fatima Bi, Block Print Master</h3>
+<p class="text-slate-600 dark:text-slate-300 text-sm md:text-base mb-4 max-w-xl">"Each block is a stamp of our history. When you wear our prints, you carry a piece of Rajasthan with you."</p>
+<a class="inline-flex items-center gap-2 text-sm font-bold text-primary hover:text-amber-700 transition-colors" href="#">
+                            Shop Her Collection <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- Product 1 -->
+<div class="bg-white dark:bg-slate-900 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow border border-slate-100 dark:border-slate-800 flex flex-col group">
+<div class="relative aspect-square overflow-hidden bg-slate-100">
+<img alt="Detailed shot of traditional Indian Saree" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC9pVz65yBVIGxjlSoiAX5Id12uUodDaBBknkgcy1NQDlOqkM9UOGZKZxWHzWAiXXD59BOo4fO0IpPOJ5SnLGq_mmerVbVZ61UaDXuqgWwhUqkUkPEXDB9QfnTUMMxcLzkkvbnHKsmkmHxUZLwZanSvp37insT9LKZF2iO32HYvWJSG726gghFIJJlC5vVJ_XlWLKhzUTVZm-oEQ-4o2v9DiPmns1V4yX_gg7ALcZSfpSkzhTc8PjuNx8SnkO4qPXo3jiAdqFi0qQ"/>
+<button class="absolute top-3 right-3 w-8 h-8 bg-white/80 backdrop-blur rounded-full flex items-center justify-center text-slate-600 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[18px]">favorite_border</span>
+</button>
+<div class="absolute bottom-3 left-3 bg-white/90 backdrop-blur px-2 py-1 rounded text-xs font-semibold text-slate-800 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">location_on</span> Bihar
+                            </div>
+</div>
+<div class="p-5 flex flex-col flex-1">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-serif font-bold text-lg text-slate-900 dark:text-white line-clamp-1">Hand-painted Madhubani Saree</h3>
+<span class="font-bold text-slate-900 dark:text-white">$245</span>
+</div>
+<div class="flex items-center gap-2 mb-3">
+<img alt="Small avatar of artisan" class="w-6 h-6 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB8DHewmj5tZFO8fCdChQedaTlJyDHlQM8wzVIklubnkSjq6u2xvf1T9x-kmjp-xul8nOgqqQNkXjfKaDR1mbRlAvGmnaMVEex0OitM2UD1fE7yoPCRxy5cWLmJa1FNABNtOrDJOaVycoocGuHtbczXbsneCF96RMHp66qyL_8yrtEAv9p5oxpPMM060VQPMgnQFydPLKnppINuP1syzBlaia8hI4COBYkNuxiRre76mg0Ro1FibHm_148iJSzp8hFkPY0j1a_PkQ"/>
+<span class="text-sm text-slate-600 dark:text-slate-400">by Rupa Devi</span>
+</div>
+<div class="flex items-center gap-1 mb-4 mt-auto">
+<div class="flex text-primary">
+<span class="material-symbols-outlined text-[16px] fill-current">star</span>
+<span class="material-symbols-outlined text-[16px] fill-current">star</span>
+<span class="material-symbols-outlined text-[16px] fill-current">star</span>
+<span class="material-symbols-outlined text-[16px] fill-current">star</span>
+<span class="material-symbols-outlined text-[16px] fill-current">star_half</span>
+</div>
+<span class="text-xs text-slate-500">(24)</span>
+</div>
+<button class="w-full bg-primary/10 hover:bg-primary text-primary hover:text-white font-semibold py-2.5 rounded-lg transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">shopping_bag</span> Add to Cart
+                            </button>
+</div>
+</div>
+<!-- Product 2 -->
+<div class="bg-white dark:bg-slate-900 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow border border-slate-100 dark:border-slate-800 flex flex-col group">
+<div class="relative aspect-square overflow-hidden bg-slate-100">
+<img alt="Handcrafted blue pottery vase" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDf81cwbdx7mxElM0-60CHq39N7A-lrzK8A0wGpCjMx5JteEnr5cbKtaqkpQR-NUvuEEV0sDWw87TpLP1FzG5tWSt_IBgo_5J0f6DziltjIgIsrvqLIIGacWGpEW3CxXmhCN4-xqpv2h7sjC5vC9X-iBpnZ05Q5pIHtKbhKeKpqBCP1cdY6qANqc-_3CwUf93ECPL5_hq0DMI_lYpf-2lclDKOYtMI1cMqqazKjGYGKy-zF52hkqTHV2XbUhhSK31vnfVMwnSXwrw"/>
+<button class="absolute top-3 right-3 w-8 h-8 bg-white/80 backdrop-blur rounded-full flex items-center justify-center text-slate-600 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[18px]">favorite_border</span>
+</button>
+<div class="absolute bottom-3 left-3 bg-white/90 backdrop-blur px-2 py-1 rounded text-xs font-semibold text-slate-800 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">location_on</span> Rajasthan
+                            </div>
+</div>
+<div class="p-5 flex flex-col flex-1">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-serif font-bold text-lg text-slate-900 dark:text-white line-clamp-1">Jaipur Blue Pottery Vase</h3>
+<span class="font-bold text-slate-900 dark:text-white">$85</span>
+</div>
+<div class="flex items-center gap-2 mb-3">
+<img alt="Small avatar of artisan" class="w-6 h-6 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCaVr_0xGq6jfoCebTjbeGbpxDSaw4zj6y2VVwTOHXZCE4K-rv82NF_wq3IwxghZwgZhbsyVWavHDOz_sKW8K_QH79jH-7bg2M0jTS8rjrcdKErz3ihptcLJGQCBmU8DQ3VU7ujYwoIz4aHEed4e3oijoKCEFTO3aP9kZ5FhnfujJlEXqbZBbz_MSRQEQGT82XvuAUTwXy48kWUmP__sjSbDIi3R5TF8T1qFV_OTCVsG_qKabbmFbJQNbVVKUPZfCVWpakDN7Bg8A"/>
+<span class="text-sm text-slate-600 dark:text-slate-400">by Anwar Ali</span>
+</div>
+<div class="flex items-center gap-1 mb-4 mt-auto">
+<div class="flex text-primary">
+<span class="material-symbols-outlined text-[16px] fill-current">star</span>
+<span class="material-symbols-outlined text-[16px] fill-current">star</span>
+<span class="material-symbols-outlined text-[16px] fill-current">star</span>
+<span class="material-symbols-outlined text-[16px] fill-current">star</span>
+<span class="material-symbols-outlined text-[16px] fill-current">star</span>
+</div>
+<span class="text-xs text-slate-500">(18)</span>
+</div>
+<button class="w-full bg-primary/10 hover:bg-primary text-primary hover:text-white font-semibold py-2.5 rounded-lg transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">shopping_bag</span> Add to Cart
+                            </button>
+</div>
+</div>
+<!-- Product 3 -->
+<div class="bg-white dark:bg-slate-900 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow border border-slate-100 dark:border-slate-800 flex flex-col group">
+<div class="relative aspect-square overflow-hidden bg-slate-100">
+<img alt="Embroidered Kantha textile" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBJakNqHhx1oAVK9GR41xUTFTHzzO266SJBDcUuZ6oeCxZLeom7_7kz8nl-HO97euuhPrOEZ_QdRrT_9QACi0t0FhGvExGzfSOcZBPKGKWO4Xr3Vps1gn5c_whA4yodHWv7L1pt9-IJjRoUJEmXKHooLhN6bElRyDQ0JUKXgvz29aoGokxe4kVFTZbVghipeotOwZn4JMF8c3_d9pjkEzXnNHTl2-mamkW9AY1itfgtYtkqpf-_4h4VRSFAC-zLIoJnYVPF_ptF7Q"/>
+<button class="absolute top-3 right-3 w-8 h-8 bg-white/80 backdrop-blur rounded-full flex items-center justify-center text-slate-600 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[18px]">favorite</span>
+</button>
+<div class="absolute bottom-3 left-3 bg-white/90 backdrop-blur px-2 py-1 rounded text-xs font-semibold text-slate-800 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">location_on</span> West Bengal
+                            </div>
+</div>
+<div class="p-5 flex flex-col flex-1">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-serif font-bold text-lg text-slate-900 dark:text-white line-clamp-1">Vintage Kantha Dupatta</h3>
+<span class="font-bold text-slate-900 dark:text-white">$120</span>
+</div>
+<div class="flex items-center gap-2 mb-3">
+<img alt="Small avatar of artisan" class="w-6 h-6 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD514XkOBsvQiIpKWyRvPQgIWQqwbhpSjZeIP5J15QBYAvbiaJTdx5Ez8z_Tw3Uz4FlTKfkjjxoMcjQa_Mhfc3myOOsZy-tko3UrcaW35POUb1zVaLIy_qNNEo4KfcEcjzlr0cjGcuOYuSCJr5FFcT5Ve5Juegu0mMD2Eukl3Lojqg4nQsVfVVNQygWQL2NSkreREshy4ugVFqb6CUsWX8c2uNyPo9ziQf00VDTeZuKq0WIHBTCTxjSCW1R1RKx09K5Tuc_fuSRAA"/>
+<span class="text-sm text-slate-600 dark:text-slate-400">by Meera Ghosh</span>
+</div>
+<div class="flex items-center gap-1 mb-4 mt-auto">
+<div class="flex text-primary">
+<span class="material-symbols-outlined text-[16px] fill-current">star</span>
+<span class="material-symbols-outlined text-[16px] fill-current">star</span>
+<span class="material-symbols-outlined text-[16px] fill-current">star</span>
+<span class="material-symbols-outlined text-[16px] fill-current">star</span>
+<span class="material-symbols-outlined text-[16px] text-slate-300">star</span>
+</div>
+<span class="text-xs text-slate-500">(12)</span>
+</div>
+<button class="w-full bg-primary/10 hover:bg-primary text-primary hover:text-white font-semibold py-2.5 rounded-lg transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">shopping_bag</span> Add to Cart
+                            </button>
+</div>
+</div>
+</div>
+<!-- Pagination -->
+<div class="mt-8 flex justify-center items-center gap-2">
+<button class="w-10 h-10 rounded-full flex items-center justify-center text-slate-500 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="w-10 h-10 rounded-full flex items-center justify-center bg-primary text-white font-medium shadow-sm">1</button>
+<button class="w-10 h-10 rounded-full flex items-center justify-center text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 font-medium transition-colors">2</button>
+<button class="w-10 h-10 rounded-full flex items-center justify-center text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 font-medium transition-colors">3</button>
+<span class="text-slate-500">...</span>
+<button class="w-10 h-10 rounded-full flex items-center justify-center text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 font-medium transition-colors">8</button>
+<button class="w-10 h-10 rounded-full flex items-center justify-center text-slate-500 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+</body></html>
