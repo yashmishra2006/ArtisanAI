@@ -2,9 +2,9 @@
 	"version": "2.0.0",
 	"tasks": [
 		{
-			"label": "Run ArtisanAI Flask Server",
+			"label": "Run KalaSetu Flask Server",
 			"type": "shell",
-			"command": "\"/media/yash/Drive/Users/yash4/Desktop/Projects/ArtisanAI Website/.venv/bin/python\" app.py",
+			"command": "\"/media/yash/Drive/Users/yash4/Desktop/Projects/KalaSetu Website/.venv/bin/python\" app.py",
 			"isBackground": true,
 			"problemMatcher": []
 		}

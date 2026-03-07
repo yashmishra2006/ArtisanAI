@@ -21,7 +21,7 @@ export default function ShopHomeScreen({ navigation }) {
       <View style={styles.header}>
         <View style={styles.headerLeft}>
           <Ionicons name="flower" size={28} color={COLORS.primary} />
-          <Text style={styles.headerTitle}>ArtisanAI</Text>
+          <Text style={styles.headerTitle}>KalaSetu</Text>
         </View>
         <View style={styles.headerRight}>
           <TouchableOpacity style={styles.iconButton}>

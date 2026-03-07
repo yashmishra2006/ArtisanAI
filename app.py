@@ -1,5 +1,5 @@
 """
-ArtisanAI Flask Application
+KalaSetu Flask Application
 ============================
 Two separate portal sections:
   • /shop/     — Buyer / Shopper pages

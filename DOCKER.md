@@ -1,6 +1,6 @@
-# ArtisanAI Website - Docker Deployment
+# KalaSetu Website - Docker Deployment
 
-Flask-based web application for ArtisanAI marketplace with separate Shop and Creator portals.
+Flask-based web application for KalaSetu marketplace with separate Shop and Creator portals.
 
 ## Quick Start with Docker
 
@@ -27,21 +27,21 @@ The application will be available at `http://localhost:5000`
 
 ```bash
 # Build the image
-docker build -t artisanai-web .
+docker build -t kalasetu-web .
 
 # Run the container
 docker run -d \
-  --name artisanai-web \
+  --name kalasetu-web \
   -p 5000:5000 \
   --restart unless-stopped \
-  artisanai-web
+  kalasetu-web
 
 # View logs
-docker logs -f artisanai-web
+docker logs -f kalasetu-web
 
 # Stop and remove the container
-docker stop artisanai-web
-docker rm artisanai-web
+docker stop kalasetu-web
+docker rm kalasetu-web
 ```
 
 ## Application Structure
@@ -138,7 +138,7 @@ For production deployment, consider:
 
 ### Container won't start
 ```bash
-docker logs artisanai-web
+docker logs kalasetu-web
 ```
 
 ### Port already in use
@@ -154,4 +154,4 @@ docker-compose up -d --build
 
 ## License
 
-© 2026 ArtisanAI
+© 2026 KalaSetu

@@ -207,8 +207,8 @@ export default function SettingsScreen() {
 
         {/* App Info */}
         <View style={styles.appInfo}>
-          <Text style={styles.appVersion}>ArtisanAI v1.0.0</Text>
-          <Text style={styles.appCopyright}>© 2024 ArtisanAI. All rights reserved.</Text>
+          <Text style={styles.appVersion}>KalaSetu v1.0.0</Text>
+          <Text style={styles.appCopyright}>© 2026 KalaSetu. All rights reserved.</Text>
         </View>
       </ScrollView>
     </SafeAreaView>

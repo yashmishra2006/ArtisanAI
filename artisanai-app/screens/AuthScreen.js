@@ -33,7 +33,7 @@ export default function AuthScreen({ navigation }) {
       <View style={styles.header}>
         <View style={styles.headerLeft}>
           <Ionicons name="spa" size={32} color={COLORS.primary} />
-          <Text style={styles.headerTitle}>ArtisanAI</Text>
+          <Text style={styles.headerTitle}>KalaSetu</Text>
         </View>
         <TouchableOpacity onPress={() => navigation.navigate('Shop')}>
           <Text style={styles.headerLink}>Browse Marketplace</Text>
@@ -52,7 +52,7 @@ export default function AuthScreen({ navigation }) {
             <Text style={styles.heroTitleAccent}>Share your story.</Text>
           </Text>
           <Text style={styles.heroDescription}>
-            ArtisanAI empowers traditional craftspeople with AI-powered tools — from stunning product photography to digital provenance certificates.
+            KalaSetu empowers traditional craftspeople with AI-powered tools — from stunning product photography to digital provenance certificates.
           </Text>
 
           {/* Features */}
@@ -100,7 +100,7 @@ export default function AuthScreen({ navigation }) {
             </Text>
             <Text style={styles.formDescription}>
               {isSignUp
-                ? 'Join thousands of artisans selling on ArtisanAI.'
+                ? 'Join thousands of artisans selling on KalaSetu.'
                 : 'Sign in to your artisan account.'}
             </Text>
           </View>

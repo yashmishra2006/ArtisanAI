@@ -1,5 +1,5 @@
 /* ════════════════════════════════════════════════════════════
-   ArtisanAI — Shared JavaScript
+   KalaSetu — Shared JavaScript
    Animations · Navigation · Interactivity
 ═══════════════════════════════════════════════════════════════ */
 
@@ -293,6 +293,6 @@
     initStoryGenerator();
     initQuantityStepper();
     initStickyNav();
-    console.log('%c ArtisanAI ✦ ', 'background:#F5A623;color:white;padding:4px 10px;border-radius:4px;font-weight:700;');
+    console.log('%c KalaSetu ✦ ', 'background:#F5A623;color:white;padding:4px 10px;border-radius:4px;font-weight:700;');
   });
 })();

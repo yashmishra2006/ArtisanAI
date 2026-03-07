@@ -1,7 +1,7 @@
-# ArtisanAI Website - Implementation Summary
+# KalaSetu Website - Implementation Summary
 
 ## Overview
-All requested features have been successfully implemented across the ArtisanAI website. The site is now fully functional, responsive, and ready for use with all buttons, navigation, and interactive elements working properly.
+All requested features have been successfully implemented across the KalaSetu website. The site is now fully functional, responsive, and ready for use with all buttons, navigation, and interactive elements working properly.
 
 ---
 
@@ -61,7 +61,7 @@ All buttons now functional with proper routing:
   - Shop → Marketplace
   - Artisans → Marketplace (filtered view)
   - Our Story → Placeholder
-  - Sell on ArtisanAI → Auth page
+  - Sell on KalaSetu → Auth page
 - ✅ Responsive mobile menu with hamburger icon
 - ✅ Mobile menu overlay with smooth animations
 
@@ -108,7 +108,7 @@ toggleFavorite(button)    // Toggles favorite icon
 
 **Shop Mobile Menu:**
 - Primary navigation links
-- Call-to-action button (Sell on ArtisanAI)
+- Call-to-action button (Sell on KalaSetu)
 - Search functionality
 - Shopping cart & profile icons
 
@@ -287,6 +287,6 @@ Access the site at: `http://localhost:5000/`
 
 ## 🎉 Summary
 
-The ArtisanAI website is now **fully functional and responsive**! All buttons work, navigation is complete, product listings are clickable, modals and popups are implemented, and the entire site adapts beautifully to any screen size. The foundation is also set for future AI features like voice-to-content conversion for product uploads.
+The KalaSetu website is now **fully functional and responsive**! All buttons work, navigation is complete, product listings are clickable, modals and popups are implemented, and the entire site adapts beautifully to any screen size. The foundation is also set for future AI features like voice-to-content conversion for product uploads.
 
 **Ready for Production!** 🚀
