@@ -17,6 +17,21 @@
   body{font-family:'Manrope',sans-serif;}
   h1,h2,.font-serif{font-family:'Newsreader',serif;}
   .material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 300,'GRAD' 0,'opsz' 24;}
+  @media (min-width: 1024px) {
+    html, body { height: 100%; }
+    body { overflow: hidden; }
+    .auth-shell {
+      height: calc(100svh - 88px);
+      padding-top: 0.85rem;
+    }
+    .auth-left { padding-top: 2rem; padding-bottom: 2rem; }
+    .auth-right { padding-top: 1.75rem; padding-bottom: 0.5rem; }
+    .auth-form-wrap {
+      transform: scale(0.92);
+      transform-origin: top center;
+      width: 108%;
+    }
+  }
 </style>
 </head>
 <body class="min-h-screen bg-background-light text-text-main flex flex-col">
@@ -30,10 +45,10 @@
   <a href="{{ url_for('shop.marketplace') }}" class="text-sm text-text-muted hover:text-primary transition-colors">Browse Marketplace</a>
 </header>
 
-<div class="flex flex-1 flex-col lg:flex-row">
+<div class="auth-shell flex flex-1 flex-col lg:flex-row">
 
   <!-- Left panel — illustration / copy -->
-  <div class="hidden lg:flex flex-col justify-center bg-primary/8 border-r border-border-color px-14 py-16 w-[46%] shrink-0 relative overflow-hidden">
+  <div class="auth-left hidden lg:flex flex-col justify-center bg-primary/8 border-r border-border-color px-14 py-16 w-[46%] shrink-0 relative overflow-hidden">
     <div class="absolute inset-0 opacity-5">
       <span class="material-symbols-outlined text-[500px] text-primary absolute -left-20 -top-10 select-none">spa</span>
     </div>
@@ -55,23 +70,23 @@
   </div>
 
   <!-- Right panel — form -->
-  <div class="flex-1 flex items-center justify-center px-6 py-12">
-    <div class="w-full max-w-md">
+  <div class="auth-right flex-1 flex items-center justify-center px-6 py-12">
+    <div class="auth-form-wrap w-full max-w-md">
 
       <!-- Tabs -->
       <div class="flex bg-border-color/40 rounded-xl p-1 mb-8">
         <button id="tab-signup" onclick="switchTab('signup')"
-          class="flex-1 py-2.5 rounded-lg text-sm font-semibold transition-colors bg-surface-light shadow-sm text-text-main">
+          class="flex-1 py-2.5 rounded-lg text-sm font-semibold transition-colors text-text-muted">
           Create Account
         </button>
         <button id="tab-signin" onclick="switchTab('signin')"
-          class="flex-1 py-2.5 rounded-lg text-sm font-semibold transition-colors text-text-muted">
+          class="flex-1 py-2.5 rounded-lg text-sm font-semibold transition-colors bg-surface-light shadow-sm text-text-main">
           Sign In
         </button>
       </div>
 
       <!-- Sign Up Form -->
-      <form id="form-signup" class="flex flex-col gap-5" action="#" method="post">
+      <form id="form-signup" class="hidden flex-col gap-5" action="#" method="post">
         <div>
           <h2 class="text-2xl font-serif font-bold text-text-main mb-1">Become a Seller</h2>
           <p class="text-sm text-text-muted">Join thousands of artisans selling on ArtisanAI.</p>
@@ -131,7 +146,7 @@
       </form>
 
       <!-- Sign In Form -->
-      <form id="form-signin" class="hidden flex-col gap-5" action="#" method="post">
+      <form id="form-signin" class="flex flex-col gap-5" action="#" method="post">
         <div>
           <h2 class="text-2xl font-serif font-bold text-text-main mb-1">Welcome back</h2>
           <p class="text-sm text-text-muted">Sign in to your creator account.</p>

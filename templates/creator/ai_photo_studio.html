@@ -3,27 +3,29 @@
 {%block title %}AI Photo Studio{%endblock %}
 
 {%block content %}
-<div class="p-8 lg:px-12 max-w-7xl mx-auto">
+<div class="studio-page p-4 lg:p-5 xl:px-8 max-w-[1600px] mx-auto lg:h-[calc(100svh-84px)] lg:overflow-hidden">
 <!-- Page Header -->
-<div class="mb-8 mt-6">
+<div class="mb-5 mt-3">
 <div class="flex flex-col gap-2">
-<h1 class="font-serif text-4xl lg:text-5xl font-medium leading-tight text-slate-900 dark:text-slate-100">AI Photo Studio</h1>
-<p class="text-slate-600 dark:text-slate-300 text-base lg:text-lg font-medium max-w-2xl">Elevate your product photography with editorial-quality AI backgrounds and lighting tailored to showcase traditional craftsmanship.</p>
+<h1 class="font-serif text-3xl lg:text-4xl font-medium leading-tight text-slate-900 dark:text-slate-100">AI Photo Studio</h1>
+<p class="text-slate-600 dark:text-slate-300 text-sm lg:text-base font-medium max-w-3xl">Elevate your product photography with editorial-quality AI backgrounds and lighting tailored to showcase traditional craftsmanship.</p>
 </div>
 </div>
-<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+<div id="studioMainGrid" class="grid grid-cols-1 lg:grid-cols-12 gap-5 lg:gap-6 items-start lg:h-full lg:min-h-0">
 <!-- Left Panel: Configuration -->
-<div class="lg:col-span-5 flex flex-col gap-8">
+<div id="studioConfigColumn" class="lg:col-span-12 lg:min-h-0 lg:pr-1">
+<div id="studioSetupLayout" class="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-5 items-start">
+<div class="lg:col-span-8 flex flex-col gap-4">
 <!-- Step 1: Upload -->
-<div class="bg-white dark:bg-[#1a160d] rounded-xl p-6 shadow-sm border border-slate-100 dark:border-slate-800">
+<div id="studioStep1" class="bg-white dark:bg-[#1a160d] rounded-xl p-4 lg:p-5 shadow-sm border border-slate-100 dark:border-slate-800">
 <div class="flex items-center justify-between mb-4">
-<h3 class="text-lg font-bold text-slate-900 dark:text-slate-100 flex items-center gap-2">
+<h3 class="text-base font-bold text-slate-900 dark:text-slate-100 flex items-center gap-2">
 <span class="flex items-center justify-center size-6 rounded-full bg-slate-100 dark:bg-[#2a2414] text-xs font-bold text-slate-500 dark:text-slate-400">1</span>
                                     Source Image
                                 </h3>
 <button class="text-sm font-bold text-primary hover:text-primary/80 transition-colors">Replace</button>
 </div>
-<div class="relative w-full aspect-[4/3] rounded-lg border-2 border-dashed border-slate-200 dark:border-slate-700 bg-background-light dark:bg-[#2a2414] overflow-hidden group">
+<div class="relative w-full aspect-[16/10] max-h-[46vh] rounded-lg border-2 border-dashed border-slate-200 dark:border-slate-700 bg-background-light dark:bg-[#2a2414] overflow-hidden group">
 <img alt="Raw terracotta vase on neutral background" class="w-full h-full object-contain p-4 mix-blend-multiply dark:mix-blend-normal" data-alt="Raw terracotta vase on neutral background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDNk-IYuCtm60WMbefyyUD0ndSMBH-A_s4cac2-Wa5iqIjPp3OK7GkT2kpiR39BgW_u-If4MWtUw9apGEFP45XxzZhKQ9sIyI0EU6ZTqrwBqYjwnyTl6j0bGhv-XLJHH1gjgHr-ZZxD3Tjjj4dF_Ov_hZG3pNt3SL47I1PuV3WUt6hThErue1P62lNbhQcwz0sBcHNvh5OAYTKZxtgzYmEZ_sSUWmV5M8c09IxZe6JCMmP2C9hzY5PrD3iKecYjycNds5Z8AGOJkQ"/>
 <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
 <button class="bg-white text-slate-900 px-4 py-2 rounded-lg text-sm font-bold shadow-md flex items-center gap-2">
@@ -33,15 +35,15 @@
 </div>
 </div>
 <!-- Step 2: Theme Selection -->
-<div class="bg-white dark:bg-[#1a160d] rounded-xl p-6 shadow-sm border border-slate-100 dark:border-slate-800">
-<h3 class="text-lg font-bold text-slate-900 dark:text-slate-100 flex items-center gap-2 mb-4">
+<div id="studioStep2" class="hidden bg-white dark:bg-[#1a160d] rounded-xl p-4 lg:p-5 shadow-sm border border-slate-100 dark:border-slate-800">
+<h3 class="text-base font-bold text-slate-900 dark:text-slate-100 flex items-center gap-2 mb-4">
 <span class="flex items-center justify-center size-6 rounded-full bg-slate-100 dark:bg-[#2a2414] text-xs font-bold text-slate-500 dark:text-slate-400">2</span>
                                 Select Theme
                             </h3>
-<div class="grid grid-cols-2 gap-4">
+<div class="grid grid-cols-2 gap-3">
 <!-- Selected Theme -->
 <div class="relative rounded-lg border-2 border-primary bg-primary/5 dark:bg-primary/10 overflow-hidden cursor-pointer group">
-<div class="h-24 w-full bg-cover bg-center" data-alt="Warm gold and saffron abstract background" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDrUUqdMjhH3Q3SmtZeuHZ3M8ntzWDtKPXFkabdYPqB_EgKTWs_xA60cdZy1niiG4W0iGXJE3R8kGpuxSY9MxzetjTfOFm4y4epzcmlEe47_xIiMyKAcfu62S9D8ltNMa0tLgUH-6SFvEmqnQe2hCTh6AmulNsEas4Mbrc5F_Tq6J2KnFm7lFsMKS3jSN_f8N1-2P-eO4XRfbhMKhBWsaO9Hp-0ffJAc2NhhYC5yscCPRs_ySkINSfGOMVPtWol63xoriA6MD-j_g');"></div>
+<div class="h-20 w-full bg-cover bg-center" data-alt="Warm gold and saffron abstract background" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDrUUqdMjhH3Q3SmtZeuHZ3M8ntzWDtKPXFkabdYPqB_EgKTWs_xA60cdZy1niiG4W0iGXJE3R8kGpuxSY9MxzetjTfOFm4y4epzcmlEe47_xIiMyKAcfu62S9D8ltNMa0tLgUH-6SFvEmqnQe2hCTh6AmulNsEas4Mbrc5F_Tq6J2KnFm7lFsMKS3jSN_f8N1-2P-eO4XRfbhMKhBWsaO9Hp-0ffJAc2NhhYC5yscCPRs_ySkINSfGOMVPtWol63xoriA6MD-j_g');"></div>
 <div class="p-3">
 <div class="flex items-center justify-between mb-1">
 <p class="text-sm font-bold text-slate-900 dark:text-slate-100">Festive Gold</p>
@@ -55,7 +57,7 @@
 </div>
 <!-- Unselected Theme 1 -->
 <div class="relative rounded-lg border border-slate-200 dark:border-slate-700 hover:border-primary/50 bg-white dark:bg-[#2a2414] overflow-hidden cursor-pointer transition-colors group">
-<div class="h-24 w-full bg-cover bg-center opacity-80 group-hover:opacity-100 transition-opacity" data-alt="Minimalist beige textured background" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA8Ov5Hm2rkjoc5qr6Xp1fP8yYmVzziXkBI3OaoeS5LOCPU3uKRzVQ6vfAOVYe1GaRKxle7QFSzO7FR9tFOSXVMC6xTlmutK61v0wwEu3nPl_V0OiMI6FxIPddtRwAkK6Su_ft46N5N2Hp1Z0O0e2v_R6lAsRHxT5JCbDc5B62HKsClyUYtEoATaxEHN6J8aF69OzYe1nks2quMLS1GrpAKxe0R42NGrQC1VmG1V-C3QNll5JgJmnW6NAGeuZ06lLBdwb3OXttOmA');"></div>
+<div class="h-20 w-full bg-cover bg-center opacity-80 group-hover:opacity-100 transition-opacity" data-alt="Minimalist beige textured background" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA8Ov5Hm2rkjoc5qr6Xp1fP8yYmVzziXkBI3OaoeS5LOCPU3uKRzVQ6vfAOVYe1GaRKxle7QFSzO7FR9tFOSXVMC6xTlmutK61v0wwEu3nPl_V0OiMI6FxIPddtRwAkK6Su_ft46N5N2Hp1Z0O0e2v_R6lAsRHxT5JCbDc5B62HKsClyUYtEoATaxEHN6J8aF69OzYe1nks2quMLS1GrpAKxe0R42NGrQC1VmG1V-C3QNll5JgJmnW6NAGeuZ06lLBdwb3OXttOmA');"></div>
 <div class="p-3">
 <p class="text-sm font-bold text-slate-700 dark:text-slate-300 group-hover:text-slate-900 dark:group-hover:text-slate-100 mb-1">Earthy Minimal</p>
 <p class="text-xs text-slate-500 dark:text-slate-400 leading-tight">Soft diffused light, natural beige linen textures.</p>
@@ -63,7 +65,7 @@
 </div>
 <!-- Unselected Theme 2 -->
 <div class="relative rounded-lg border border-slate-200 dark:border-slate-700 hover:border-primary/50 bg-white dark:bg-[#2a2414] overflow-hidden cursor-pointer transition-colors group">
-<div class="h-24 w-full bg-cover bg-center opacity-80 group-hover:opacity-100 transition-opacity" data-alt="Dark moody slate background" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA2MVWQXDyRXiN8F2HFgUkQbPv7eXYxfPlygiOYLxYBX52Fj5spKQOh5KhfGoamY-VB66_NuD2FnPaLa7EpltFRb-_M_l2XZMSMAbl1M1I9FHLPYo8w7O2HGEX7zmncYhqqUCDfU7BrOZY-3z-E9DObrgXmBDRKSSqOaqgPBQTzSu33Ghkbvi5W95YJD5E_D0oAkrkRLQcHnzNSH1Rh4bNEavN1j_LAgwWD02G25enM_wSVWY7A8AxQESgTu3QemMXNOnQN5ntZ4Q');"></div>
+<div class="h-20 w-full bg-cover bg-center opacity-80 group-hover:opacity-100 transition-opacity" data-alt="Dark moody slate background" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA2MVWQXDyRXiN8F2HFgUkQbPv7eXYxfPlygiOYLxYBX52Fj5spKQOh5KhfGoamY-VB66_NuD2FnPaLa7EpltFRb-_M_l2XZMSMAbl1M1I9FHLPYo8w7O2HGEX7zmncYhqqUCDfU7BrOZY-3z-E9DObrgXmBDRKSSqOaqgPBQTzSu33Ghkbvi5W95YJD5E_D0oAkrkRLQcHnzNSH1Rh4bNEavN1j_LAgwWD02G25enM_wSVWY7A8AxQESgTu3QemMXNOnQN5ntZ4Q');"></div>
 <div class="p-3">
 <p class="text-sm font-bold text-slate-700 dark:text-slate-300 group-hover:text-slate-900 dark:group-hover:text-slate-100 mb-1">Moody Heritage</p>
 <p class="text-xs text-slate-500 dark:text-slate-400 leading-tight">Dramatic spotlight, dark charcoal stone backdrop.</p>
@@ -71,7 +73,7 @@
 </div>
 <!-- Unselected Theme 3 -->
 <div class="relative rounded-lg border border-slate-200 dark:border-slate-700 hover:border-primary/50 bg-white dark:bg-[#2a2414] overflow-hidden cursor-pointer transition-colors group">
-<div class="h-24 w-full bg-cover bg-center opacity-80 group-hover:opacity-100 transition-opacity" data-alt="Bright airy white background with shadows" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAC0DG2OvK8TLCXVeHI7Ek2hx2UYGwigheJWxgYuVsBJFPIA8oE63LXwZB2Gf2yDiDAiS69N4rhNmfrG2cSQI4ho0MJsXUXIjVwCUbn2XMBwtN4dHyZjIZYOoDgG7cgdZvISGD_yTjT2hLvY93YrCu3xcR6zISmAkWgDs8Cp2NhhEatbhJ5HjkFpmw5ZZmXqyv5gya4o2jpWnga5jyTtGsPfIMzWxBBWtNYD_kn3UecCBKU67WvyMzPzq-didWWj0HTCsQ1Bbn9Mg');"></div>
+<div class="h-20 w-full bg-cover bg-center opacity-80 group-hover:opacity-100 transition-opacity" data-alt="Bright airy white background with shadows" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAC0DG2OvK8TLCXVeHI7Ek2hx2UYGwigheJWxgYuVsBJFPIA8oE63LXwZB2Gf2yDiDAiS69N4rhNmfrG2cSQI4ho0MJsXUXIjVwCUbn2XMBwtN4dHyZjIZYOoDgG7cgdZvISGD_yTjT2hLvY93YrCu3xcR6zISmAkWgDs8Cp2NhhEatbhJ5HjkFpmw5ZZmXqyv5gya4o2jpWnga5jyTtGsPfIMzWxBBWtNYD_kn3UecCBKU67WvyMzPzq-didWWj0HTCsQ1Bbn9Mg');"></div>
 <div class="p-3">
 <p class="text-sm font-bold text-slate-700 dark:text-slate-300 group-hover:text-slate-900 dark:group-hover:text-slate-100 mb-1">Sunlit Studio</p>
 <p class="text-xs text-slate-500 dark:text-slate-400 leading-tight">Bright morning light, crisp white pedestal.</p>
@@ -80,26 +82,49 @@
 </div>
 </div>
 <!-- Step 3: Custom Prompt -->
-<div class="bg-white dark:bg-[#1a160d] rounded-xl p-6 shadow-sm border border-slate-100 dark:border-slate-800">
-<h3 class="text-lg font-bold text-slate-900 dark:text-slate-100 flex items-center gap-2 mb-4">
+<div id="studioStep3" class="hidden bg-white dark:bg-[#1a160d] rounded-xl p-4 lg:p-5 shadow-sm border border-slate-100 dark:border-slate-800">
+<h3 class="text-base font-bold text-slate-900 dark:text-slate-100 flex items-center gap-2 mb-4">
 <span class="flex items-center justify-center size-6 rounded-full bg-slate-100 dark:bg-[#2a2414] text-xs font-bold text-slate-500 dark:text-slate-400">3</span>
                                 Fine-tune (Optional)
                             </h3>
 <textarea class="w-full rounded-lg border-slate-200 dark:border-slate-700 bg-background-light dark:bg-[#2a2414] text-slate-900 dark:text-slate-100 placeholder:text-slate-400 focus:border-primary focus:ring-primary text-sm p-4 min-h-[100px] resize-y" placeholder="E.g., Add subtle marigold petals blurred in the foreground, enhance the warmth of the lighting..."></textarea>
 </div>
-<!-- Generate Button -->
-<button class="w-full h-14 bg-primary hover:bg-primary/90 text-slate-900 rounded-xl font-bold text-lg flex items-center justify-center gap-3 transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5">
-<span class="material-symbols-outlined !text-[24px]">auto_awesome</span>
-                            Generate Studio Shot
-                        </button>
+                            </div>
+                            <div class="lg:col-span-4">
+                            <div class="bg-white dark:bg-[#1a160d] rounded-xl p-4 shadow-sm border border-slate-100 dark:border-slate-800 lg:sticky lg:top-3 space-y-4">
+                            <div id="studioWizardStatus" class="rounded-lg p-3 border border-slate-100 dark:border-slate-800 bg-background-light dark:bg-[#2a2414] text-sm font-semibold text-slate-700 dark:text-slate-300">
+                            Step 1 of 4 · Source Image
+                            </div>
+                            <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">Preview is on the left. Move step-by-step and generate your final studio result with ready-to-post platform content.</p>
+                            <div class="flex items-center gap-3">
+                            <button id="studioBackBtn" class="w-1/3 h-11 bg-white dark:bg-[#1a160d] border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 rounded-xl font-semibold text-sm disabled:opacity-40 disabled:cursor-not-allowed">
+                            Back
+                            </button>
+                            <button id="studioNextBtn" class="w-2/3 h-11 bg-primary hover:bg-primary/90 text-slate-900 rounded-xl font-bold text-sm flex items-center justify-center gap-2 transition-all shadow-sm">
+                            <span class="material-symbols-outlined !text-[18px]">arrow_forward</span>
+                            Next: Theme
+                            </button>
+                            </div>
+                            </div>
+                            </div>
+</div>
 </div>
 <!-- Right Panel: Result -->
-<div class="lg:col-span-7 flex flex-col h-full min-h-[600px]">
-<div class="bg-white dark:bg-[#1a160d] rounded-xl p-2 sm:p-4 shadow-sm border border-slate-100 dark:border-slate-800 flex-1 flex flex-col">
+<div id="studioResultColumn" class="hidden lg:col-span-12 h-full min-h-[420px] lg:min-h-0">
+<div id="studioResultPlaceholder" class="bg-white dark:bg-[#1a160d] rounded-xl p-6 shadow-sm border border-slate-100 dark:border-slate-800 flex-1 flex items-center justify-center text-center">
+<div class="max-w-md">
+<div class="mx-auto mb-4 size-14 rounded-full bg-primary/15 text-primary flex items-center justify-center">
+<span class="material-symbols-outlined !text-[28px]">tune</span>
+</div>
+<h3 class="font-serif text-2xl font-bold text-slate-900 dark:text-slate-100 mb-2">Build Your Studio Shot</h3>
+<p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">Complete each step on the left. Your final AI-enhanced result appears here after generation.</p>
+</div>
+</div>
+<div id="studioResultPanel" class="hidden bg-white dark:bg-[#1a160d] rounded-xl p-2 sm:p-3 shadow-sm border border-slate-100 dark:border-slate-800 flex-1 flex flex-col min-h-0">
 <!-- Main Result Image Area -->
-<div class="relative w-full flex-1 rounded-lg overflow-hidden bg-background-light dark:bg-black border border-slate-100 dark:border-slate-800 flex items-center justify-center min-h-[400px]">
+<div class="relative w-full rounded-lg overflow-hidden bg-background-light dark:bg-black border border-slate-100 dark:border-slate-800 flex items-center justify-center min-h-[220px] max-h-[50vh] lg:max-h-[46vh]">
 <!-- AI Generated Image -->
-<img alt="AI Enhanced terracotta vase with festive gold background" class="w-full h-full object-cover" data-alt="AI Enhanced terracotta vase with festive gold background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAx9MXFoUrcja4jRZmKlZSnTdBYyPqKHk5mTKKrLlZBz3XdZ9WGPFXl_pnhblnHkJW1ysAj4iWAlH6Wvl2w4vnU54eA-wgUmNqiGZOGZpiua9ZTntwwh7Oz2vMobB1bO9_wMwXt2DsDrAPXNX6zeS0peexmPUDtlkiDHE0pWZJ2kvVNyuctJhsvDBxpQsZ13z495kDUlb8xGri5isoNZ6eBBuAb9VTe-3rhPpdokHZj3JZoYDX0ZW2BAYKrB_HOhNVKNSNK19LuuQ"/>
+<img alt="AI Enhanced terracotta vase with festive gold background" class="w-full h-full object-contain" data-alt="AI Enhanced terracotta vase with festive gold background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAx9MXFoUrcja4jRZmKlZSnTdBYyPqKHk5mTKKrLlZBz3XdZ9WGPFXl_pnhblnHkJW1ysAj4iWAlH6Wvl2w4vnU54eA-wgUmNqiGZOGZpiua9ZTntwwh7Oz2vMobB1bO9_wMwXt2DsDrAPXNX6zeS0peexmPUDtlkiDHE0pWZJ2kvVNyuctJhsvDBxpQsZ13z495kDUlb8xGri5isoNZ6eBBuAb9VTe-3rhPpdokHZj3JZoYDX0ZW2BAYKrB_HOhNVKNSNK19LuuQ"/>
 <!-- Before/After Toggle -->
 <div class="absolute top-4 left-4 bg-white/90 dark:bg-black/60 backdrop-blur-md rounded-full p-1 flex items-center shadow-lg border border-slate-200 dark:border-slate-700">
 <button class="px-4 py-1.5 rounded-full text-xs font-bold text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 transition-colors">Before</button>
@@ -112,7 +137,7 @@
 </div>
 </div>
 <!-- Actions -->
-<div class="mt-4 sm:mt-6 flex flex-wrap items-center justify-between gap-4 px-2">
+<div class="mt-3 sm:mt-4 flex flex-wrap items-center justify-between gap-3 px-1">
 <div class="flex gap-3">
 <button class="flex items-center gap-2 px-5 py-2.5 bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 rounded-lg text-sm font-bold hover:bg-slate-800 dark:hover:bg-white transition-colors shadow-sm">
 <span class="material-symbols-outlined !text-[20px]">download</span>
@@ -132,7 +157,247 @@
 </button>
 </div>
 </div>
+<div id="studioPostComposer" class="hidden rounded-xl border border-slate-200 dark:border-slate-700 bg-background-light dark:bg-[#2a2414] p-3">
+<div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+<h4 class="text-sm font-bold text-slate-900 dark:text-slate-100 flex items-center gap-2">
+<span class="material-symbols-outlined !text-[18px] text-primary">campaign</span>
+Generate Post Content
+</h4>
+<button id="copyPostContentBtn" class="text-xs font-semibold px-2.5 py-1 rounded-md border border-slate-300 dark:border-slate-600 text-slate-600 dark:text-slate-300 hover:border-primary hover:text-primary transition-colors">Copy Current</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-2 mb-3">
+<input id="postProductName" class="rounded-md border-slate-200 dark:border-slate-700 bg-white dark:bg-[#1a160d] text-slate-900 dark:text-slate-100 text-xs px-3 py-2" placeholder="Product name" value="Handmade Terracotta Vase"/>
+<select id="postTone" class="rounded-md border-slate-200 dark:border-slate-700 bg-white dark:bg-[#1a160d] text-slate-900 dark:text-slate-100 text-xs px-3 py-2">
+<option value="premium">Premium</option>
+<option value="warm">Warm</option>
+<option value="festive">Festive</option>
+</select>
+<button id="generatePostContentBtn" class="rounded-md bg-primary hover:bg-primary/90 text-slate-900 text-xs font-bold px-3 py-2 transition-colors">Auto Generate</button>
+</div>
+<div class="flex flex-wrap gap-2 mb-3">
+<button type="button" data-platform="instagram" class="post-platform-tab px-2.5 py-1 rounded-full text-[11px] font-semibold bg-primary/20 text-primary border border-primary/30">Instagram</button>
+<button type="button" data-platform="facebook" class="post-platform-tab px-2.5 py-1 rounded-full text-[11px] font-semibold bg-white dark:bg-[#1a160d] text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700">Facebook</button>
+<button type="button" data-platform="x" class="post-platform-tab px-2.5 py-1 rounded-full text-[11px] font-semibold bg-white dark:bg-[#1a160d] text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700">X</button>
+<button type="button" data-platform="pinterest" class="post-platform-tab px-2.5 py-1 rounded-full text-[11px] font-semibold bg-white dark:bg-[#1a160d] text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700">Pinterest</button>
+<button type="button" data-platform="whatsapp" class="post-platform-tab px-2.5 py-1 rounded-full text-[11px] font-semibold bg-white dark:bg-[#1a160d] text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700">WhatsApp</button>
+</div>
+<div class="space-y-2">
+<input id="postTitleOutput" class="w-full rounded-md border-slate-200 dark:border-slate-700 bg-white dark:bg-[#1a160d] text-slate-800 dark:text-slate-200 text-xs p-3" readonly value="Title will appear here"/>
+<textarea id="postDescriptionOutput" class="w-full rounded-md border-slate-200 dark:border-slate-700 bg-white dark:bg-[#1a160d] text-slate-800 dark:text-slate-200 text-xs p-3 min-h-[110px]" readonly>Description will appear here.</textarea>
+<textarea id="postHashtagsOutput" class="w-full rounded-md border-slate-200 dark:border-slate-700 bg-white dark:bg-[#1a160d] text-slate-800 dark:text-slate-200 text-xs p-3 min-h-[78px]" readonly>#hashtags</textarea>
+<input id="postCtaOutput" class="w-full rounded-md border-slate-200 dark:border-slate-700 bg-white dark:bg-[#1a160d] text-slate-800 dark:text-slate-200 text-xs p-3" readonly value="CTA will appear here"/>
 </div>
 </div>
 </div>
+</div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const step1 = document.getElementById('studioStep1');
+    const step2 = document.getElementById('studioStep2');
+    const step3 = document.getElementById('studioStep3');
+    const backBtn = document.getElementById('studioBackBtn');
+    const nextBtn = document.getElementById('studioNextBtn');
+    const status = document.getElementById('studioWizardStatus');
+    const studioConfigColumn = document.getElementById('studioConfigColumn');
+    const studioResultColumn = document.getElementById('studioResultColumn');
+    const resultPlaceholder = document.getElementById('studioResultPlaceholder');
+    const resultPanel = document.getElementById('studioResultPanel');
+    const studioPostComposer = document.getElementById('studioPostComposer');
+    const postProductName = document.getElementById('postProductName');
+    const postTone = document.getElementById('postTone');
+    const generatePostContentBtn = document.getElementById('generatePostContentBtn');
+    const postTitleOutput = document.getElementById('postTitleOutput');
+    const postDescriptionOutput = document.getElementById('postDescriptionOutput');
+    const postHashtagsOutput = document.getElementById('postHashtagsOutput');
+    const postCtaOutput = document.getElementById('postCtaOutput');
+    const postPlatformTabs = document.querySelectorAll('.post-platform-tab');
+    const copyPostContentBtn = document.getElementById('copyPostContentBtn');
+
+    if (!step1 || !step2 || !step3 || !backBtn || !nextBtn || !status || !studioConfigColumn || !studioResultColumn || !resultPlaceholder || !resultPanel) return;
+
+    if (studioPostComposer && studioPostComposer.parentElement === resultPanel) {
+        studioPostComposer.remove();
+        studioResultColumn.appendChild(studioPostComposer);
+    }
+
+    const stepMeta = {
+        1: { label: 'Step 1 of 4 · Source Image', cta: 'Next: Theme', icon: 'arrow_forward' },
+        2: { label: 'Step 2 of 4 · Select Theme', cta: 'Next: Fine-tune', icon: 'arrow_forward' },
+        3: { label: 'Step 3 of 4 · Fine-tune Prompt', cta: 'Generate Result', icon: 'auto_awesome' },
+        4: { label: 'Step 4 of 4 · Final Result', cta: 'Create Another', icon: 'refresh' }
+    };
+
+    let currentStep = 1;
+    let activePlatform = 'instagram';
+    let platformCopy = {};
+
+    function getToneLine(tone) {
+        if (tone === 'warm') return 'crafted with heart, tradition, and care';
+        if (tone === 'festive') return 'ready to light up your celebrations with handcrafted beauty';
+        return 'a premium handcrafted piece with timeless artisan character';
+    }
+
+    function generatePlatformCopy(product, tone) {
+        const toneLine = getToneLine(tone);
+        return {
+            instagram: {
+                title: `✨ ${product}`,
+                description: `${toneLine}. Shot with ArtisanAI Photo Studio for studio-quality craft storytelling.`,
+                hashtags: '#Handmade #ArtisanMade #CraftHeritage #ShopLocal #IndianCrafts #SupportArtisans',
+                cta: 'Tap to shop now or DM for custom orders.'
+            },
+            facebook: {
+                title: `${product} • Handmade by Artisans`,
+                description: `${product} is ${toneLine}. We used ArtisanAI Photo Studio to highlight texture, craftsmanship, and authenticity for your feed and marketplace listing.`,
+                hashtags: '#Handmade #ArtisanBusiness #TraditionalCraft #SmallBusiness',
+                cta: 'Comment “DETAILS” and we will share price + delivery options.'
+            },
+            x: {
+                title: `${product}`,
+                description: `${toneLine}. Captured with ArtisanAI Photo Studio for clean, conversion-ready visuals.`,
+                hashtags: '#handmade #artisan #craft #shoplocal',
+                cta: 'Reply for pricing and order link.'
+            },
+            pinterest: {
+                title: `${product} | Artisan Decor Idea`,
+                description: `${toneLine}. A timeless handcrafted piece for home styling, gifting, and conscious shopping inspiration.`,
+                hashtags: '#HomeDecor #HandmadeDecor #ArtisanStyle #CraftInspiration',
+                cta: 'Save this pin and visit our profile for similar handcrafted pieces.'
+            },
+            whatsapp: {
+                title: `${product} (New Arrival)`,
+                description: `Hi! Sharing our latest handcrafted product. It is ${toneLine}.`,
+                hashtags: '#Handmade #Artisan',
+                cta: 'Would you like price, size options, and shipping details?'
+            }
+        };
+    }
+
+    function setActivePlatform(platform) {
+        activePlatform = platform;
+        postPlatformTabs.forEach((tab) => {
+            const isActive = tab.dataset.platform === platform;
+            tab.classList.toggle('bg-primary/20', isActive);
+            tab.classList.toggle('text-primary', isActive);
+            tab.classList.toggle('border-primary/30', isActive);
+            tab.classList.toggle('bg-white', !isActive);
+            tab.classList.toggle('dark:bg-[#1a160d]', !isActive);
+            tab.classList.toggle('text-slate-600', !isActive);
+            tab.classList.toggle('dark:text-slate-300', !isActive);
+            tab.classList.toggle('border-slate-200', !isActive);
+            tab.classList.toggle('dark:border-slate-700', !isActive);
+        });
+
+        const content = platformCopy[platform];
+        if (!content) {
+            if (postTitleOutput) postTitleOutput.value = 'Title will appear here';
+            if (postDescriptionOutput) postDescriptionOutput.value = 'Description will appear here.';
+            if (postHashtagsOutput) postHashtagsOutput.value = '#hashtags';
+            if (postCtaOutput) postCtaOutput.value = 'CTA will appear here';
+            return;
+        }
+
+        if (postTitleOutput) postTitleOutput.value = content.title;
+        if (postDescriptionOutput) postDescriptionOutput.value = content.description;
+        if (postHashtagsOutput) postHashtagsOutput.value = content.hashtags;
+        if (postCtaOutput) postCtaOutput.value = content.cta;
+    }
+
+    function renderStep() {
+        step1.classList.toggle('hidden', currentStep !== 1);
+        step2.classList.toggle('hidden', currentStep !== 2);
+        step3.classList.toggle('hidden', currentStep !== 3);
+
+        const isFinalStep = currentStep === 4;
+
+        if (isFinalStep) {
+            studioConfigColumn.classList.add('hidden');
+            studioResultColumn.classList.remove('hidden');
+            studioResultColumn.classList.add('grid', 'lg:grid-cols-2', 'lg:gap-4', 'items-stretch');
+
+            resultPlaceholder.classList.add('hidden');
+            resultPanel.classList.remove('hidden');
+            resultPanel.classList.add('lg:h-full');
+
+            if (studioPostComposer) {
+                studioPostComposer.classList.remove('hidden');
+                studioPostComposer.classList.add('lg:mt-0', 'lg:h-full');
+            }
+        } else {
+            studioConfigColumn.classList.remove('hidden');
+            studioResultColumn.classList.add('hidden');
+            studioResultColumn.classList.remove('grid', 'lg:grid-cols-2', 'lg:gap-4', 'items-stretch');
+
+            resultPlaceholder.classList.remove('hidden');
+            resultPanel.classList.add('hidden');
+            resultPanel.classList.remove('lg:h-full');
+
+            if (studioPostComposer) {
+                studioPostComposer.classList.add('hidden');
+                studioPostComposer.classList.remove('lg:mt-0', 'lg:h-full');
+            }
+        }
+
+        backBtn.disabled = currentStep === 1;
+        status.textContent = stepMeta[currentStep].label;
+        nextBtn.innerHTML = `<span class="material-symbols-outlined !text-[18px]">${stepMeta[currentStep].icon}</span>${stepMeta[currentStep].cta}`;
+    }
+
+    backBtn.addEventListener('click', () => {
+        if (currentStep > 1) {
+            currentStep -= 1;
+            renderStep();
+        }
+    });
+
+    nextBtn.addEventListener('click', () => {
+        if (currentStep < 4) {
+            currentStep += 1;
+        } else {
+            currentStep = 1;
+        }
+        renderStep();
+    });
+
+    if (generatePostContentBtn && postProductName && postTone) {
+        generatePostContentBtn.addEventListener('click', () => {
+            const product = postProductName.value.trim() || 'Handcrafted Product';
+            platformCopy = generatePlatformCopy(product, postTone.value);
+            setActivePlatform(activePlatform);
+        });
+    }
+
+    postPlatformTabs.forEach((tab) => {
+        tab.addEventListener('click', () => {
+            setActivePlatform(tab.dataset.platform);
+        });
+    });
+
+    if (copyPostContentBtn) {
+        copyPostContentBtn.addEventListener('click', async () => {
+            const content = platformCopy[activePlatform];
+            const copyText = content
+                ? `Platform: ${activePlatform.toUpperCase()}\n\nTitle: ${content.title}\n\nDescription: ${content.description}\n\nHashtags: ${content.hashtags}\n\nCTA: ${content.cta}`
+                : '';
+            try {
+                await navigator.clipboard.writeText(copyText);
+                copyPostContentBtn.textContent = 'Copied';
+                setTimeout(() => {
+                    copyPostContentBtn.textContent = 'Copy Current';
+                }, 1200);
+            } catch (error) {
+                copyPostContentBtn.textContent = 'Copy Failed';
+                setTimeout(() => {
+                    copyPostContentBtn.textContent = 'Copy Current';
+                }, 1200);
+            }
+        });
+    }
+
+    renderStep();
+    setActivePlatform(activePlatform);
+});
+</script>
 {%endblock %}
